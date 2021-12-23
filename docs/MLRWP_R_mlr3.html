@@ -882,10 +882,10 @@ Install this using the <strong>remotes</strong> package - the code is given belo
 <span class="p">}</span>
 
 <span class="nf">message</span><span class="p">(</span><span class="s">&quot;Package checking complete\n&quot;</span><span class="p">)</span>
-                   
+
 
 <span class="c1"># To install packages via code:</span>
-<span class="c1"># install.packages(&lt;package name&gt;) </span>
+<span class="c1"># install.packages(&lt;package name&gt;)</span>
 
 <span class="c1"># To install mlr3extralearners (which is not on CRAN so must be installed on github)</span>
 <span class="c1"># 1. Ensure you have the remotes package installed</span>
@@ -969,7 +969,7 @@ Loading required package: rpart
 <p>We’re using a simulated data triangle with all values (past and future).</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_21_0.png" src="../_images/MLRWP_R_mlr3_21_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_20_0.png" src="../_images/MLRWP_R_mlr3_20_0.png" />
 </div>
 </div>
 <p>The data set we use is the simulated data set 3 from this <a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3241906">paper</a>.
@@ -1063,7 +1063,7 @@ The step-up in claim size (acc &gt; 16 and dev &gt; 20) is quite obvious in this
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_28_0.png" src="../_images/MLRWP_R_mlr3_28_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_27_0.png" src="../_images/MLRWP_R_mlr3_27_0.png" />
 </div>
 </div>
 <p>The step-up in payments can be modelled as an interaction between accident and development quarters.
@@ -1283,7 +1283,7 @@ Typically, the train part might be around 70-80% of the data and the test part t
 <p><strong>Random test data set</strong></p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_49_0.png" src="../_images/MLRWP_R_mlr3_49_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_48_0.png" src="../_images/MLRWP_R_mlr3_48_0.png" />
 </div>
 </div>
 <p>Cross-validation repeats this type of split a number of times.</p>
@@ -1302,7 +1302,7 @@ Typically, the train part might be around 70-80% of the data and the test part t
 <p><strong>5-fold cross validation</strong></p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_51_0.png" src="../_images/MLRWP_R_mlr3_51_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_50_0.png" src="../_images/MLRWP_R_mlr3_50_0.png" />
 </div>
 </div>
 <p>Cross-validation provides an estimate of out-of-sample performance even though all the data is used for training and testing.
@@ -1332,7 +1332,7 @@ It is often considered more robust due to its use of the full dataset for testin
 </div>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_57_0.png" src="../_images/MLRWP_R_mlr3_57_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_56_0.png" src="../_images/MLRWP_R_mlr3_56_0.png" />
 </div>
 </div>
 </div>
@@ -1342,10 +1342,10 @@ It is often considered more robust due to its use of the full dataset for testin
 Here we will use RMSE (root mean square error).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># to see all measures use </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># to see all measures use</span>
 <span class="c1"># mlr_measures$help()</span>
 <span class="c1"># follow the links for a specific one, or you can type</span>
-<span class="c1"># ?mlr_measures_regr.rmse to get help for RMSE, and then insert the </span>
+<span class="c1"># ?mlr_measures_regr.rmse to get help for RMSE, and then insert the</span>
 <span class="c1"># other names for others, eg ?mlr_measures_regr.rmsle etc</span>
 
 <span class="n">measure</span> <span class="o">&lt;-</span> <span class="nf">msr</span><span class="p">(</span><span class="s">&quot;regr.rmse&quot;</span><span class="p">)</span>
@@ -1405,7 +1405,7 @@ We’ll then move onto the code needed to run hyper-parameter tuning using cross
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_67_0.png" src="../_images/MLRWP_R_mlr3_67_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_66_0.png" src="../_images/MLRWP_R_mlr3_66_0.png" />
 </div>
 </div>
 <p>If you are unfamiliar with decision tree diagrams, the model specifies that, for example, for accident years greater than 17, with development periods less than 7.5 (ie 7 or under) and less than 4.5, the predicted claim cost is $43m.</p>
@@ -1533,7 +1533,7 @@ Another possible choice is Bayesian optimisation search.</p>
 <span class="n">lgr</span><span class="o">::</span><span class="nf">get_logger</span><span class="p">(</span><span class="s">&quot;mlr3&quot;</span><span class="p">)</span><span class="o">$</span><span class="nf">set_threshold</span><span class="p">(</span><span class="s">&quot;warn&quot;</span><span class="p">)</span>
 
 
-<span class="n">tuner</span><span class="o">$</span><span class="nf">optimize</span><span class="p">(</span><span class="n">instance_rpart</span><span class="p">)</span> 
+<span class="n">tuner</span><span class="o">$</span><span class="nf">optimize</span><span class="p">(</span><span class="n">instance_rpart</span><span class="p">)</span>
 
 <span class="c1"># restart log output</span>
 <span class="n">lgr</span><span class="o">::</span><span class="nf">get_logger</span><span class="p">(</span><span class="s">&quot;bbotk&quot;</span><span class="p">)</span><span class="o">$</span><span class="nf">set_threshold</span><span class="p">(</span><span class="s">&quot;info&quot;</span><span class="p">)</span>
@@ -1573,7 +1573,7 @@ Another possible choice is Bayesian optimisation search.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_85_0.png" src="../_images/MLRWP_R_mlr3_85_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_84_0.png" src="../_images/MLRWP_R_mlr3_84_0.png" />
 </div>
 </div>
 <p>This model is much more complicated than the original and looks overfitted - we’ll see if this is the case when we evaluate the model performance later in the article.</p>
@@ -1683,7 +1683,7 @@ Another possible choice is Bayesian optimisation search.</p>
 <span class="c1">#We can reuse the tuner we set up for the decision tree</span>
 <span class="c1">#this was tuner &lt;- tnr(&quot;grid_search&quot;, resolution = 5)</span>
 
-<span class="n">tuner</span><span class="o">$</span><span class="nf">optimize</span><span class="p">(</span><span class="n">instance_ranger</span><span class="p">)</span> 
+<span class="n">tuner</span><span class="o">$</span><span class="nf">optimize</span><span class="p">(</span><span class="n">instance_ranger</span><span class="p">)</span>
 
 <span class="c1"># turn output back on</span>
 <span class="n">lgr</span><span class="o">::</span><span class="nf">get_logger</span><span class="p">(</span><span class="s">&quot;bbotk&quot;</span><span class="p">)</span><span class="o">$</span><span class="nf">set_threshold</span><span class="p">(</span><span class="s">&quot;info&quot;</span><span class="p">)</span>
@@ -1695,20 +1695,22 @@ Another possible choice is Bayesian optimisation search.</p>
 <p>Get the best fit</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">instance_ranger</span><span class="o">$</span><span class="n">result_learner_param_vals</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">instance_ranger</span><span class="o">$</span><span class="n">result_learner_param_vals</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><dl>
-	<dt>$num.threads</dt>
-		<dd>1</dd>
-	<dt>$num.trees</dt>
-		<dd>500</dd>
-	<dt>$min.node.size</dt>
-		<dd>3</dd>
-</dl>
-</div></div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$num.threads
+[1] 1
+
+$num.trees
+[1] 500
+
+$min.node.size
+[1] 3
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now we fit the model to all the parameters</p>
 <div class="cell docutils container">
@@ -1883,7 +1885,7 @@ R squared (OOB):                  0.9223578
   <tr>
    <td style="text-align:left;"> nrounds </td>
    <td style="text-align:left;"> ParamInt </td>
-   <td style="text-align:left;"> &lt;environment: 0x7f85fd4dc770&gt; </td>
+   <td style="text-align:left;"> &lt;environment: 0x7fe606ea60a8&gt; </td>
   </tr>
   <tr>
    <td style="text-align:left;"> feval </td>
@@ -1973,7 +1975,7 @@ R squared (OOB):                  0.9223578
   <tr>
    <td style="text-align:left;"> updater </td>
    <td style="text-align:left;"> ParamUty </td>
-   <td style="text-align:left;"> &lt;environment: 0x7f85f17c9130&gt; </td>
+   <td style="text-align:left;"> &lt;environment: 0x7fe5f4390ef0&gt; </td>
   </tr>
   <tr>
    <td style="text-align:left;"> refresh_leaf </td>
@@ -2013,7 +2015,7 @@ R squared (OOB):                  0.9223578
   <tr>
    <td style="text-align:left;"> interaction_constraints </td>
    <td style="text-align:left;"> ParamUty </td>
-   <td style="text-align:left;"> &lt;environment: 0x7f85d6fb94a8&gt; </td>
+   <td style="text-align:left;"> &lt;environment: 0x7fe5fa9f8728&gt; </td>
   </tr>
   <tr>
    <td style="text-align:left;"> outputmargin </td>
@@ -2075,10 +2077,10 @@ Depending on your computer, this step takes a while to run (since our terminator
   <span class="c1"># select value for gamma</span>
   <span class="c1"># tuning can help overfitting but we don&#39;t investigate this here</span>
   <span class="n">gamma</span> <span class="o">=</span> <span class="nf">p_dbl</span><span class="p">(</span><span class="n">lower</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="m">0</span><span class="p">),</span>
-  
+
   <span class="c1"># We know that the problem is not that deep in interactivity so we search a low depth</span>
   <span class="n">max_depth</span> <span class="o">=</span> <span class="nf">p_int</span><span class="p">(</span><span class="n">lower</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="m">6</span><span class="p">),</span>
-  
+
   <span class="c1"># nrounds to stop overfitting</span>
   <span class="n">nrounds</span> <span class="o">=</span> <span class="nf">p_int</span><span class="p">(</span><span class="n">lower</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="m">500</span><span class="p">)</span>
 <span class="p">)</span>
@@ -2101,7 +2103,7 @@ Depending on your computer, this step takes a while to run (since our terminator
 <span class="n">lgr</span><span class="o">::</span><span class="nf">get_logger</span><span class="p">(</span><span class="s">&quot;mlr3&quot;</span><span class="p">)</span><span class="o">$</span><span class="nf">set_threshold</span><span class="p">(</span><span class="s">&quot;warn&quot;</span><span class="p">)</span>
 
 <span class="n">time_bef</span> <span class="o">&lt;-</span> <span class="nf">Sys.time</span><span class="p">()</span>
-<span class="n">tuner</span><span class="o">$</span><span class="nf">optimize</span><span class="p">(</span><span class="n">instance_xgboost</span><span class="p">)</span> 
+<span class="n">tuner</span><span class="o">$</span><span class="nf">optimize</span><span class="p">(</span><span class="n">instance_xgboost</span><span class="p">)</span>
 
 <span class="n">lgr</span><span class="o">::</span><span class="nf">get_logger</span><span class="p">(</span><span class="s">&quot;bbotk&quot;</span><span class="p">)</span><span class="o">$</span><span class="nf">set_threshold</span><span class="p">(</span><span class="s">&quot;info&quot;</span><span class="p">)</span>
 <span class="n">lgr</span><span class="o">::</span><span class="nf">get_logger</span><span class="p">(</span><span class="s">&quot;mlr3&quot;</span><span class="p">)</span><span class="o">$</span><span class="nf">set_threshold</span><span class="p">(</span><span class="s">&quot;info&quot;</span><span class="p">)</span>
@@ -2122,7 +2124,7 @@ Depending on your computer, this step takes a while to run (since our terminator
 	<tr><td>reg:tweedie</td><td>1.555728</td><td>0.1107844</td><td>0</td><td>4</td><td>467</td><td>467              , 1                , 0                , reg:tweedie      , 1.55572789821774 , 0.110784432103392, 0                , 4                </td><td>reg:tweedie      , 1.55572789821774 , 0.110784432103392, 0                , 4                , 467              </td><td>80517695</td></tr>
 </tbody>
 </table>
-</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time difference of 31.50475 secs
+</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time difference of 34.90743 secs
 </pre></div>
 </div>
 </div>
@@ -2203,12 +2205,12 @@ Depending on your computer, this step takes a while to run (since our terminator
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lrn_xgboost_prevtuned</span> <span class="o">=</span> <span class="nf">lrn</span><span class="p">(</span><span class="s">&quot;regr.xgboost&quot;</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="s">&quot;reg:tweedie&quot;</span><span class="p">,</span> <span class="n">nrounds</span><span class="o">=</span><span class="m">233</span><span class="p">,</span> 
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lrn_xgboost_prevtuned</span> <span class="o">=</span> <span class="nf">lrn</span><span class="p">(</span><span class="s">&quot;regr.xgboost&quot;</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="s">&quot;reg:tweedie&quot;</span><span class="p">,</span> <span class="n">nrounds</span><span class="o">=</span><span class="m">233</span><span class="p">,</span>
                             <span class="n">tweedie_variance_power</span><span class="o">=</span><span class="m">1.01</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="m">0.3</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
 <span class="n">lrn_xgboost_prevtuned</span><span class="o">$</span><span class="nf">train</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
 
 
-<span class="n">lrn_xgboost_tuned</span> <span class="o">=</span> <span class="nf">lrn</span><span class="p">(</span><span class="s">&quot;regr.xgboost&quot;</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="s">&quot;reg:tweedie&quot;</span><span class="p">,</span> <span class="n">nrounds</span><span class="o">=</span><span class="m">265</span><span class="p">,</span> 
+<span class="n">lrn_xgboost_tuned</span> <span class="o">=</span> <span class="nf">lrn</span><span class="p">(</span><span class="s">&quot;regr.xgboost&quot;</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="s">&quot;reg:tweedie&quot;</span><span class="p">,</span> <span class="n">nrounds</span><span class="o">=</span><span class="m">265</span><span class="p">,</span>
                             <span class="n">tweedie_variance_power</span><span class="o">=</span><span class="m">1.011768</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="m">0.2310797</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
 <span class="n">lrn_xgboost_tuned</span><span class="o">$</span><span class="nf">train</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
 </pre></div>
@@ -2253,7 +2255,7 @@ Depending on your computer, this step takes a while to run (since our terminator
   <span class="c1">#learner$predict(task, row_ids) is how to get predicted values, returns 3 cols with preds in response</span>
   <span class="c1"># use row_ids to tell it to use entire data set, ie &quot;use&quot; and validation rows</span>
   <span class="c1">#model_forecasts[, (nl) := l$predict(task, row_ids=1:nrow(dat))$response]</span>
-  
+
   <span class="n">model_forecasts</span><span class="p">[,</span> <span class="n">l</span><span class="o">$</span><span class="n">id</span> <span class="o">:=</span> <span class="n">l</span><span class="o">$</span><span class="nf">predict</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">,</span> <span class="n">row_ids</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">dat</span><span class="p">))</span><span class="o">$</span><span class="n">response</span><span class="p">]</span>
 <span class="p">}</span>
 
@@ -2519,19 +2521,19 @@ Number of Fisher Scoring iterations: 5
 
 <span class="c1"># function to create the ramps for a particular primary vector</span>
 <span class="n">GetRamps</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">vecname</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">scaling</span><span class="p">){</span>
-  
+
   <span class="c1"># vec = fundamental regressor</span>
   <span class="c1"># vecname = name of regressor</span>
   <span class="c1"># np = number of periods</span>
   <span class="c1"># scaling = scaling factor to use</span>
-  
+
   <span class="c1"># pre-allocate the matrix to hold the results for speed/efficiency</span>
   <span class="n">n</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
   <span class="n">nramps</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">np</span><span class="m">-1</span><span class="p">)</span>
-  
+
   <span class="n">mat</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="n">nramps</span><span class="p">)</span>
   <span class="n">cnames</span> <span class="o">&lt;-</span> <span class="nf">vector</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s">&quot;character&quot;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="n">nramps</span><span class="p">)</span>
-  
+
 
   <span class="n">col_indx</span> <span class="o">&lt;-</span> <span class="m">0</span>
 
@@ -2541,49 +2543,49 @@ Number of Fisher Scoring iterations: 5
     <span class="n">mat</span><span class="p">[,</span> <span class="n">col_indx</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">LinearSpline</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="m">999</span><span class="p">)</span> <span class="o">/</span> <span class="n">scaling</span>
     <span class="n">cnames</span><span class="p">[</span><span class="n">col_indx</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;L_&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s">&quot;_999_&quot;</span><span class="p">,</span> <span class="n">vecname</span><span class="p">)</span>
   <span class="p">}</span>
-  
+
   <span class="nf">colnames</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">cnames</span>
-  
+
   <span class="nf">return</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
 <span class="p">}</span>
 
 
 <span class="c1"># create the step (heaviside) function interactions</span>
 <span class="n">GetInts</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">vec1</span><span class="p">,</span> <span class="n">vec2</span><span class="p">,</span> <span class="n">vecname1</span><span class="p">,</span> <span class="n">vecname2</span><span class="p">,</span> <span class="n">np</span><span class="p">,</span> <span class="n">scaling1</span><span class="p">,</span> <span class="n">scaling2</span><span class="p">)</span> <span class="p">{</span>
-  
+
   <span class="c1"># pre-allocate the matrix to hold the results for speed/efficiency</span>
   <span class="n">n</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="n">vec1</span><span class="p">)</span>
   <span class="n">nints</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">np</span><span class="m">-1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="m">-1</span><span class="p">)</span>
-  
+
   <span class="n">mat</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">NA_real_</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="n">nints</span><span class="p">)</span>
   <span class="n">cnames</span> <span class="o">&lt;-</span> <span class="nf">vector</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s">&quot;character&quot;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="n">nints</span><span class="p">)</span>
-  
+
 
   <span class="n">col_indx</span> <span class="o">&lt;-</span> <span class="m">0</span>
 
   <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">2</span><span class="o">:</span><span class="n">np</span><span class="p">){</span>
-    
+
     <span class="n">ivec</span> <span class="o">&lt;-</span> <span class="nf">LinearSpline</span><span class="p">(</span><span class="n">vec1</span><span class="p">,</span> <span class="n">i</span><span class="m">-1</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">scaling1</span>
     <span class="n">iname</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;I_&quot;</span><span class="p">,</span> <span class="n">vecname1</span><span class="p">,</span> <span class="s">&quot;_ge_&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-    
+
     <span class="nf">if </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">ivec</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="n">ivec</span><span class="p">)]</span><span class="o">&gt;</span><span class="m">0</span><span class="p">))</span> <span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;NAs in ivec for&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
-    
+
     <span class="nf">for </span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="m">2</span><span class="o">:</span><span class="n">np</span><span class="p">){</span>
       <span class="n">col_indx</span> <span class="o">&lt;-</span> <span class="n">col_indx</span> <span class="o">+</span> <span class="m">1</span>  
       <span class="n">mat</span><span class="p">[,</span> <span class="n">col_indx</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">ivec</span> <span class="o">*</span> <span class="nf">LinearSpline</span><span class="p">(</span><span class="n">vec2</span><span class="p">,</span> <span class="n">j</span><span class="m">-1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">/</span> <span class="n">scaling2</span>
       <span class="n">cnames</span><span class="p">[</span><span class="n">col_indx</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="n">iname</span><span class="p">,</span> <span class="s">&quot;xI_&quot;</span><span class="p">,</span> <span class="n">vecname2</span><span class="p">,</span> <span class="s">&quot;_ge_&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
-      
+
       <span class="n">jvec</span> <span class="o">&lt;-</span> <span class="nf">LinearSpline</span><span class="p">(</span><span class="n">vec2</span><span class="p">,</span> <span class="n">j</span><span class="m">-1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">/</span> <span class="n">scaling2</span>
       <span class="nf">if </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">jvec</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="n">jvec</span><span class="p">)]</span><span class="o">&gt;</span><span class="m">0</span><span class="p">))</span> <span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;NAs in jvec for&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
 
     <span class="p">}</span>
   <span class="p">}</span>
-  
+
   <span class="nf">colnames</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">cnames</span>
-  
+
   <span class="nf">return</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
 
-  
+
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -2607,19 +2609,19 @@ The <code class="docutils literal notranslate"><span class="pre">dat_plus</span>
 <span class="n">main_effects_acc</span> <span class="o">&lt;-</span> <span class="nf">GetRamps</span><span class="p">(</span><span class="n">vec</span> <span class="o">=</span> <span class="n">dat</span><span class="p">[,</span> <span class="n">acc</span><span class="p">],</span> <span class="n">vecname</span> <span class="o">=</span> <span class="s">&quot;acc&quot;</span><span class="p">,</span> <span class="n">np</span> <span class="o">=</span> <span class="n">num_periods</span><span class="p">,</span> <span class="n">scaling</span> <span class="o">=</span> <span class="n">rho_factor_list</span><span class="p">[[</span><span class="s">&quot;acc&quot;</span><span class="p">]])</span>
 <span class="n">main_effects_dev</span> <span class="o">&lt;-</span> <span class="nf">GetRamps</span><span class="p">(</span><span class="n">vec</span> <span class="o">=</span> <span class="n">dat</span><span class="p">[,</span> <span class="n">dev</span><span class="p">],</span> <span class="n">vecname</span> <span class="o">=</span> <span class="s">&quot;dev&quot;</span><span class="p">,</span> <span class="n">np</span> <span class="o">=</span> <span class="n">num_periods</span><span class="p">,</span> <span class="n">scaling</span> <span class="o">=</span> <span class="n">rho_factor_list</span><span class="p">[[</span><span class="s">&quot;dev&quot;</span><span class="p">]])</span>
 <span class="n">main_effects_cal</span> <span class="o">&lt;-</span> <span class="nf">GetRamps</span><span class="p">(</span><span class="n">vec</span> <span class="o">=</span> <span class="n">dat</span><span class="p">[,</span> <span class="n">cal</span><span class="p">],</span> <span class="n">vecname</span> <span class="o">=</span> <span class="s">&quot;cal&quot;</span><span class="p">,</span> <span class="n">np</span> <span class="o">=</span> <span class="n">num_periods</span><span class="p">,</span> <span class="n">scaling</span> <span class="o">=</span> <span class="n">rho_factor_list</span><span class="p">[[</span><span class="s">&quot;cal&quot;</span><span class="p">]])</span>
-                             
+
 <span class="n">main_effects</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">main_effects_acc</span><span class="p">,</span> <span class="n">main_effects_dev</span><span class="p">,</span> <span class="n">main_effects_cal</span><span class="p">)</span>
 
 
 <span class="c1"># interaction effects</span>
 <span class="n">int_effects</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span>
-    <span class="nf">GetInts</span><span class="p">(</span><span class="n">vec1</span><span class="o">=</span><span class="n">dat</span><span class="p">[,</span> <span class="n">acc</span><span class="p">],</span> <span class="n">vecname1</span><span class="o">=</span><span class="s">&quot;acc&quot;</span><span class="p">,</span> <span class="n">scaling1</span><span class="o">=</span><span class="n">rho_factor_list</span><span class="p">[[</span><span class="s">&quot;acc&quot;</span><span class="p">]],</span> <span class="n">np</span><span class="o">=</span><span class="n">num_periods</span><span class="p">,</span> 
+    <span class="nf">GetInts</span><span class="p">(</span><span class="n">vec1</span><span class="o">=</span><span class="n">dat</span><span class="p">[,</span> <span class="n">acc</span><span class="p">],</span> <span class="n">vecname1</span><span class="o">=</span><span class="s">&quot;acc&quot;</span><span class="p">,</span> <span class="n">scaling1</span><span class="o">=</span><span class="n">rho_factor_list</span><span class="p">[[</span><span class="s">&quot;acc&quot;</span><span class="p">]],</span> <span class="n">np</span><span class="o">=</span><span class="n">num_periods</span><span class="p">,</span>
             <span class="n">vec2</span><span class="o">=</span><span class="n">dat</span><span class="p">[,</span> <span class="n">dev</span><span class="p">],</span> <span class="n">vecname2</span><span class="o">=</span><span class="s">&quot;dev&quot;</span><span class="p">,</span> <span class="n">scaling2</span><span class="o">=</span><span class="n">rho_factor_list</span><span class="p">[[</span><span class="s">&quot;dev&quot;</span><span class="p">]]),</span>
 
-    <span class="nf">GetInts</span><span class="p">(</span><span class="n">vec1</span><span class="o">=</span><span class="n">dat</span><span class="p">[,</span> <span class="n">dev</span><span class="p">],</span> <span class="n">vecname1</span><span class="o">=</span><span class="s">&quot;dev&quot;</span><span class="p">,</span> <span class="n">scaling1</span><span class="o">=</span><span class="n">rho_factor_list</span><span class="p">[[</span><span class="s">&quot;dev&quot;</span><span class="p">]],</span> <span class="n">np</span><span class="o">=</span><span class="n">num_periods</span><span class="p">,</span> 
+    <span class="nf">GetInts</span><span class="p">(</span><span class="n">vec1</span><span class="o">=</span><span class="n">dat</span><span class="p">[,</span> <span class="n">dev</span><span class="p">],</span> <span class="n">vecname1</span><span class="o">=</span><span class="s">&quot;dev&quot;</span><span class="p">,</span> <span class="n">scaling1</span><span class="o">=</span><span class="n">rho_factor_list</span><span class="p">[[</span><span class="s">&quot;dev&quot;</span><span class="p">]],</span> <span class="n">np</span><span class="o">=</span><span class="n">num_periods</span><span class="p">,</span>
             <span class="n">vec2</span><span class="o">=</span><span class="n">dat</span><span class="p">[,</span> <span class="n">cal</span><span class="p">],</span> <span class="n">vecname2</span><span class="o">=</span><span class="s">&quot;cal&quot;</span><span class="p">,</span> <span class="n">scaling2</span><span class="o">=</span><span class="n">rho_factor_list</span><span class="p">[[</span><span class="s">&quot;cal&quot;</span><span class="p">]]),</span>
-    
-    <span class="nf">GetInts</span><span class="p">(</span><span class="n">vec1</span><span class="o">=</span><span class="n">dat</span><span class="p">[,</span> <span class="n">acc</span><span class="p">],</span> <span class="n">vecname1</span><span class="o">=</span><span class="s">&quot;acc&quot;</span><span class="p">,</span> <span class="n">scaling1</span><span class="o">=</span><span class="n">rho_factor_list</span><span class="p">[[</span><span class="s">&quot;acc&quot;</span><span class="p">]],</span> <span class="n">np</span><span class="o">=</span><span class="n">num_periods</span><span class="p">,</span> 
+
+    <span class="nf">GetInts</span><span class="p">(</span><span class="n">vec1</span><span class="o">=</span><span class="n">dat</span><span class="p">[,</span> <span class="n">acc</span><span class="p">],</span> <span class="n">vecname1</span><span class="o">=</span><span class="s">&quot;acc&quot;</span><span class="p">,</span> <span class="n">scaling1</span><span class="o">=</span><span class="n">rho_factor_list</span><span class="p">[[</span><span class="s">&quot;acc&quot;</span><span class="p">]],</span> <span class="n">np</span><span class="o">=</span><span class="n">num_periods</span><span class="p">,</span>
             <span class="n">vec2</span><span class="o">=</span><span class="n">dat</span><span class="p">[,</span> <span class="n">cal</span><span class="p">],</span> <span class="n">vecname2</span><span class="o">=</span><span class="s">&quot;cal&quot;</span><span class="p">,</span> <span class="n">scaling2</span><span class="o">=</span><span class="n">rho_factor_list</span><span class="p">[[</span><span class="s">&quot;cal&quot;</span><span class="p">]])</span>
 <span class="p">)</span>
 
@@ -2676,17 +2678,17 @@ The <code class="docutils literal notranslate"><span class="pre">dat_plus</span>
 
 <span class="c1"># create the mlr3 learner</span>
 <span class="n">lrn_cv_glmnet</span> <span class="o">&lt;-</span> <span class="nf">lrn</span><span class="p">(</span>
-    <span class="s">&quot;regr.cv_glmnet&quot;</span><span class="p">,</span> 
+    <span class="s">&quot;regr.cv_glmnet&quot;</span><span class="p">,</span>
     <span class="n">family</span> <span class="o">=</span> <span class="s">&quot;poisson&quot;</span><span class="p">,</span>   
     <span class="n">nfolds</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span>
-    <span class="n">thresh</span> <span class="o">=</span> <span class="m">1e-08</span><span class="p">,</span> 
+    <span class="n">thresh</span> <span class="o">=</span> <span class="m">1e-08</span><span class="p">,</span>
     <span class="n">lambda.min.ratio</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span>
     <span class="c1"># additional parameter for mlr3 - means that the model used when predicting is the min CV error model rather than default 1se model</span>
     <span class="n">s</span><span class="o">=</span><span class="s">&quot;lambda.min&quot;</span><span class="p">,</span>   
-    <span class="n">dfmax</span> <span class="o">=</span> <span class="n">use_dfmax</span><span class="p">,</span> 
-    <span class="n">pmax</span> <span class="o">=</span> <span class="n">use_pmax</span><span class="p">,</span> 
-    <span class="n">alpha</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> 
-    <span class="n">standardize</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> 
+    <span class="n">dfmax</span> <span class="o">=</span> <span class="n">use_dfmax</span><span class="p">,</span>
+    <span class="n">pmax</span> <span class="o">=</span> <span class="n">use_pmax</span><span class="p">,</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
+    <span class="n">standardize</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
     <span class="n">maxit</span> <span class="o">=</span> <span class="m">200000</span><span class="p">)</span>    
 
 <span class="c1"># train the model</span>
@@ -2704,7 +2706,7 @@ The <code class="docutils literal notranslate"><span class="pre">dat_plus</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_133_0.png" src="../_images/MLRWP_R_mlr3_133_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_132_0.png" src="../_images/MLRWP_R_mlr3_132_0.png" />
 </div>
 </div>
 <p>The two dotted lines in this plot represent two special penalty (or <code class="docutils literal notranslate"><span class="pre">lambda</span></code> values):</p>
@@ -2736,8 +2738,8 @@ data.table has a <code class="docutils literal notranslate"><span class="pre">me
 <span class="n">model_names</span> <span class="o">&lt;-</span> <span class="nf">names</span><span class="p">(</span><span class="n">model_forecasts</span><span class="p">)[</span> <span class="nf">names</span><span class="p">(</span><span class="n">model_forecasts</span><span class="p">)</span> <span class="o">%like%</span> <span class="s">&quot;regr&quot;</span><span class="p">]</span>
 
 <span class="c1"># wide -&gt; long</span>
-<span class="n">model_forecasts_long</span> <span class="o">&lt;-</span> <span class="nf">melt</span><span class="p">(</span><span class="n">model_forecasts</span><span class="p">,</span> 
-                             <span class="n">measure.vars</span> <span class="o">=</span> <span class="n">model_names</span><span class="p">,</span> 
+<span class="n">model_forecasts_long</span> <span class="o">&lt;-</span> <span class="nf">melt</span><span class="p">(</span><span class="n">model_forecasts</span><span class="p">,</span>
+                             <span class="n">measure.vars</span> <span class="o">=</span> <span class="n">model_names</span><span class="p">,</span>
                              <span class="n">id.vars</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;acc&quot;</span><span class="p">,</span> <span class="s">&quot;dev&quot;</span><span class="p">,</span> <span class="s">&quot;cal&quot;</span><span class="p">,</span> <span class="s">&quot;pmts&quot;</span><span class="p">,</span> <span class="s">&quot;train_ind&quot;</span><span class="p">))</span>
 
 <span class="c1"># rename columns</span>
@@ -3076,7 +3078,7 @@ The graphs below show the log(fitted values), or log(payments) in the case of th
 <span class="n">actuals</span> <span class="o">&lt;-</span> <span class="n">model_forecasts_long</span><span class="p">[</span><span class="n">model</span><span class="o">==</span><span class="s">&quot;regr.glm&quot;</span><span class="p">,]</span>
 <span class="n">actuals</span><span class="p">[,</span> <span class="n">model</span> <span class="o">:=</span> <span class="s">&quot;actual&quot;</span>
         <span class="p">][,</span> <span class="n">fitted</span> <span class="o">:=</span> <span class="n">pmts</span><span class="p">]</span>
-          
+
 <span class="n">model_forecasts_long_plot</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">actuals</span><span class="p">,</span> <span class="n">model_forecasts_long</span><span class="p">)</span>
 
 <span class="c1"># calculate log_fitted</span>
@@ -3101,7 +3103,7 @@ The graphs below show the log(fitted values), or log(payments) in the case of th
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_153_0.png" src="../_images/MLRWP_R_mlr3_153_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_152_0.png" src="../_images/MLRWP_R_mlr3_152_0.png" />
 </div>
 </div>
 <p>Some things are apparent from this:</p>
@@ -3132,24 +3134,24 @@ The values are then shaded so that:</p>
 
 <span class="n">GraphHeatMap</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">&quot;dev&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">&quot;acc&quot;</span><span class="p">,</span> <span class="n">facet</span><span class="o">=</span><span class="s">&quot;model&quot;</span><span class="p">,</span> <span class="n">actual</span><span class="p">,</span> <span class="n">fitted</span><span class="p">,</span> <span class="n">lims</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0.25</span><span class="p">,</span> <span class="m">4</span><span class="p">),</span>
                          <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Development quarter&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Accident Quarter&quot;</span><span class="p">){</span>
-  
+
   <span class="c1"># copy data to avoid modifying original</span>
   <span class="n">localdat</span> <span class="o">&lt;-</span> <span class="nf">copy</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
-  
+
   <span class="c1"># get fails if there is a variable with the same name so make local copies</span>
   <span class="n">local_x</span> <span class="o">&lt;-</span> <span class="n">x</span>
   <span class="n">local_y</span> <span class="o">&lt;-</span> <span class="n">y</span>
   <span class="n">local_actual</span> <span class="o">&lt;-</span> <span class="n">actual</span>
   <span class="n">local_fitted</span> <span class="o">&lt;-</span> <span class="n">fitted</span>
-  
+
   <span class="c1"># make restricted Avs F for heatmap and set up past/future split line</span>
   <span class="n">np</span> <span class="o">&lt;-</span> <span class="nf">max</span><span class="p">(</span><span class="n">localdat</span><span class="p">[[</span><span class="n">y</span><span class="p">]])</span>
-  
+
   <span class="n">localdat</span><span class="p">[,</span> <span class="n">.avsf</span> <span class="o">:=</span> <span class="nf">get</span><span class="p">(</span><span class="n">local_actual</span><span class="p">)</span> <span class="o">/</span> <span class="nf">get</span><span class="p">(</span><span class="n">local_fitted</span><span class="p">)</span>
            <span class="p">][,</span> <span class="n">.avsf_restrict_log</span> <span class="o">:=</span> <span class="nf">log</span><span class="p">(</span><span class="nf">pmax</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">lims</span><span class="p">),</span> <span class="nf">pmin</span><span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="n">lims</span><span class="p">),</span> <span class="n">.avsf</span><span class="p">)))</span>
              <span class="p">][,</span> <span class="n">.past_line</span> <span class="o">:=</span> <span class="n">np</span> <span class="o">+</span> <span class="m">1</span> <span class="o">-</span> <span class="nf">get</span><span class="p">(</span><span class="n">local_y</span><span class="p">)]</span>
-  
-  
+
+
   <span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">localdat</span><span class="p">,</span> <span class="nf">aes_string</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">local_x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">local_y</span><span class="p">))</span> <span class="o">+</span>
     <span class="nf">geom_tile</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">.avsf_restrict_log</span><span class="p">))</span><span class="o">+</span><span class="nf">scale_y_reverse</span><span class="p">()</span><span class="o">+</span>
     <span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="nf">get</span><span class="p">(</span><span class="n">facet</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="o">+</span>
@@ -3163,10 +3165,10 @@ The values are then shaded so that:</p>
     <span class="nf">theme</span><span class="p">(</span><span class="nf">element_line</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">0.25</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s">&quot;grey30&quot;</span><span class="p">))</span><span class="o">+</span>
     <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span> <span class="p">)</span><span class="o">+</span>  <span class="c1"># legend.direction = &quot;horizontal&quot;, legend.title=element_blank(), legend.text=element_text(size=8)</span>
     <span class="kc">NULL</span>    
-  
+
 
   <span class="nf">invisible</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">localdat</span><span class="p">,</span> <span class="n">graph</span><span class="o">=</span><span class="n">g</span><span class="p">))</span>
-  
+
 
 <span class="p">}</span>
 </pre></div>
@@ -3181,7 +3183,7 @@ The values are then shaded so that:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_159_0.png" src="../_images/MLRWP_R_mlr3_159_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_158_0.png" src="../_images/MLRWP_R_mlr3_158_0.png" />
 </div>
 </div>
 <p>All models have shortcomings, but the LASSO and previously tuned XGBoost models outperform the others.</p>
@@ -3200,41 +3202,41 @@ Quarterly tracking graphs:</p>
 The second function (<code class="docutils literal notranslate"><span class="pre">QTracking</span></code>) generates the graphs for all models and uses the <strong>patchwork</strong> package to wrap them into a single plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">GraphModelVals</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">primary_predictor</span><span class="p">,</span> <span class="n">secondary_predictor</span><span class="p">,</span> <span class="n">secondary_predictor_val</span><span class="p">,</span> 
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">GraphModelVals</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">primary_predictor</span><span class="p">,</span> <span class="n">secondary_predictor</span><span class="p">,</span> <span class="n">secondary_predictor_val</span><span class="p">,</span>
                          <span class="n">xaxis_label</span><span class="p">,</span> <span class="n">yaxis_label</span><span class="p">,</span> <span class="n">var_names</span><span class="p">,</span> <span class="n">log_values</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">include_st</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">include_legend</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="m">6</span><span class="p">){</span>
 
 
   <span class="c1"># var_names must be list with names like this: list(actual=&quot;pmts&quot;, mean=&quot;mu&quot;, fitted=&quot;fitted&quot;)</span>
-  
+
   <span class="c1"># extract data we want to use</span>
   <span class="n">use_dat</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="p">[</span><span class="nf">get</span><span class="p">(</span><span class="n">secondary_predictor</span><span class="p">)</span> <span class="o">==</span> <span class="n">secondary_predictor_val</span><span class="p">,</span> <span class="p">]</span>
-  
+
   <span class="c1"># turn into long format using melt.data.table since that works better with ggplot</span>
   <span class="n">dat_long</span> <span class="o">&lt;-</span> <span class="nf">melt</span><span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="nf">get</span><span class="p">(</span><span class="n">secondary_predictor</span><span class="p">)</span> <span class="o">==</span> <span class="n">secondary_predictor_val</span><span class="p">,</span> <span class="p">],</span>
                    <span class="n">measure.vars</span> <span class="o">=</span> <span class="nf">unlist</span><span class="p">(</span><span class="n">var_names</span><span class="p">),</span>
                    <span class="n">id.vars</span> <span class="o">=</span> <span class="n">primary_predictor</span><span class="p">)</span>
-  
+
   <span class="c1"># make the names nicer - colnames and labels</span>
   <span class="nf">setnames</span><span class="p">(</span><span class="n">dat_long</span><span class="p">,</span> <span class="n">primary_predictor</span><span class="p">,</span> <span class="s">&quot;predictor&quot;</span><span class="p">)</span>
-  
+
   <span class="n">dat_long</span><span class="p">[</span><span class="n">variable</span> <span class="o">==</span> <span class="n">var_names</span><span class="o">$</span><span class="n">actual</span><span class="p">,</span> <span class="n">variable</span> <span class="o">:=</span> <span class="s">&quot;Simulated&quot;</span>
            <span class="p">][</span><span class="n">variable</span> <span class="o">==</span> <span class="n">var_names</span><span class="o">$</span><span class="n">mean</span><span class="p">,</span> <span class="n">variable</span> <span class="o">:=</span> <span class="s">&quot;Underlying&quot;</span>
              <span class="p">][</span><span class="n">variable</span> <span class="o">==</span> <span class="n">var_names</span><span class="o">$</span><span class="n">fitted</span><span class="p">,</span> <span class="n">variable</span> <span class="o">:=</span> <span class="s">&quot;Fitted&quot;</span><span class="p">]</span>
-  
+
   <span class="c1"># get the levels of the variables right so that they are plotted in the right order</span>
   <span class="n">dat_long</span><span class="p">[,</span> <span class="n">variable</span> <span class="o">:=</span> <span class="nf">factor</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Fitted&quot;</span><span class="p">,</span> <span class="s">&quot;Simulated&quot;</span><span class="p">,</span> <span class="s">&quot;Underlying&quot;</span><span class="p">))]</span>
-  
-  
+
+
   <span class="nf">if </span><span class="p">(</span><span class="n">log_values</span><span class="p">)</span> <span class="n">dat_long</span><span class="p">[,</span> <span class="n">value</span> <span class="o">:=</span> <span class="nf">log</span><span class="p">(</span><span class="n">value</span><span class="p">)]</span>
-  
+
   <span class="c1"># figure out past data rectangle coordinates</span>
   <span class="n">xmin1</span> <span class="o">&lt;-</span> <span class="n">use_dat</span><span class="p">[</span><span class="n">train_ind</span> <span class="o">==</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="nf">min</span><span class="p">(</span><span class="nf">get</span><span class="p">(</span><span class="n">primary_predictor</span><span class="p">))]</span>
   <span class="n">xmax1</span> <span class="o">&lt;-</span> <span class="n">use_dat</span><span class="p">[</span><span class="n">train_ind</span> <span class="o">==</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="nf">max</span><span class="p">(</span><span class="nf">get</span><span class="p">(</span><span class="n">primary_predictor</span><span class="p">))]</span>
-  
+
   <span class="n">ymin1</span> <span class="o">&lt;-</span> <span class="n">dat_long</span><span class="p">[,</span> <span class="nf">min</span><span class="p">(</span><span class="n">value</span><span class="p">)]</span><span class="o">*</span><span class="m">0.95</span>
   <span class="n">ymax1</span> <span class="o">&lt;-</span> <span class="n">dat_long</span><span class="p">[,</span> <span class="nf">max</span><span class="p">(</span><span class="n">value</span><span class="p">)]</span><span class="o">*</span><span class="m">1.05</span>
-  
-  
+
+
   <span class="c1"># draw the tracking plots</span>
   <span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat_long</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">predictor</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">variable</span><span class="p">))</span><span class="o">+</span>
     <span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">linetype</span><span class="o">=</span><span class="n">variable</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="n">variable</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">variable</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">variable</span><span class="p">))</span><span class="o">+</span>
@@ -3247,12 +3249,12 @@ The second function (<code class="docutils literal notranslate"><span class="pre
     <span class="nf">annotate</span><span class="p">(</span><span class="n">geom</span><span class="o">=</span><span class="s">&quot;rect&quot;</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="n">xmin1</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="n">xmax1</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="n">ymin1</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">ymax1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0.1</span><span class="p">)</span><span class="o">+</span>
     <span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xaxis_label</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">yaxis_label</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="nf">paste</span><span class="p">(</span><span class="n">xaxis_label</span><span class="p">,</span> <span class="s">&quot;tracking for&quot;</span><span class="p">,</span> <span class="n">secondary_predictor</span><span class="p">,</span> <span class="s">&quot;=&quot;</span><span class="p">,</span> <span class="n">secondary_predictor_val</span><span class="p">))</span> <span class="o">+</span>
     <span class="nf">theme</span><span class="p">(</span><span class="n">axis.title</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="n">font_size</span><span class="p">),</span> <span class="n">axis.text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="n">font_size</span><span class="m">-1</span><span class="p">))</span>
-         
+
   <span class="nf">if</span><span class="p">(</span><span class="n">include_st</span><span class="o">==</span><span class="kc">TRUE</span><span class="p">)</span> <span class="n">g</span> <span class="o">&lt;-</span> <span class="n">g</span> <span class="o">+</span> <span class="nf">labs</span><span class="p">(</span><span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;Past data in grey rectangle&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">plot.subtitle</span> <span class="o">=</span> <span class="nf">element_text </span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="n">font_size</span><span class="p">))</span>
 
   <span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">if</span><span class="p">(</span><span class="n">include_legend</span><span class="o">==</span><span class="kc">TRUE</span><span class="p">)</span> <span class="n">g</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1.5</span><span class="p">,</span> <span class="m">0.5</span><span class="p">))</span> <span class="n">else</span> <span class="n">g</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span><span class="p">)</span>
-  
-  
+
+
 
   <span class="c1"># return the results  </span>
   <span class="nf">invisible</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat_long</span><span class="p">,</span> <span class="n">graph</span><span class="o">=</span><span class="n">g</span><span class="p">))</span>
@@ -3280,35 +3282,35 @@ We’ll wrap this in another function since we want to call this for a few diffe
 
   <span class="c1"># produce each plot  </span>
   <span class="nf">for </span><span class="p">(</span><span class="n">model</span> <span class="n">in</span> <span class="n">model_names</span><span class="p">){</span>
-    
+
     <span class="c1"># variable names in plot</span>
     <span class="n">vn</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">actual</span><span class="o">=</span><span class="s">&quot;pmts&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="s">&quot;mu&quot;</span><span class="p">,</span> <span class="n">fitted</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
-    
+
     <span class="c1"># include subtitle or not in the graph (first plot only)</span>
     <span class="n">bool_st</span> <span class="o">&lt;-</span> <span class="nf">if</span><span class="p">(</span><span class="n">model</span> <span class="o">==</span> <span class="n">model_names</span><span class="p">[</span><span class="m">1</span><span class="p">])</span> <span class="kc">TRUE</span> <span class="n">else</span> <span class="kc">FALSE</span>
-    
+
     <span class="c1"># include legend or not in the graph (last plot only)</span>
     <span class="n">bool_legend</span> <span class="o">&lt;-</span> <span class="nf">if</span><span class="p">(</span><span class="n">model</span> <span class="o">==</span> <span class="n">model_names</span><span class="p">[</span><span class="nf">length</span><span class="p">(</span><span class="n">model_names</span><span class="p">)])</span> <span class="kc">TRUE</span> <span class="n">else</span> <span class="kc">FALSE</span>
-    
+
     <span class="c1"># draw plot</span>
-    <span class="n">tracking_g</span><span class="p">[[</span><span class="n">model</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="nf">GraphModelVals</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> 
-                                          <span class="n">primary_predictor</span> <span class="o">=</span> <span class="n">primary_predictor</span><span class="p">,</span> 
-                                          <span class="n">secondary_predictor</span> <span class="o">=</span> <span class="n">secondary_predictor</span><span class="p">,</span> 
-                                          <span class="n">secondary_predictor_val</span> <span class="o">=</span> <span class="n">secondary_predictor_val</span><span class="p">,</span> 
-                                          <span class="n">xaxis_label</span> <span class="o">=</span> <span class="n">xaxis_label</span><span class="p">,</span> 
-                                          <span class="n">yaxis_label</span> <span class="o">=</span> <span class="n">yaxis_label</span><span class="p">,</span> 
-                                          <span class="n">var_names</span> <span class="o">=</span> <span class="n">vn</span><span class="p">,</span> 
-                                          <span class="n">include_st</span> <span class="o">=</span> <span class="n">bool_st</span><span class="p">,</span> 
+    <span class="n">tracking_g</span><span class="p">[[</span><span class="n">model</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="nf">GraphModelVals</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span>
+                                          <span class="n">primary_predictor</span> <span class="o">=</span> <span class="n">primary_predictor</span><span class="p">,</span>
+                                          <span class="n">secondary_predictor</span> <span class="o">=</span> <span class="n">secondary_predictor</span><span class="p">,</span>
+                                          <span class="n">secondary_predictor_val</span> <span class="o">=</span> <span class="n">secondary_predictor_val</span><span class="p">,</span>
+                                          <span class="n">xaxis_label</span> <span class="o">=</span> <span class="n">xaxis_label</span><span class="p">,</span>
+                                          <span class="n">yaxis_label</span> <span class="o">=</span> <span class="n">yaxis_label</span><span class="p">,</span>
+                                          <span class="n">var_names</span> <span class="o">=</span> <span class="n">vn</span><span class="p">,</span>
+                                          <span class="n">include_st</span> <span class="o">=</span> <span class="n">bool_st</span><span class="p">,</span>
                                           <span class="n">include_legend</span> <span class="o">=</span> <span class="n">bool_legend</span><span class="p">,</span>
                                           <span class="n">font_size</span> <span class="o">=</span> <span class="n">font_size</span><span class="p">)</span><span class="o">$</span><span class="n">graph</span> <span class="o">+</span>
-      <span class="nf">ggtitle</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Modelled values for&quot;</span><span class="p">,</span> <span class="n">model</span><span class="p">))</span> <span class="o">+</span> 
+      <span class="nf">ggtitle</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Modelled values for&quot;</span><span class="p">,</span> <span class="n">model</span><span class="p">))</span> <span class="o">+</span>
       <span class="nf">theme </span><span class="p">(</span><span class="n">plot.title</span> <span class="o">=</span> <span class="nf">element_text </span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">font_size</span><span class="m">+1</span><span class="p">)))</span>
   <span class="p">}</span>
 
   <span class="c1"># use patchwork to wrap all plots into a single display  </span>
   <span class="nf">wrap_plots</span><span class="p">(</span><span class="n">tracking_g</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
-  
-    
+
+
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -3326,7 +3328,7 @@ We’ll wrap this in another function since we want to call this for a few diffe
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_166_0.png" src="../_images/MLRWP_R_mlr3_166_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_165_0.png" src="../_images/MLRWP_R_mlr3_165_0.png" />
 </div>
 </div>
 <p>Because this is mostly old data and because it is not affected by the interaction, the tracking should be generally good, even for the Chain ladder - which is the case (apart from the final quarter being a bit wild as can happen with a Chain ladder).
@@ -3345,7 +3347,7 @@ The decision tree model is poor, the random forest and XGBoost model show some e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_168_0.png" src="../_images/MLRWP_R_mlr3_168_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_167_0.png" src="../_images/MLRWP_R_mlr3_167_0.png" />
 </div>
 </div>
 <p>Development quarter 24 is impacted by the interactions for accident quarters&gt;17.
@@ -3363,7 +3365,7 @@ All models reflect this to different extents, with XGBoost and the LASSO doing t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_171_0.png" src="../_images/MLRWP_R_mlr3_171_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_170_0.png" src="../_images/MLRWP_R_mlr3_170_0.png" />
 </div>
 </div>
 <p>This is quite hard for the models since most of the values are in the future. XGBoost (previously tuned) and the LASSO are the best here.</p>
@@ -3381,7 +3383,7 @@ All models reflect this to different extents, with XGBoost and the LASSO doing t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_176_0.png" src="../_images/MLRWP_R_mlr3_176_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_175_0.png" src="../_images/MLRWP_R_mlr3_175_0.png" />
 </div>
 </div>
 <p><strong>Tracking for development quarter when accident quarter = 20</strong></p>
@@ -3397,7 +3399,7 @@ All models reflect this to different extents, with XGBoost and the LASSO doing t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_179_0.png" src="../_images/MLRWP_R_mlr3_179_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_178_0.png" src="../_images/MLRWP_R_mlr3_178_0.png" />
 </div>
 </div>
 </div>
@@ -3427,7 +3429,7 @@ All models reflect this to different extents, with XGBoost and the LASSO doing t
                 <span class="n">os_acc</span><span class="p">)</span>
 
 <span class="c1"># adjust levels of factor to ger correct ordering</span>
-<span class="n">os_acc</span><span class="p">[,</span> <span class="n">model</span> <span class="o">:=</span> <span class="nf">factor</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">model</span><span class="p">),</span> <span class="n">level</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;actual&quot;</span><span class="p">,</span> <span class="s">&quot;regr.cv_glmnet&quot;</span><span class="p">,</span> <span class="s">&quot;regr.glm&quot;</span><span class="p">,</span> <span class="s">&quot;regr.ranger&quot;</span><span class="p">,</span> 
+<span class="n">os_acc</span><span class="p">[,</span> <span class="n">model</span> <span class="o">:=</span> <span class="nf">factor</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">model</span><span class="p">),</span> <span class="n">level</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;actual&quot;</span><span class="p">,</span> <span class="s">&quot;regr.cv_glmnet&quot;</span><span class="p">,</span> <span class="s">&quot;regr.glm&quot;</span><span class="p">,</span> <span class="s">&quot;regr.ranger&quot;</span><span class="p">,</span>
                                                       <span class="s">&quot;regr.rpart&quot;</span><span class="p">,</span> <span class="s">&quot;regr.xgboost&quot;</span><span class="p">,</span> <span class="s">&quot;regr.xgboost_prev&quot;</span><span class="p">))]</span>
 
 <span class="nf">setkey</span><span class="p">(</span><span class="n">os_acc</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">acc</span><span class="p">)</span>
@@ -3451,7 +3453,7 @@ All models reflect this to different extents, with XGBoost and the LASSO doing t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_182_0.png" src="../_images/MLRWP_R_mlr3_182_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_181_0.png" src="../_images/MLRWP_R_mlr3_181_0.png" />
 </div>
 </div>
 <p>Let’s look at a zoomed in version of this plot.</p>
@@ -3465,7 +3467,7 @@ All models reflect this to different extents, with XGBoost and the LASSO doing t
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coordinate system already present. Adding new coordinate system, which will replace the existing one.
 </pre></div>
 </div>
-<img alt="../_images/MLRWP_R_mlr3_185_1.png" src="../_images/MLRWP_R_mlr3_185_1.png" />
+<img alt="../_images/MLRWP_R_mlr3_184_1.png" src="../_images/MLRWP_R_mlr3_184_1.png" />
 </div>
 </div>
 <p>Finally, here are the overall reserves, summed over all accident quarters</p>
@@ -3557,7 +3559,7 @@ The grey rectangle marks the interaction.</p>
 </div>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_192_0.png" src="../_images/MLRWP_R_mlr3_192_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_191_0.png" src="../_images/MLRWP_R_mlr3_191_0.png" />
 </div>
 </div>
 <p>The first thing that is apparent is that the interaction only applies to a very small number of points (10) in the past data.
@@ -3608,7 +3610,7 @@ This work lays a baseline for our upcoming articles where we will look at ways o
 
 <span class="n">CreateSyntheticData</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">whichsim</span><span class="p">,</span> <span class="n">numperiods</span><span class="p">)</span>
 <span class="p">{</span>
-  
+
 	<span class="c1"># create the acc/dev/cal parameters</span>
 	<span class="n">kk</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">numperiods</span><span class="p">,</span> <span class="n">each</span> <span class="o">=</span> <span class="n">numperiods</span><span class="p">)</span> <span class="c1">#AQ</span>
 	<span class="n">jj</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">numperiods</span><span class="p">,</span> <span class="n">times</span><span class="o">=</span> <span class="n">numperiods</span><span class="p">)</span> <span class="c1">#DQ</span>
@@ -3616,41 +3618,41 @@ This work lays a baseline for our upcoming articles where we will look at ways o
 
 	<span class="c1"># set alpha/beta/gamma - hard-code up the sim values</span>
 	<span class="nf">if </span><span class="p">(</span><span class="n">whichsim</span> <span class="o">==</span> <span class="m">1</span><span class="p">){</span>
-		<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="nf">log</span><span class="p">(</span><span class="m">100000</span><span class="p">)</span><span class="m">+0.1</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)</span><span class="m">+0.2</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">)</span> <span class="o">-</span> <span class="m">0.05</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">40</span><span class="p">)</span> 
+		<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="nf">log</span><span class="p">(</span><span class="m">100000</span><span class="p">)</span><span class="m">+0.1</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)</span><span class="m">+0.2</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">)</span> <span class="o">-</span> <span class="m">0.05</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">40</span><span class="p">)</span>
 		<span class="n">beta</span>  <span class="o">&lt;-</span> <span class="p">(</span><span class="m">16</span><span class="o">/</span><span class="m">3</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span><span class="o">*</span><span class="nf">log</span><span class="p">(</span><span class="n">jj</span><span class="p">)</span><span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="n">jj</span>
 		<span class="n">gamma</span> <span class="o">&lt;-</span> <span class="m">0</span>
 		<span class="n">mu</span> <span class="o">&lt;-</span> <span class="nf">exp</span><span class="p">(</span> <span class="n">alpha</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">+</span> <span class="n">gamma</span><span class="p">)</span>  
 	<span class="p">}</span>
 	<span class="n">else</span> <span class="nf">if </span><span class="p">(</span><span class="n">whichsim</span> <span class="o">==</span> <span class="m">2</span><span class="p">){</span>
-		<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="nf">log</span><span class="p">(</span><span class="m">100000</span><span class="p">)</span><span class="m">+0.1</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)</span><span class="m">+0.2</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">)</span> <span class="o">-</span> <span class="m">0.05</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">40</span><span class="p">)</span> 
-		<span class="n">beta</span>  <span class="o">&lt;-</span> <span class="p">(</span><span class="m">16</span><span class="o">/</span><span class="m">3</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span><span class="o">*</span><span class="nf">log</span><span class="p">(</span><span class="n">jj</span><span class="p">)</span><span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="n">jj</span>  <span class="c1"># a is 16/3, b is 1/3 </span>
+		<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="nf">log</span><span class="p">(</span><span class="m">100000</span><span class="p">)</span><span class="m">+0.1</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)</span><span class="m">+0.2</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">)</span> <span class="o">-</span> <span class="m">0.05</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">40</span><span class="p">)</span>
+		<span class="n">beta</span>  <span class="o">&lt;-</span> <span class="p">(</span><span class="m">16</span><span class="o">/</span><span class="m">3</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span><span class="o">*</span><span class="nf">log</span><span class="p">(</span><span class="n">jj</span><span class="p">)</span><span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="n">jj</span>  <span class="c1"># a is 16/3, b is 1/3</span>
 		<span class="n">gamma</span> <span class="o">&lt;-</span> <span class="nf">gammafunc</span><span class="p">(</span><span class="n">tt</span><span class="p">)</span>
 		<span class="n">mu</span> <span class="o">&lt;-</span> <span class="nf">exp</span><span class="p">(</span> <span class="n">alpha</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">+</span> <span class="n">gamma</span><span class="p">)</span>  
 	<span class="p">}</span>
 	<span class="n">else</span> <span class="nf">if </span><span class="p">(</span><span class="n">whichsim</span> <span class="o">==</span> <span class="m">3</span><span class="p">){</span>
-		<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="nf">log</span><span class="p">(</span><span class="m">100000</span><span class="p">)</span><span class="m">+0.1</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)</span><span class="m">+0.2</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">)</span> <span class="o">-</span> <span class="m">0.05</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">40</span><span class="p">)</span> 
-		<span class="n">beta</span>  <span class="o">&lt;-</span> <span class="p">(</span><span class="m">16</span><span class="o">/</span><span class="m">3</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span><span class="o">*</span><span class="nf">log</span><span class="p">(</span><span class="n">jj</span><span class="p">)</span><span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="n">jj</span>  <span class="c1"># a is 16/3, b is 1/3 </span>
+		<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="nf">log</span><span class="p">(</span><span class="m">100000</span><span class="p">)</span><span class="m">+0.1</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)</span><span class="m">+0.2</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">)</span> <span class="o">-</span> <span class="m">0.05</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">40</span><span class="p">)</span>
+		<span class="n">beta</span>  <span class="o">&lt;-</span> <span class="p">(</span><span class="m">16</span><span class="o">/</span><span class="m">3</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span><span class="o">*</span><span class="nf">log</span><span class="p">(</span><span class="n">jj</span><span class="p">)</span><span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="n">jj</span>  <span class="c1"># a is 16/3, b is 1/3</span>
 		<span class="n">gamma</span> <span class="o">&lt;-</span> <span class="nf">gammafunc</span><span class="p">(</span><span class="n">tt</span><span class="p">)</span>
 		<span class="n">mu</span> <span class="o">&lt;-</span> <span class="nf">exp</span><span class="p">(</span> <span class="n">alpha</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">+</span> <span class="n">gamma</span> <span class="o">+</span> <span class="m">0.3</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">kk</span><span class="o">&gt;</span><span class="m">16</span> <span class="o">&amp;</span> <span class="n">jj</span><span class="o">&gt;</span><span class="m">20</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">))</span>  
 	<span class="p">}</span>
 	<span class="n">else</span> <span class="nf">if </span><span class="p">(</span><span class="n">whichsim</span> <span class="o">==</span> <span class="m">4</span><span class="p">){</span>
-		<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="nf">log</span><span class="p">(</span><span class="m">100000</span><span class="p">)</span><span class="m">+0.1</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)</span><span class="m">+0.2</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">)</span> <span class="o">-</span> <span class="m">0.05</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">40</span><span class="p">)</span> 
-		<span class="n">beta</span>  <span class="o">&lt;-</span> <span class="p">(</span><span class="m">16</span><span class="o">/</span><span class="m">3</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span><span class="o">*</span><span class="nf">log</span><span class="p">(</span><span class="n">jj</span><span class="p">)</span><span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="n">jj</span>  <span class="c1"># a is 16/3, b is 1/3 </span>
+		<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="nf">log</span><span class="p">(</span><span class="m">100000</span><span class="p">)</span><span class="m">+0.1</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">15</span><span class="p">)</span><span class="m">+0.2</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">)</span> <span class="o">-</span> <span class="m">0.05</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">40</span><span class="p">)</span>
+		<span class="n">beta</span>  <span class="o">&lt;-</span> <span class="p">(</span><span class="m">16</span><span class="o">/</span><span class="m">3</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span><span class="o">*</span><span class="nf">log</span><span class="p">(</span><span class="n">jj</span><span class="p">)</span><span class="o">-</span> <span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span><span class="o">*</span><span class="n">jj</span>  <span class="c1"># a is 16/3, b is 1/3</span>
 		<span class="n">gamma</span> <span class="o">&lt;-</span> <span class="nf">gammafunc</span><span class="p">(</span><span class="n">tt</span><span class="p">)</span>
 		<span class="n">mu</span> <span class="o">&lt;-</span> <span class="nf">exp</span><span class="p">(</span> <span class="n">alpha</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">+</span> <span class="n">gamma</span><span class="o">*</span><span class="p">((</span><span class="n">numperiods</span><span class="m">-1</span><span class="p">)</span><span class="o">-</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">jj</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="n">numperiods</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">numperiods</span><span class="m">-1</span><span class="p">)</span> <span class="p">)</span>  <span class="c1"># need to check</span>
 	<span class="p">}</span>
-	
+
 	<span class="n">varbase</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">0.3</span> <span class="o">*</span> <span class="n">mu</span><span class="p">[</span>  <span class="n">kk</span><span class="o">==</span><span class="m">1</span> <span class="o">&amp;</span> <span class="n">jj</span> <span class="o">==</span><span class="m">16</span><span class="p">]</span> <span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="c1"># can scale variance up and down here</span>
 	<span class="n">CC</span>  <span class="o">&lt;-</span>  <span class="n">varbase</span> <span class="o">/</span> <span class="n">mu</span><span class="p">[</span>  <span class="n">kk</span><span class="o">==</span><span class="m">1</span> <span class="o">&amp;</span> <span class="n">jj</span> <span class="o">==</span><span class="m">16</span><span class="p">]</span>
-	
+
 	<span class="n">vars</span>   <span class="o">&lt;-</span> <span class="n">CC</span><span class="o">*</span><span class="n">mu</span>
 	<span class="n">tausq</span>  <span class="o">&lt;-</span> <span class="nf">log </span><span class="p">(</span><span class="n">vars</span> <span class="o">/</span> <span class="p">(</span><span class="n">mu</span><span class="o">^</span><span class="m">2</span><span class="p">)</span> <span class="o">+</span> <span class="m">1</span><span class="p">)</span>
-	
+
 	<span class="n">pmts</span> <span class="o">&lt;-</span> <span class="nf">exp</span><span class="p">(</span> <span class="nf">rnorm</span><span class="p">(</span> <span class="n">numperiods</span><span class="o">^</span><span class="m">2</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="nf">log</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span><span class="m">-0.5</span><span class="o">*</span><span class="n">tausq</span> <span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">tausq</span><span class="p">)</span>  <span class="p">)</span> <span class="p">)</span>
-	
+
 	<span class="c1"># indicator for past/future = traint/test</span>
 	<span class="n">train_ind</span><span class="o">&lt;-</span><span class="p">(</span><span class="n">tt</span><span class="o">&lt;=</span><span class="n">numperiods</span><span class="p">)</span>
-	
+
 	<span class="c1">### data fram for output</span>
 	<span class="n">full</span><span class="o">&lt;-</span><span class="nf">data.table</span><span class="p">(</span><span class="n">pmts</span><span class="p">,</span> <span class="n">acc</span><span class="o">=</span><span class="nf">as.integer</span><span class="p">(</span><span class="n">kk</span><span class="p">),</span> <span class="n">dev</span><span class="o">=</span><span class="nf">as.integer</span><span class="p">(</span><span class="n">jj</span><span class="p">),</span> <span class="n">cal</span><span class="o">=</span><span class="nf">as.integer</span><span class="p">(</span><span class="n">tt</span><span class="p">),</span> <span class="n">mu</span><span class="p">,</span> <span class="n">train_ind</span> <span class="p">)</span>
 	<span class="n">full</span>
@@ -3661,7 +3663,7 @@ This work lays a baseline for our upcoming articles where we will look at ways o
 <span class="c1"># function to generate calendar period effects used in CreateSyntheticData()</span>
 
 <span class="n">gammafunc</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">t</span><span class="p">){</span>
-	<span class="n">gg</span> <span class="o">&lt;-</span> 
+	<span class="n">gg</span> <span class="o">&lt;-</span>
 		<span class="nf">ifelse</span><span class="p">(</span> <span class="n">t</span><span class="o">&lt;=</span><span class="m">12</span><span class="p">,</span> <span class="n">gg</span> <span class="o">&lt;-</span> <span class="m">0.0075</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">12</span><span class="p">),</span>
 				<span class="nf">ifelse</span><span class="p">(</span><span class="n">t</span><span class="o">&lt;=</span><span class="m">24</span><span class="p">,</span>  <span class="n">gg</span> <span class="o">&lt;-</span> <span class="m">0.0075</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="m">12</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">12</span><span class="p">)</span> <span class="o">+</span> <span class="m">0.001</span><span class="o">*</span> <span class="p">(</span><span class="n">t</span><span class="m">-12</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="m">-11</span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="p">,</span>
 					   <span class="nf">ifelse</span><span class="p">(</span><span class="n">t</span><span class="o">&lt;=</span><span class="m">32</span><span class="p">,</span> <span class="n">gg</span> <span class="o">&lt;-</span> <span class="m">0.0075</span><span class="o">*</span><span class="nf">LinearSpline</span><span class="p">(</span><span class="m">12</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">12</span><span class="p">)</span> <span class="o">+</span> <span class="m">0.001</span><span class="o">*</span> <span class="p">(</span><span class="m">24-12</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="m">24-11</span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="p">,</span>
