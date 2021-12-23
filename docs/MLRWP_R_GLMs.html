@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reserving with GLMs (R) &#8212; Actuaries&#39; Analytical Cookbook</title>
+    <title>R: Reserving with GLMs &#8212; Actuaries&#39; Analytical Cookbook</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,7 +53,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Reserving with LASSO (R)" href="MLRWP_R_Lasso.html" />
+    <link rel="next" title="R: Reserving with LASSO" href="MLRWP_R_Lasso.html" />
     <link rel="prev" title="R: Life Industry Stats in Tableau and R" href="life_stats.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -156,12 +156,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="MLRWP_R_DataTable.html">
-   data.table for actuaries (R)
+   R: data.table for actuaries
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="MLRWP_R_Tidyverse.html">
-   The tidyverse for actuaries (R)
+   R: The tidyverse for actuaries
   </a>
  </li>
 </ul>
@@ -224,17 +224,22 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Reserving with GLMs (R)
+   R: Reserving with GLMs
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="MLRWP_R_Lasso.html">
-   Reserving with LASSO (R)
+   R: Reserving with LASSO
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="MLRWP_R_mlr3.html">
-   Machine Learning Triangles (R)
+   R: Machine Learning Triangles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_Py_triangles_example.html">
+   ML modelling on triangles - a Python example
   </a>
  </li>
 </ul>
@@ -581,8 +586,8 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="reserving-with-glms-r">
-<h1>Reserving with GLMs (R)<a class="headerlink" href="#reserving-with-glms-r" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="r-reserving-with-glms">
+<h1>R: Reserving with GLMs<a class="headerlink" href="#r-reserving-with-glms" title="Permalink to this headline">¶</a></h1>
 <p>An aim of the MLR working party is to promote the use of machine learning (ML) in reserving.
 So why then are we talking about using GLMs for reserving?
 Well, as noted in our <span class="xref myst">introductory post</span>, we consider that getting familiar with using GLMs for reserving is a good place to begin your ML journey - GLMs should already be familiar from pricing so making the switch to reserving with GLMs is a useful first step.</p>
@@ -1028,7 +1033,7 @@ If you want to load it in, then use the fread statement that points to the websi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_GLMs_9_0.png" src="../_images/MLRWP_R_GLMs_9_0.png" />
+<img alt="../_images/MLRWP_R_GLMs_10_0.png" src="../_images/MLRWP_R_GLMs_10_0.png" />
 </div>
 </div>
 <p>The data look quite well behaved - each year seems to have a similar development pattern.</p>
@@ -1418,7 +1423,7 @@ In the linear predictor scatterplot, the points are colour coded so that the lig
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_GLMs_28_0.png" src="../_images/MLRWP_R_GLMs_28_0.png" />
+<img alt="../_images/MLRWP_R_GLMs_29_0.png" src="../_images/MLRWP_R_GLMs_29_0.png" />
 </div>
 </div>
 <p>These results are quite good - bear in mind there are only a small number of points so plots must be interpreted in relation to this.
@@ -1455,7 +1460,7 @@ In particular:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_GLMs_31_0.png" src="../_images/MLRWP_R_GLMs_31_0.png" />
+<img alt="../_images/MLRWP_R_GLMs_32_0.png" src="../_images/MLRWP_R_GLMs_32_0.png" />
 </div>
 </div>
 <p>In a heat map for a reserving triangle, we look for a random scattering of red and blue points.
@@ -1497,7 +1502,7 @@ The end result should be something similar to the chain ladder approach but with
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_GLMs_36_0.png" src="../_images/MLRWP_R_GLMs_36_0.png" />
+<img alt="../_images/MLRWP_R_GLMs_37_0.png" src="../_images/MLRWP_R_GLMs_37_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1682,7 +1687,7 @@ Number of Fisher Scoring iterations: 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_GLMs_42_0.png" src="../_images/MLRWP_R_GLMs_42_0.png" />
+<img alt="../_images/MLRWP_R_GLMs_43_0.png" src="../_images/MLRWP_R_GLMs_43_0.png" />
 </div>
 </div>
 <p>This looks very good - the fit is very similar, but we have 7 fewer parameters.</p>
@@ -1718,7 +1723,7 @@ Number of Fisher Scoring iterations: 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_GLMs_45_0.png" src="../_images/MLRWP_R_GLMs_45_0.png" />
+<img alt="../_images/MLRWP_R_GLMs_46_0.png" src="../_images/MLRWP_R_GLMs_46_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1814,7 +1819,7 @@ Number of Fisher Scoring iterations: 4
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_GLMs_49_0.png" src="../_images/MLRWP_R_GLMs_49_0.png" />
+<img alt="../_images/MLRWP_R_GLMs_50_0.png" src="../_images/MLRWP_R_GLMs_50_0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1857,7 +1862,7 @@ Number of Fisher Scoring iterations: 4
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_GLMs_51_0.png" src="../_images/MLRWP_R_GLMs_51_0.png" />
+<img alt="../_images/MLRWP_R_GLMs_52_0.png" src="../_images/MLRWP_R_GLMs_52_0.png" />
 </div>
 </div>
 <p>Looks good! Fitting <code class="docutils literal notranslate"><span class="pre">dev_year</span></code>=2 better has also improved the tail fitting (<code class="docutils literal notranslate"><span class="pre">dev_year</span></code>&gt;7).</p>
@@ -1894,7 +1899,7 @@ Number of Fisher Scoring iterations: 4
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_GLMs_54_0.png" src="../_images/MLRWP_R_GLMs_54_0.png" />
+<img alt="../_images/MLRWP_R_GLMs_55_0.png" src="../_images/MLRWP_R_GLMs_55_0.png" />
 </div>
 </div>
 <p>Let’s add some annotations to highlight some structure</p>
@@ -1911,7 +1916,7 @@ Number of Fisher Scoring iterations: 4
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_GLMs_56_0.png" src="../_images/MLRWP_R_GLMs_56_0.png" />
+<img alt="../_images/MLRWP_R_GLMs_57_0.png" src="../_images/MLRWP_R_GLMs_57_0.png" />
 </div>
 </div>
 <p>We see:</p>
@@ -2032,7 +2037,7 @@ Number of Fisher Scoring iterations: 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_GLMs_61_0.png" src="../_images/MLRWP_R_GLMs_61_0.png" />
+<img alt="../_images/MLRWP_R_GLMs_62_0.png" src="../_images/MLRWP_R_GLMs_62_0.png" />
 </div>
 </div>
 <p>This looks much better.</p>
@@ -2067,7 +2072,7 @@ Number of Fisher Scoring iterations: 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_GLMs_63_0.png" src="../_images/MLRWP_R_GLMs_63_0.png" />
+<img alt="../_images/MLRWP_R_GLMs_64_0.png" src="../_images/MLRWP_R_GLMs_64_0.png" />
 </div>
 </div>
 <p>These residuals do look better than those from the chain ladder model.</p>
@@ -2315,7 +2320,7 @@ loaded via a namespace (and not attached):
     <a class='right-next' id="next-link" href="MLRWP_R_Lasso.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Reserving with LASSO (R)</p>
+        <p class="prev-next-title">R: Reserving with LASSO</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

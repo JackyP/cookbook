@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Machine Learning Triangles (R) &#8212; Actuaries&#39; Analytical Cookbook</title>
+    <title>R: Machine Learning Triangles &#8212; Actuaries&#39; Analytical Cookbook</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Py: Socio-Economic Index Construction" href="DAA_M06_CS1.html" />
-    <link rel="prev" title="Reserving with LASSO (R)" href="MLRWP_R_Lasso.html" />
+    <link rel="next" title="ML modelling on triangles - a Python example" href="MLRWP_Py_triangles_example.html" />
+    <link rel="prev" title="R: Reserving with LASSO" href="MLRWP_R_Lasso.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -154,12 +154,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="MLRWP_R_DataTable.html">
-   data.table for actuaries (R)
+   R: data.table for actuaries
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="MLRWP_R_Tidyverse.html">
-   The tidyverse for actuaries (R)
+   R: The tidyverse for actuaries
   </a>
  </li>
 </ul>
@@ -222,17 +222,22 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="MLRWP_R_GLMs.html">
-   Reserving with GLMs (R)
+   R: Reserving with GLMs
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="MLRWP_R_Lasso.html">
-   Reserving with LASSO (R)
+   R: Reserving with LASSO
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Machine Learning Triangles (R)
+   R: Machine Learning Triangles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_Py_triangles_example.html">
+   ML modelling on triangles - a Python example
   </a>
  </li>
 </ul>
@@ -460,7 +465,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Machine Learning Triangles (R)
+   R: Machine Learning Triangles
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -709,8 +714,8 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="machine-learning-triangles-r">
-<h1>Machine Learning Triangles (R)<a class="headerlink" href="#machine-learning-triangles-r" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="r-machine-learning-triangles">
+<h1>R: Machine Learning Triangles<a class="headerlink" href="#r-machine-learning-triangles" title="Permalink to this headline">¶</a></h1>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
@@ -964,7 +969,7 @@ Loading required package: rpart
 <p>We’re using a simulated data triangle with all values (past and future).</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_20_0.png" src="../_images/MLRWP_R_mlr3_20_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_21_0.png" src="../_images/MLRWP_R_mlr3_21_0.png" />
 </div>
 </div>
 <p>The data set we use is the simulated data set 3 from this <a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3241906">paper</a>.
@@ -1058,7 +1063,7 @@ The step-up in claim size (acc &gt; 16 and dev &gt; 20) is quite obvious in this
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_27_0.png" src="../_images/MLRWP_R_mlr3_27_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_28_0.png" src="../_images/MLRWP_R_mlr3_28_0.png" />
 </div>
 </div>
 <p>The step-up in payments can be modelled as an interaction between accident and development quarters.
@@ -1278,7 +1283,7 @@ Typically, the train part might be around 70-80% of the data and the test part t
 <p><strong>Random test data set</strong></p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_48_0.png" src="../_images/MLRWP_R_mlr3_48_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_49_0.png" src="../_images/MLRWP_R_mlr3_49_0.png" />
 </div>
 </div>
 <p>Cross-validation repeats this type of split a number of times.</p>
@@ -1297,7 +1302,7 @@ Typically, the train part might be around 70-80% of the data and the test part t
 <p><strong>5-fold cross validation</strong></p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_50_0.png" src="../_images/MLRWP_R_mlr3_50_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_51_0.png" src="../_images/MLRWP_R_mlr3_51_0.png" />
 </div>
 </div>
 <p>Cross-validation provides an estimate of out-of-sample performance even though all the data is used for training and testing.
@@ -1327,7 +1332,7 @@ It is often considered more robust due to its use of the full dataset for testin
 </div>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_56_0.png" src="../_images/MLRWP_R_mlr3_56_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_57_0.png" src="../_images/MLRWP_R_mlr3_57_0.png" />
 </div>
 </div>
 </div>
@@ -1400,7 +1405,7 @@ We’ll then move onto the code needed to run hyper-parameter tuning using cross
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_66_0.png" src="../_images/MLRWP_R_mlr3_66_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_67_0.png" src="../_images/MLRWP_R_mlr3_67_0.png" />
 </div>
 </div>
 <p>If you are unfamiliar with decision tree diagrams, the model specifies that, for example, for accident years greater than 17, with development periods less than 7.5 (ie 7 or under) and less than 4.5, the predicted claim cost is $43m.</p>
@@ -1568,7 +1573,7 @@ Another possible choice is Bayesian optimisation search.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_84_0.png" src="../_images/MLRWP_R_mlr3_84_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_85_0.png" src="../_images/MLRWP_R_mlr3_85_0.png" />
 </div>
 </div>
 <p>This model is much more complicated than the original and looks overfitted - we’ll see if this is the case when we evaluate the model performance later in the article.</p>
@@ -2699,7 +2704,7 @@ The <code class="docutils literal notranslate"><span class="pre">dat_plus</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_132_0.png" src="../_images/MLRWP_R_mlr3_132_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_133_0.png" src="../_images/MLRWP_R_mlr3_133_0.png" />
 </div>
 </div>
 <p>The two dotted lines in this plot represent two special penalty (or <code class="docutils literal notranslate"><span class="pre">lambda</span></code> values):</p>
@@ -3096,7 +3101,7 @@ The graphs below show the log(fitted values), or log(payments) in the case of th
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_152_0.png" src="../_images/MLRWP_R_mlr3_152_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_153_0.png" src="../_images/MLRWP_R_mlr3_153_0.png" />
 </div>
 </div>
 <p>Some things are apparent from this:</p>
@@ -3176,7 +3181,7 @@ The values are then shaded so that:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_158_0.png" src="../_images/MLRWP_R_mlr3_158_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_159_0.png" src="../_images/MLRWP_R_mlr3_159_0.png" />
 </div>
 </div>
 <p>All models have shortcomings, but the LASSO and previously tuned XGBoost models outperform the others.</p>
@@ -3321,7 +3326,7 @@ We’ll wrap this in another function since we want to call this for a few diffe
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_165_0.png" src="../_images/MLRWP_R_mlr3_165_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_166_0.png" src="../_images/MLRWP_R_mlr3_166_0.png" />
 </div>
 </div>
 <p>Because this is mostly old data and because it is not affected by the interaction, the tracking should be generally good, even for the Chain ladder - which is the case (apart from the final quarter being a bit wild as can happen with a Chain ladder).
@@ -3340,7 +3345,7 @@ The decision tree model is poor, the random forest and XGBoost model show some e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_167_0.png" src="../_images/MLRWP_R_mlr3_167_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_168_0.png" src="../_images/MLRWP_R_mlr3_168_0.png" />
 </div>
 </div>
 <p>Development quarter 24 is impacted by the interactions for accident quarters&gt;17.
@@ -3358,7 +3363,7 @@ All models reflect this to different extents, with XGBoost and the LASSO doing t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_170_0.png" src="../_images/MLRWP_R_mlr3_170_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_171_0.png" src="../_images/MLRWP_R_mlr3_171_0.png" />
 </div>
 </div>
 <p>This is quite hard for the models since most of the values are in the future. XGBoost (previously tuned) and the LASSO are the best here.</p>
@@ -3376,7 +3381,7 @@ All models reflect this to different extents, with XGBoost and the LASSO doing t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_175_0.png" src="../_images/MLRWP_R_mlr3_175_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_176_0.png" src="../_images/MLRWP_R_mlr3_176_0.png" />
 </div>
 </div>
 <p><strong>Tracking for development quarter when accident quarter = 20</strong></p>
@@ -3392,7 +3397,7 @@ All models reflect this to different extents, with XGBoost and the LASSO doing t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_178_0.png" src="../_images/MLRWP_R_mlr3_178_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_179_0.png" src="../_images/MLRWP_R_mlr3_179_0.png" />
 </div>
 </div>
 </div>
@@ -3446,7 +3451,7 @@ All models reflect this to different extents, with XGBoost and the LASSO doing t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_181_0.png" src="../_images/MLRWP_R_mlr3_181_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_182_0.png" src="../_images/MLRWP_R_mlr3_182_0.png" />
 </div>
 </div>
 <p>Let’s look at a zoomed in version of this plot.</p>
@@ -3460,7 +3465,7 @@ All models reflect this to different extents, with XGBoost and the LASSO doing t
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coordinate system already present. Adding new coordinate system, which will replace the existing one.
 </pre></div>
 </div>
-<img alt="../_images/MLRWP_R_mlr3_184_1.png" src="../_images/MLRWP_R_mlr3_184_1.png" />
+<img alt="../_images/MLRWP_R_mlr3_185_1.png" src="../_images/MLRWP_R_mlr3_185_1.png" />
 </div>
 </div>
 <p>Finally, here are the overall reserves, summed over all accident quarters</p>
@@ -3552,7 +3557,7 @@ The grey rectangle marks the interaction.</p>
 </div>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/MLRWP_R_mlr3_191_0.png" src="../_images/MLRWP_R_mlr3_191_0.png" />
+<img alt="../_images/MLRWP_R_mlr3_192_0.png" src="../_images/MLRWP_R_mlr3_192_0.png" />
 </div>
 </div>
 <p>The first thing that is apparent is that the interaction only applies to a very small number of points (10) in the past data.
@@ -3791,13 +3796,13 @@ loaded via a namespace (and not attached):
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Reserving with LASSO (R)</p>
+            <p class="prev-next-title">R: Reserving with LASSO</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="DAA_M06_CS1.html" title="next page">
+    <a class='right-next' id="next-link" href="MLRWP_Py_triangles_example.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Py: Socio-Economic Index Construction</p>
+        <p class="prev-next-title">ML modelling on triangles - a Python example</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
