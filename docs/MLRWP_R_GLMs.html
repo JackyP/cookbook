@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction &#8212; Actuaries&#39; Analytical Cookbook</title>
+    <title>Reserving with GLMs (R) &#8212; Actuaries&#39; Analytical Cookbook</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,6 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reserving with LASSO (R)" href="MLRWP_R_Lasso.html" />
+    <link rel="prev" title="R: Life Industry Stats in Tableau and R" href="life_stats.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -152,6 +154,16 @@
    Useful Packages
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_DataTable.html">
+   data.table for actuaries (R)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_Tidyverse.html">
+   The tidyverse for actuaries (R)
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -201,6 +213,28 @@
  <li class="toctree-l1">
   <a class="reference internal" href="life_stats.html">
    R: Life Industry Stats in Tableau and R
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  General Insurance
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Reserving with GLMs (R)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_Lasso.html">
+   Reserving with LASSO (R)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_mlr3.html">
+   Machine Learning Triangles (R)
   </a>
  </li>
 </ul>
@@ -426,42 +460,42 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
    Introduction
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data">
    Data
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#chain-ladder-model">
    Chain ladder model
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#fitting-the-model">
      Fitting the model
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#loss-reserve">
      Loss reserve
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#model-diagnostics">
      Model diagnostics
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#calculations">
        Calculations
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#plotting">
        Plotting
       </a>
@@ -470,68 +504,68 @@
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#refining-the-model">
    Refining the model
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#simplifying-the-model">
      Simplifying the model
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#accident-year">
        Accident year
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#development-year">
        Development year
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#identifying-missing-structure">
      Identifying missing structure
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
      Loss reserve
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reviewing-this-example">
    Reviewing this example
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#practical-use-of-glms-in-traditional-reserving">
    Practical use of GLMs in traditional reserving
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#modelling">
      Modelling
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#setting-reserves">
      Setting reserves
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#additional-references">
      Additional References
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#session-information">
    Session information
   </a>
@@ -547,14 +581,16 @@
         
               <div>
                 
-  <p>An aim of the MLR working party is to promote the use of machine learning (ML) in reserving.
+  <div class="tex2jax_ignore mathjax_ignore section" id="reserving-with-glms-r">
+<h1>Reserving with GLMs (R)<a class="headerlink" href="#reserving-with-glms-r" title="Permalink to this headline">¶</a></h1>
+<p>An aim of the MLR working party is to promote the use of machine learning (ML) in reserving.
 So why then are we talking about using GLMs for reserving?
 Well, as noted in our <span class="xref myst">introductory post</span>, we consider that getting familiar with using GLMs for reserving is a good place to begin your ML journey - GLMs should already be familiar from pricing so making the switch to reserving with GLMs is a useful first step.</p>
 <p>This is longer than many of our recent articles.
 However, this is because it contains a full worked example of the modelling and reserving process for a data set - as per the objectives of the working party, we want to include practical coding examples in our articles.
 There are also some concluding comments about the wider applicability of this type of process.</p>
 <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>The first time I did a reserving job (back in 2001) I used GLMs.
 Coming from a statistical background and being new to the actuarial workplace at the time, this didn’t seem unusual to me.
 Since then, most of my reserving jobs have used GLMs - personally I find it a lot easier and less error-prone than working with excel templates.
@@ -589,7 +625,7 @@ Loading required package: viridisLite
 </div>
 </div>
 <div class="section" id="data">
-<h1>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <p>The data used here were sourced from the Meyers and Shi (2011) database, and are the workers compensation triangle of the New Jersey Manufacturers Group. They are displayed in Section 1.3 of the monograph.
 We’ve made a CSV file of the data (in long format) available <span class="xref myst">here</span> for convenience.
 If you want to load it in, then use the fread statement that points to the website address which is included in the comments below.</p>
@@ -998,9 +1034,9 @@ If you want to load it in, then use the fread statement that points to the websi
 <p>The data look quite well behaved - each year seems to have a similar development pattern.</p>
 </div>
 <div class="section" id="chain-ladder-model">
-<h1>Chain ladder model<a class="headerlink" href="#chain-ladder-model" title="Permalink to this headline">¶</a></h1>
+<h2>Chain ladder model<a class="headerlink" href="#chain-ladder-model" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="fitting-the-model">
-<h2>Fitting the model<a class="headerlink" href="#fitting-the-model" title="Permalink to this headline">¶</a></h2>
+<h3>Fitting the model<a class="headerlink" href="#fitting-the-model" title="Permalink to this headline">¶</a></h3>
 <p>Our first model will be the familiar chain ladder (volume all) model.
 The monograph (and references therein) note that certain types of GLM gives exactly the same result as the chain ladder so I’m going to use that to get the chain ladder result.</p>
 <p>The specific model I’m using that replicates the chain ladder result is the Over-dispersed Poisson (ODP) cross classified (cc) model (Sections 3.3.2 and 3.3.3 of the monograph).</p>
@@ -1135,7 +1171,7 @@ Number of Fisher Scoring iterations: 3
 </div>
 </div>
 <div class="section" id="loss-reserve">
-<h2>Loss reserve<a class="headerlink" href="#loss-reserve" title="Permalink to this headline">¶</a></h2>
+<h3>Loss reserve<a class="headerlink" href="#loss-reserve" title="Permalink to this headline">¶</a></h3>
 <p>Now we’ll have a look at the loss reserve. If you’ve done the chain ladder calculations, you should find this gives the same answer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1234,9 +1270,9 @@ Number of Fisher Scoring iterations: 3
 </div>
 </div>
 <div class="section" id="model-diagnostics">
-<h2>Model diagnostics<a class="headerlink" href="#model-diagnostics" title="Permalink to this headline">¶</a></h2>
+<h3>Model diagnostics<a class="headerlink" href="#model-diagnostics" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="calculations">
-<h3>Calculations<a class="headerlink" href="#calculations" title="Permalink to this headline">¶</a></h3>
+<h4>Calculations<a class="headerlink" href="#calculations" title="Permalink to this headline">¶</a></h4>
 <p>So far, we’ve fitted a model and have calculated the loss reserve.
 We can do all this with the chain ladder algorithm.
 Now we start looking at some of the extras that using a GLM gives us - for a start the statistical model structure means that we can calculate residuals with known properties, assuming the assumptions underlying the model are valid.</p>
@@ -1347,7 +1383,7 @@ Note that we need to be careful to use the right types of residuals - in many ca
 </div>
 </div>
 <div class="section" id="plotting">
-<h3>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h3>
+<h4>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h4>
 <p>Now let’s look at the residual scatterplots.
 In the linear predictor scatterplot, the points are colour coded so that the lighter points belong to the earlier development years, and the darker points belong to the later ones.</p>
 <div class="cell docutils container">
@@ -1428,7 +1464,7 @@ This plot looks quite good (though we’ll revisit this shortly).</p>
 </div>
 </div>
 <div class="section" id="refining-the-model">
-<h1>Refining the model<a class="headerlink" href="#refining-the-model" title="Permalink to this headline">¶</a></h1>
+<h2>Refining the model<a class="headerlink" href="#refining-the-model" title="Permalink to this headline">¶</a></h2>
 <p>We could stop here - and just use the results from this model, which match those produced by the chain ladder.
 The diagnostics suggest that the model fits quite well.
 However, because this is a GLM, we have more options than just replicating the chain ladder.</p>
@@ -1438,11 +1474,11 @@ However, because this is a GLM, we have more options than just replicating the c
 <li><p>identify any areas of poorer fit that may suggest missing model terms including interactions?</p></li>
 </ul>
 <div class="section" id="simplifying-the-model">
-<h2>Simplifying the model<a class="headerlink" href="#simplifying-the-model" title="Permalink to this headline">¶</a></h2>
+<h3>Simplifying the model<a class="headerlink" href="#simplifying-the-model" title="Permalink to this headline">¶</a></h3>
 <p>First we consider if we can use a parametric shape for the accident and development year parameters.
 The end result should be something similar to the chain ladder approach but with far fewer parameters.</p>
 <div class="section" id="accident-year">
-<h3>Accident year<a class="headerlink" href="#accident-year" title="Permalink to this headline">¶</a></h3>
+<h4>Accident year<a class="headerlink" href="#accident-year" title="Permalink to this headline">¶</a></h4>
 <p>First plot the accident year parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1652,7 +1688,7 @@ Number of Fisher Scoring iterations: 3
 <p>This looks very good - the fit is very similar, but we have 7 fewer parameters.</p>
 </div>
 <div class="section" id="development-year">
-<h3>Development year<a class="headerlink" href="#development-year" title="Permalink to this headline">¶</a></h3>
+<h4>Development year<a class="headerlink" href="#development-year" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>Now we do the same thing for development year</p></li>
 <li><p>Note that the glm_fit2 model (and the glm_fit1 model too) do not have a parameter for dev_year = 1 as this is the base level.</p>
@@ -1828,7 +1864,7 @@ Number of Fisher Scoring iterations: 4
 </div>
 </div>
 <div class="section" id="identifying-missing-structure">
-<h2>Identifying missing structure<a class="headerlink" href="#identifying-missing-structure" title="Permalink to this headline">¶</a></h2>
+<h3>Identifying missing structure<a class="headerlink" href="#identifying-missing-structure" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>The second part of the model refining process involves checking for missing structure.</p></li>
 <li><p>Let’s have a better look at the heat map, as it stands after the model simplification process</p></li>
@@ -2037,7 +2073,7 @@ Number of Fisher Scoring iterations: 3
 <p>These residuals do look better than those from the chain ladder model.</p>
 </div>
 <div class="section" id="id1">
-<h2>Loss reserve<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h3>Loss reserve<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Now that we have a model, let’s produce the estimate of the outstanding claims by accident year and in total.</p>
 <ul class="simple">
 <li><p>Take the lower triangle data [futdata] created above</p></li>
@@ -2150,16 +2186,16 @@ Number of Fisher Scoring iterations: 3
 </div>
 </div>
 <div class="section" id="reviewing-this-example">
-<h1>Reviewing this example<a class="headerlink" href="#reviewing-this-example" title="Permalink to this headline">¶</a></h1>
+<h2>Reviewing this example<a class="headerlink" href="#reviewing-this-example" title="Permalink to this headline">¶</a></h2>
 <p>Looking back over this example, what we have done is started with a chain ladder model and then shown how we can use a GLM to fit a more parsimonious model (i.e. fewer parameters).
 It may then be possible to reconcile the shape of the parametric fit by accident year to underlying experience in the book - here we saw higher payments in the middle accident years. Is this due to higher claims experience or higher premium volumes? Does this give us an insight that allows us to better extrapolate into the future when setting reserves?</p>
 <p>We have also used model diagnostics to identify areas of misfit and then used GLM interactions to capture these changes.</p>
 <br>
 </div>
 <div class="section" id="practical-use-of-glms-in-traditional-reserving">
-<h1>Practical use of GLMs in traditional reserving<a class="headerlink" href="#practical-use-of-glms-in-traditional-reserving" title="Permalink to this headline">¶</a></h1>
+<h2>Practical use of GLMs in traditional reserving<a class="headerlink" href="#practical-use-of-glms-in-traditional-reserving" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="modelling">
-<h2>Modelling<a class="headerlink" href="#modelling" title="Permalink to this headline">¶</a></h2>
+<h3>Modelling<a class="headerlink" href="#modelling" title="Permalink to this headline">¶</a></h3>
 <p>The ideas in this simple example extend to more complex traditional scenarios. By traditional I mean that the data you have available to you are classified by accident (or underwriting), development and calendar periods only.</p>
 <p>First decide what you are going to model. Here we had a single model of incremental payments. However you could fit a <em>Payments Per Claim Finalised (PPCF)</em> model which consists of 3 submodels - numbers of claims incurred by accident period, number of claims finalised by (accident, development period) and payments per claim finalised by (accident, development period). Each of these could then be fitted by a GLM.</p>
 <p>For whatever you’re modelling, you then pick the two triangle directions that you think are most critical for that experience.
@@ -2175,14 +2211,14 @@ Look for missing structure and consider adding interactions or (carefully) addin
 Take advantage of GLM tools to refine your model. Use what you know about the portfolio to inform your model - if you know that there was a period of rapid claims inflation, then include that in your model.</p>
 </div>
 <div class="section" id="setting-reserves">
-<h2>Setting reserves<a class="headerlink" href="#setting-reserves" title="Permalink to this headline">¶</a></h2>
+<h3>Setting reserves<a class="headerlink" href="#setting-reserves" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to overlay judgement onto a GLM’s predictions.
 At the end of the day, the predictions are just based on a mathematical formula.
 So, taking claims inflation as an example, if you’ve been seeing 5% p.a. over the last 3 years, but you think this is going to moderate going forward, then you can adjust the projections by removing the 5% p.a. rate into the future and replacing it with, say, 2% p.a.
 Once you get familiar with using GLMs, you might find it easier to incorporate judgement - the GLM can capture more granularity about past experience which in turn may make it easier to work out how things might change in future and how to numerically include these changes.</p>
 </div>
 <div class="section" id="additional-references">
-<h2>Additional References<a class="headerlink" href="#additional-references" title="Permalink to this headline">¶</a></h2>
+<h3>Additional References<a class="headerlink" href="#additional-references" title="Permalink to this headline">¶</a></h3>
 <p>The references below have further examples of fitting GLMs in this way, and show how to capture quite complex experience.
 Although both use individual data, the methodology can be used in a similar manner for aggregate data.</p>
 <ul class="simple">
@@ -2194,7 +2230,7 @@ Although both use individual data, the methodology can be used in a similar mann
 </div>
 </div>
 <div class="section" id="session-information">
-<h1>Session information<a class="headerlink" href="#session-information" title="Permalink to this headline">¶</a></h1>
+<h2>Session information<a class="headerlink" href="#session-information" title="Permalink to this headline">¶</a></h2>
 <p>To assist with reproducibility in future, here are details of my R session.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2242,6 +2278,7 @@ loaded via a namespace (and not attached):
 </div>
 </div>
 </div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -2267,7 +2304,21 @@ loaded via a namespace (and not attached):
               
         
             <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="life_stats.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">R: Life Industry Stats in Tableau and R</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="MLRWP_R_Lasso.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Reserving with LASSO (R)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>

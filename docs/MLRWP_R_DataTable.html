@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>What is data.table? &#8212; Actuaries&#39; Analytical Cookbook</title>
+    <title>data.table for actuaries (R) &#8212; Actuaries&#39; Analytical Cookbook</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,6 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The tidyverse for actuaries (R)" href="MLRWP_R_Tidyverse.html" />
+    <link rel="prev" title="Useful Packages" href="top_ten_r_packages.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,7 +126,7 @@
   Introduction to R
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="about_R.html">
    About R
@@ -148,6 +150,16 @@
  <li class="toctree-l1">
   <a class="reference internal" href="top_ten_r_packages.html">
    Useful Packages
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   data.table for actuaries (R)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_Tidyverse.html">
+   The tidyverse for actuaries (R)
   </a>
  </li>
 </ul>
@@ -199,6 +211,28 @@
  <li class="toctree-l1">
   <a class="reference internal" href="life_stats.html">
    R: Life Industry Stats in Tableau and R
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  General Insurance
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_GLMs.html">
+   Reserving with GLMs (R)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_Lasso.html">
+   Reserving with LASSO (R)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_mlr3.html">
+   Machine Learning Triangles (R)
   </a>
  </li>
 </ul>
@@ -424,54 +458,54 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-data-table">
    What is data.table?
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#why-use-data-table">
    Why use data.table?
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#now-for-the-details">
    Now for the details
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-table-is-fast">
      data.table is fast
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-table-is-actively-maintained">
      data.table is actively maintained
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-table-has-no-dependencies">
      data.table has no dependencies
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-table-is-flexible">
      data.table is flexible
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#concise-syntax">
      Concise syntax
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusion">
    Conclusion
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#resources-to-learn-data-table">
    Resources to learn data.table
   </a>
@@ -489,8 +523,10 @@
                 
   <p><em>This is the second of two articles that discusses packages in R that are useful for data manipulation.</em>
 <em>The <span class="xref myst">first article</span> covers the tidyverse ecosystem of packages.</em></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="data-table-for-actuaries-r">
+<h1>data.table for actuaries (R)<a class="headerlink" href="#data-table-for-actuaries-r" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="what-is-data-table">
-<h1>What is data.table?<a class="headerlink" href="#what-is-data-table" title="Permalink to this headline">¶</a></h1>
+<h2>What is data.table?<a class="headerlink" href="#what-is-data-table" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">data.table</span></code> is a package for carrying out data manipulations in R of tabular data. This includes:</p>
 <ul class="simple">
 <li><p>adding and removing columns in a data set</p></li>
@@ -505,7 +541,7 @@ This greatly increases what you can do with your data.
 Essentially, if you need to do any type of data manipulation, you can probably do it with <code class="docutils literal notranslate"><span class="pre">data.table</span></code>.</p>
 </div>
 <div class="section" id="why-use-data-table">
-<h1>Why use data.table?<a class="headerlink" href="#why-use-data-table" title="Permalink to this headline">¶</a></h1>
+<h2>Why use data.table?<a class="headerlink" href="#why-use-data-table" title="Permalink to this headline">¶</a></h2>
 <p>There are a number of reasons for choosing <code class="docutils literal notranslate"><span class="pre">data.table</span></code>:</p>
 <ul class="simple">
 <li><p>It is very fast and memory efficient, even for large data sets</p></li>
@@ -519,9 +555,9 @@ Popular choices include dplyr from the tidyverse suite, SQL software, or even ju
 In this post we will focus on <code class="docutils literal notranslate"><span class="pre">data.table</span></code>.</p>
 </div>
 <div class="section" id="now-for-the-details">
-<h1>Now for the details<a class="headerlink" href="#now-for-the-details" title="Permalink to this headline">¶</a></h1>
+<h2>Now for the details<a class="headerlink" href="#now-for-the-details" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="data-table-is-fast">
-<h2>data.table is fast<a class="headerlink" href="#data-table-is-fast" title="Permalink to this headline">¶</a></h2>
+<h3>data.table is fast<a class="headerlink" href="#data-table-is-fast" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">data.table</span></code> is much faster than dplyr or baseR for data manipulation tasks and can handle larger datasets.
 All development of data.table is done with speed in mind. It uses a number of tricks to produce better performance:</p>
 <ul class="simple">
@@ -537,7 +573,7 @@ So if you are doing your data manipulation in R, and have large amounts of data,
 <p>Similarly, if a lot of your work involves programming with large amounts of data, or where speed and memory optimisation is important, then <code class="docutils literal notranslate"><span class="pre">data.table</span></code> has a lot to offer.</p>
 </div>
 <div class="section" id="data-table-is-actively-maintained">
-<h2>data.table is actively maintained<a class="headerlink" href="#data-table-is-actively-maintained" title="Permalink to this headline">¶</a></h2>
+<h3>data.table is actively maintained<a class="headerlink" href="#data-table-is-actively-maintained" title="Permalink to this headline">¶</a></h3>
 <p>In the open source world, it is important to consider carefully the packages you are using before selecting a tool for repeat use.</p>
 <ul class="simple">
 <li><p>Are they actively maintained?</p></li>
@@ -548,19 +584,19 @@ So if you are doing your data manipulation in R, and have large amounts of data,
 <p><code class="docutils literal notranslate"><span class="pre">data.table</span></code> is a very popular package and is regularly maintained.</p>
 </div>
 <div class="section" id="data-table-has-no-dependencies">
-<h2>data.table has no dependencies<a class="headerlink" href="#data-table-has-no-dependencies" title="Permalink to this headline">¶</a></h2>
+<h3>data.table has no dependencies<a class="headerlink" href="#data-table-has-no-dependencies" title="Permalink to this headline">¶</a></h3>
 <p>Strictly speaking, it has no dependencies other than baseR, with a policy to make the dependency on baseR as old as possible for as long as possible.
 For example, the current release of data.table (V1.31.1 as at October 2020) will still work with R v3.1.0 which was released in April 2014.
 This leads to a more stable product - code that you write now to manipulate data will most likely still work in 2 or 3 years time - and you won’t have to update 20 different packages before running that code either.</p>
 </div>
 <div class="section" id="data-table-is-flexible">
-<h2>data.table is flexible<a class="headerlink" href="#data-table-is-flexible" title="Permalink to this headline">¶</a></h2>
+<h3>data.table is flexible<a class="headerlink" href="#data-table-is-flexible" title="Permalink to this headline">¶</a></h3>
 <p>As noted above, <code class="docutils literal notranslate"><span class="pre">data.table</span></code> contains a full suite of data manipulation tools.
 Furthermore, a data.table is also a data.frame so any data.frame code will work on a data.table.
 So you lose nothing, but gain a lot.</p>
 </div>
 <div class="section" id="concise-syntax">
-<h2>Concise syntax<a class="headerlink" href="#concise-syntax" title="Permalink to this headline">¶</a></h2>
+<h3>Concise syntax<a class="headerlink" href="#concise-syntax" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">data.table</span></code> syntax is very concise and minimalist.
 Whether this is a pro or con is subjective - this will appeal to some but the steep learning curve will be off-putting for others.
 Speaking for myself, verbose code such as <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> or SQL or SAS make my head and fingers hurt(!) - terse data.table code is much more appealing to me.
@@ -607,7 +643,7 @@ It’s fast to read and fast to type. However, the functions in <code class="doc
 <br></div>
 </div>
 <div class="section" id="conclusion">
-<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
 <p>If you or your team use R, then you should consider having <code class="docutils literal notranslate"><span class="pre">data.table</span></code> in your toolkit, particularly if:</p>
 <ul class="simple">
 <li><p>you work with large data sets in R</p></li>
@@ -618,7 +654,7 @@ It’s fast to read and fast to type. However, the functions in <code class="doc
 </ul>
 </div>
 <div class="section" id="resources-to-learn-data-table">
-<h1>Resources to learn data.table<a class="headerlink" href="#resources-to-learn-data-table" title="Permalink to this headline">¶</a></h1>
+<h2>Resources to learn data.table<a class="headerlink" href="#resources-to-learn-data-table" title="Permalink to this headline">¶</a></h2>
 <p>The obvious place to start is with the package itself and its help documentation (links below), but there are many additional on-line resources to learn data.table.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/Rdatatable/data.table">Package home on github</a> including news, updates, a brief guide and a cheat sheet.</p></li>
@@ -627,6 +663,7 @@ Vignettes also available in R via <code class="docutils literal notranslate"><sp
 There are currently 9 of these covering a wide range of topics.</p></li>
 <li><p>If you are more comfortable with <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> code and don’t mind the dependencies, then <a class="reference external" href="https://cran.r-project.org/web/packages/dtplyr/index.html">dtplyr</a> provides a <code class="docutils literal notranslate"><span class="pre">data.table</span></code> backend to <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>.</p></li>
 </ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -653,7 +690,21 @@ There are currently 9 of these covering a wide range of topics.</p></li>
               
         
             <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="top_ten_r_packages.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Useful Packages</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="MLRWP_R_Tidyverse.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The tidyverse for actuaries (R)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>

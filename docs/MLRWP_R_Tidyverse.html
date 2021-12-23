@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>readr &#8212; Actuaries&#39; Analytical Cookbook</title>
+    <title>The tidyverse for actuaries (R) &#8212; Actuaries&#39; Analytical Cookbook</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,6 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Version control" href="version_control.html" />
+    <link rel="prev" title="data.table for actuaries (R)" href="MLRWP_R_DataTable.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,7 +126,7 @@
   Introduction to R
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="about_R.html">
    About R
@@ -148,6 +150,16 @@
  <li class="toctree-l1">
   <a class="reference internal" href="top_ten_r_packages.html">
    Useful Packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_DataTable.html">
+   data.table for actuaries (R)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The tidyverse for actuaries (R)
   </a>
  </li>
 </ul>
@@ -199,6 +211,28 @@
  <li class="toctree-l1">
   <a class="reference internal" href="life_stats.html">
    R: Life Industry Stats in Tableau and R
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  General Insurance
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_GLMs.html">
+   Reserving with GLMs (R)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_Lasso.html">
+   Reserving with LASSO (R)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_mlr3.html">
+   Machine Learning Triangles (R)
   </a>
  </li>
 </ul>
@@ -424,27 +458,27 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#readr">
    readr
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tidyr">
    tidyr
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dplyr">
    dplyr
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#where-to-look-next">
    Where to look next
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#final-take-away">
    Final take away
   </a>
@@ -463,7 +497,8 @@
   <p><em>This is the first of two articles that will discuss packages in R that are useful for data manipulation.</em>
 <em>The second article will discuss the data.table package.</em>
 <em>Our <span class="xref myst">previous post</span> also has some comments on the tidyverse.</em></p>
-<p><br><br></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="the-tidyverse-for-actuaries-r">
+<h1>The tidyverse for actuaries (R)<a class="headerlink" href="#the-tidyverse-for-actuaries-r" title="Permalink to this headline">¶</a></h1>
 <p><strong>A short introduction to how R’s “tidyverse” library makes data processing easy</strong></p>
 <p>The <a class="reference external" href="https://www.tidyverse.org/">tidyverse</a>, developed by Hadley Wickham, is a collection of R packages designed to make every step of data analysis clear and easy to perform.
 Throughout this blog, I introduce the three packages from the tidyverse library that I have found most useful for my own actuarial work and explain how they can help overcome the shortcomings of more traditional methods such as Excel:</p>
@@ -476,7 +511,7 @@ Throughout this blog, I introduce the three packages from the tidyverse library 
 Alternatively you can download each package separately, as and when needed.
 For more information about using R, in general, our blog <span class="xref myst">Introduction to R</span>, provides a helpful introduction.</p>
 <div class="section" id="readr">
-<h1>readr<a class="headerlink" href="#readr" title="Permalink to this headline">¶</a></h1>
+<h2>readr<a class="headerlink" href="#readr" title="Permalink to this headline">¶</a></h2>
 <p>Datasets with billions of data points are no longer uncommon.
 Just 20 years of a company’s premium data can easily exceed this.
 By specifying the number of rows and columns to be imported, <code class="docutils literal notranslate"><span class="pre">readr</span></code>’s <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function allows users to import large datasets (or subsets of the data) into R quickly.
@@ -485,14 +520,14 @@ This becomes especially practical when the number of rows of data exceed the num
 Similarly, once you’ve used R to import and play around with your data, you can quickly write the file back out using the <code class="docutils literal notranslate"><span class="pre">write_csv</span></code> function.</p>
 </div>
 <div class="section" id="tidyr">
-<h1>tidyr<a class="headerlink" href="#tidyr" title="Permalink to this headline">¶</a></h1>
+<h2>tidyr<a class="headerlink" href="#tidyr" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">tidyr</span></code> contains a collection of tools for transforming data into an easy-to-process format.
 To list a few, there are functions that can remove/replace NAs; separate out individual column entries; and expand/contract datasets into more manageable formats.
 Rather than resort to Excel, where these operations can often require hard coding or complex functions, <code class="docutils literal notranslate"><span class="pre">tidyr</span></code> provides a clear and reproducible way of transforming data.</p>
 <p>One of my favourite <code class="docutils literal notranslate"><span class="pre">tidyr</span></code> functions is the complete function, which can be used to populate an incomplete table of triangular claims data with missing cohort and development period entries.</p>
 </div>
 <div class="section" id="dplyr">
-<h1>dplyr<a class="headerlink" href="#dplyr" title="Permalink to this headline">¶</a></h1>
+<h2>dplyr<a class="headerlink" href="#dplyr" title="Permalink to this headline">¶</a></h2>
 <p>Once data has been imported and tidied, <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> contains the functions to filter, group, merge and summarise data.
 The speed of operations is also less sensitive to dataset size than Excel – unlike Index Match, which will break down on a few thousand rows of data, <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>’s equivalent <code class="docutils literal notranslate"><span class="pre">left_join</span></code> function can handle millions of rows in a matter of seconds.</p>
 <p>If, for example, you have separate claims data files for individual lines of business, <code class="docutils literal notranslate"><span class="pre">left_join</span></code> provides a convenient way of aligning all datasets with their appropriate development periods and cohorts in one table.</p>
@@ -508,7 +543,7 @@ In particular:</p>
 </ul>
 </div>
 <div class="section" id="where-to-look-next">
-<h1>Where to look next<a class="headerlink" href="#where-to-look-next" title="Permalink to this headline">¶</a></h1>
+<h2>Where to look next<a class="headerlink" href="#where-to-look-next" title="Permalink to this headline">¶</a></h2>
 <p>All packages have their pros and cons, although the tidyverse is both fast and easy to read, there is a trade-off present, namely speed and dependencies.
 If processing speed is your number one priority and you want to limit your dependencies, then the <a class="reference external" href="https://rdatatable.gitlab.io/data.table/">data.table package</a> may be of particular interest.
 The performances of popular data processing packages are benchmarked at <a class="reference external" href="https://h2oai.github.io/db-benchmark/">https://h2oai.github.io/db-benchmark/</a>, which can be a useful page to check before deciding what package to use for a certain piece of work.</p>
@@ -518,7 +553,7 @@ There is an active tidyverse community on Twitter and Stack Overflow with answer
 I also recommend following Keith McNulty, who shares a lot of useful material on LinkedIn, <a class="reference external" href="https://towardsdatascience.com/">Towards Data Science</a> and his <a class="reference external" href="https://drkeithmcnulty.com/">own blog</a> as well as having a look at the <a class="reference external" href="https://www.tidyverse.org/">tidyverse website</a> itself.</p>
 </div>
 <div class="section" id="final-take-away">
-<h1>Final take away<a class="headerlink" href="#final-take-away" title="Permalink to this headline">¶</a></h1>
+<h2>Final take away<a class="headerlink" href="#final-take-away" title="Permalink to this headline">¶</a></h2>
 <p>Whether you work with big data or not, the tidyverse provides a great framework to write reproducible, easy-to-follow code for manipulating and summarising data.
 It will certainly help to:</p>
 <ul class="simple">
@@ -526,6 +561,7 @@ It will certainly help to:</p>
 <li><p>improve the interpretation and speed of existing R models</p></li>
 <li><p>construct new models/data processing systems in a harmonious framework</p></li>
 </ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -552,7 +588,21 @@ It will certainly help to:</p>
               
         
             <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="MLRWP_R_DataTable.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">data.table for actuaries (R)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="version_control.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Version control</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
