@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -413,7 +413,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -471,7 +471,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -536,7 +536,249 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>R: data.table for actuaries</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-data-table">
+   What is data.table?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-use-data-table">
+   Why use data.table?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#now-for-the-details">
+   Now for the details
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-table-is-fast">
+     data.table is fast
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-table-is-actively-maintained">
+     data.table is actively maintained
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-table-has-no-dependencies">
+     data.table has no dependencies
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-table-is-flexible">
+     data.table is flexible
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#concise-syntax">
+     Concise syntax
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resources-to-learn-data-table">
+   Resources to learn data.table
+  </a>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="r-data-table-for-actuaries">
+<h1>R: data.table for actuaries<a class="headerlink" href="#r-data-table-for-actuaries" title="Permalink to this headline">¶</a></h1>
+<p><em>This is the second of two articles that discusses packages in R that are useful for data manipulation.</em>
+<em>The <span class="xref myst">first article</span> covers the tidyverse ecosystem of packages.</em></p>
+<div class="section" id="what-is-data-table">
+<h2>What is data.table?<a class="headerlink" href="#what-is-data-table" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">data.table</span></code> is a package for carrying out data manipulations in R of tabular data. This includes:</p>
+<ul class="simple">
+<li><p>adding and removing columns in a data set</p></li>
+<li><p>filtering columns</p></li>
+<li><p>sorting data</p></li>
+<li><p>joining different data sources</p></li>
+<li><p>rolling joins</p></li>
+<li><p>summarising data</p></li>
+</ul>
+<p>Tabular structure includes columns of data where that data column is actually a list (unsurprisingly, called a list column).
+This greatly increases what you can do with your data.
+Essentially, if you need to do any type of data manipulation, you can probably do it with <code class="docutils literal notranslate"><span class="pre">data.table</span></code>.</p>
+</div>
+<div class="section" id="why-use-data-table">
+<h2>Why use data.table?<a class="headerlink" href="#why-use-data-table" title="Permalink to this headline">¶</a></h2>
+<p>There are a number of reasons for choosing <code class="docutils literal notranslate"><span class="pre">data.table</span></code>:</p>
+<ul class="simple">
+<li><p>It is very fast and memory efficient, even for large data sets</p></li>
+<li><p>Actively maintained and used by many people</p></li>
+<li><p>No dependencies other than baseR</p></li>
+<li><p>Flexible</p></li>
+<li><p>Concise syntax</p></li>
+</ul>
+<p>Of course, there are other options for manipulating data.
+Popular choices include dplyr from the tidyverse suite, SQL software, or even just the tools in baseR.
+In this post we will focus on <code class="docutils literal notranslate"><span class="pre">data.table</span></code>.</p>
+</div>
+<div class="section" id="now-for-the-details">
+<h2>Now for the details<a class="headerlink" href="#now-for-the-details" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-table-is-fast">
+<h3>data.table is fast<a class="headerlink" href="#data-table-is-fast" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">data.table</span></code> is much faster than dplyr or baseR for data manipulation tasks and can handle larger datasets.
+All development of data.table is done with speed in mind. It uses a number of tricks to produce better performance:</p>
+<ul class="simple">
+<li><p>Adding or removing columns from a data.table are done by reference or modifying in place, rather than by copying the entire table to a new location in memory.</p></li>
+<li><p>A data.table may have a key - once the key is created, extracting subgroups or joining tables by that key are extremely quick. Similarly, secondary indices allow fast access for other variables.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data.table</span></code> supplies a number of optimised functions - e.g. <code class="docutils literal notranslate"><span class="pre">fread()</span></code> and <code class="docutils literal notranslate"><span class="pre">fwrite()</span></code> to read/write CSV files, <code class="docutils literal notranslate"><span class="pre">fifelse()</span></code>, <code class="docutils literal notranslate"><span class="pre">fcoalesce()</span></code>. <code class="docutils literal notranslate"><span class="pre">fread()</span></code> and <code class="docutils literal notranslate"><span class="pre">fwrite()</span></code> are so fast that there are many people who use the <code class="docutils literal notranslate"><span class="pre">data.table</span></code> package solely to access these functions.</p></li>
+</ul>
+<p>Some benchmarks for data manipulation are maintained at <a class="reference external" href="https://h2oai.github.io/db-benchmark/">https://h2oai.github.io/db-benchmark/</a>.
+Timings are given for datasets of different sizes - as data sets get larger, <code class="docutils literal notranslate"><span class="pre">data.table</span></code> really shines.
+Google data.table performance and you will find this message repeated in many places.</p>
+<p>Machine learning and large amounts of data often go hand-in-hand.
+So if you are doing your data manipulation in R, and have large amounts of data, you should strongly consider using <code class="docutils literal notranslate"><span class="pre">data.table</span></code>.</p>
+<p>Similarly, if a lot of your work involves programming with large amounts of data, or where speed and memory optimisation is important, then <code class="docutils literal notranslate"><span class="pre">data.table</span></code> has a lot to offer.</p>
+</div>
+<div class="section" id="data-table-is-actively-maintained">
+<h3>data.table is actively maintained<a class="headerlink" href="#data-table-is-actively-maintained" title="Permalink to this headline">¶</a></h3>
+<p>In the open source world, it is important to consider carefully the packages you are using before selecting a tool for repeat use.</p>
+<ul class="simple">
+<li><p>Are they actively maintained?</p></li>
+<li><p>Are bugs quickly fixed?</p></li>
+<li><p>Are new features regularly added?</p></li>
+<li><p>Are lots of people using the package to find the bugs / missing features?</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">data.table</span></code> is a very popular package and is regularly maintained.</p>
+</div>
+<div class="section" id="data-table-has-no-dependencies">
+<h3>data.table has no dependencies<a class="headerlink" href="#data-table-has-no-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>Strictly speaking, it has no dependencies other than baseR, with a policy to make the dependency on baseR as old as possible for as long as possible.
+For example, the current release of data.table (V1.31.1 as at October 2020) will still work with R v3.1.0 which was released in April 2014.
+This leads to a more stable product - code that you write now to manipulate data will most likely still work in 2 or 3 years time - and you won’t have to update 20 different packages before running that code either.</p>
+</div>
+<div class="section" id="data-table-is-flexible">
+<h3>data.table is flexible<a class="headerlink" href="#data-table-is-flexible" title="Permalink to this headline">¶</a></h3>
+<p>As noted above, <code class="docutils literal notranslate"><span class="pre">data.table</span></code> contains a full suite of data manipulation tools.
+Furthermore, a data.table is also a data.frame so any data.frame code will work on a data.table.
+So you lose nothing, but gain a lot.</p>
+</div>
+<div class="section" id="concise-syntax">
+<h3>Concise syntax<a class="headerlink" href="#concise-syntax" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">data.table</span></code> syntax is very concise and minimalist.
+Whether this is a pro or con is subjective - this will appeal to some but the steep learning curve will be off-putting for others.
+Speaking for myself, verbose code such as <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> or SQL or SAS make my head and fingers hurt(!) - terse data.table code is much more appealing to me.
+It’s fast to read and fast to type. However, the functions in <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> are more transparent to newcomers.</p>
+<p>For those new to <code class="docutils literal notranslate"><span class="pre">data.table</span></code>, there are plenty of online resources to draw on. In my experience, I’ve managed to find example code for many complex data manipulation jobs on StackOverflow; the difficult part has been coming up with the appropriate search phrase.</p>
+<p>As an example of the syntax, the code below:</p>
+<ul class="simple">
+<li><p>extracts the subset of the iris data where Sepal.Length &lt; 6</p></li>
+<li><p>groups the data by Species</p></li>
+<li><p>calculates the number and the mean of the Sepal.Width and Petal.Length in each group and assigns column names to these summary statistics</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
+
+<span class="nf">data</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
+<span class="nf">setDT</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>    <span class="c1"># make iris a data.table</span>
+
+<span class="c1"># now do the data manipulation operations</span>
+<span class="n">iris</span><span class="p">[</span><span class="n">Sepal.Length</span> <span class="o">&lt;</span> <span class="m">6.0</span><span class="p">,</span> 
+     <span class="nf">.</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="n">.N</span><span class="p">,</span> 
+       <span class="n">mean_sepal_width</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Sepal.Width</span><span class="p">),</span> 
+       <span class="n">mean_petal_length</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Petal.Length</span><span class="p">)),</span> 
+     <span class="n">keyby</span><span class="o">=</span><span class="nf">.</span><span class="p">(</span><span class="n">Species</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.table: 3 × 4</caption>
+<thead>
+	<tr><th scope=col>Species</th><th scope=col>num</th><th scope=col>mean_sepal_width</th><th scope=col>mean_petal_length</th></tr>
+	<tr><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>setosa    </td><td>50</td><td>3.428000</td><td>1.462000</td></tr>
+	<tr><td>versicolor</td><td>26</td><td>2.673077</td><td>3.969231</td></tr>
+	<tr><td>virginica </td><td> 7</td><td>2.714286</td><td>4.971429</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<br></div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>If you or your team use R, then you should consider having <code class="docutils literal notranslate"><span class="pre">data.table</span></code> in your toolkit, particularly if:</p>
+<ul class="simple">
+<li><p>you work with large data sets in R</p></li>
+<li><p>you need fast, efficient code</p></li>
+<li><p>You need to optimise your use of RAM</p></li>
+<li><p>you are writing packages, software or repeatable tasks and want to minimise your dependencies for more robust and easier to maintain code.</p></li>
+<li><p>you want shorter code</p></li>
+</ul>
+</div>
+<div class="section" id="resources-to-learn-data-table">
+<h2>Resources to learn data.table<a class="headerlink" href="#resources-to-learn-data-table" title="Permalink to this headline">¶</a></h2>
+<p>The obvious place to start is with the package itself and its help documentation (links below), but there are many additional on-line resources to learn data.table.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/Rdatatable/data.table">Package home on github</a> including news, updates, a brief guide and a cheat sheet.</p></li>
+<li><p><a class="reference external" href="https://cran.r-project.org/web/packages/data.table/index.html">CRAN home with links to vignettes</a>.
+Vignettes also available in R via <code class="docutils literal notranslate"><span class="pre">browseVignettes(package=&quot;data.table&quot;)</span></code> after you have installed the package.
+There are currently 9 of these covering a wide range of topics.</p></li>
+<li><p>If you are more comfortable with <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> code and don’t mind the dependencies, then <a class="reference external" href="https://cran.r-project.org/web/packages/dtplyr/index.html">dtplyr</a> provides a <code class="docutils literal notranslate"><span class="pre">data.table</span></code> backend to <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ActuariesInstitute/cookbook",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -730,17 +972,15 @@ There are currently 9 of these covering a wide range of topics.</p></li>
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By YDAWG, DAPC, YAC and other contributors.<br/>
-        
-          <div class="extra_footer">
-             The Actuaries' Analytical Cookbook is a series of data and analytics recipes to help actuaries quickly get started with a new project.   This site is intended to be a resource to actuaries in both data science and traditional fields.  Opinions expressed in this publication are the opinions of contributors and do not necessarily represent those of either the Institute of Actuaries of Australia (the ‘Institute’), its members, directors, officers, employees, agents, or that of the employers of the contributors. <br>© Institute of Actuaries of Australia and Contributors 2021. All rights reserved.
-          </div>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By YDAWG, DAPC, YAC and other contributors.<br/>
+    
+      <div class="extra_footer">
+         The Actuaries' Analytical Cookbook is a series of data and analytics recipes to help actuaries quickly get started with a new project.   This site is intended to be a resource to actuaries in both data science and traditional fields.  Opinions expressed in this publication are the opinions of contributors and do not necessarily represent those of either the Institute of Actuaries of Australia (the ‘Institute’), its members, directors, officers, employees, agents, or that of the employers of the contributors. <br>© Institute of Actuaries of Australia and Contributors 2021. All rights reserved.
+      </div>
+  </p>
+</footer>
 </main>
 
 

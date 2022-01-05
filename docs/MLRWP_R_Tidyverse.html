@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -413,7 +413,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -471,7 +471,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -509,7 +509,147 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>R: The tidyverse for actuaries</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#readr">
+   readr
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tidyr">
+   tidyr
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dplyr">
+   dplyr
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-to-look-next">
+   Where to look next
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#final-take-away">
+   Final take away
+  </a>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="r-the-tidyverse-for-actuaries">
+<h1>R: The tidyverse for actuaries<a class="headerlink" href="#r-the-tidyverse-for-actuaries" title="Permalink to this headline">¶</a></h1>
+<p><em>This is the first of two articles that will discuss packages in R that are useful for data manipulation.</em>
+<em>The second article will discuss the data.table package.</em>
+<em>Our <span class="xref myst">previous post</span> also has some comments on the tidyverse.</em></p>
+<p><strong>A short introduction to how R’s “tidyverse” library makes data processing easy</strong></p>
+<p>The <a class="reference external" href="https://www.tidyverse.org/">tidyverse</a>, developed by Hadley Wickham, is a collection of R packages designed to make every step of data analysis clear and easy to perform.
+Throughout this blog, I introduce the three packages from the tidyverse library that I have found most useful for my own actuarial work and explain how they can help overcome the shortcomings of more traditional methods such as Excel:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">readr</span></code> – for reading and writing data quickly</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tidyr</span></code> – for cleaning data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dplyr</span></code> – for summarising and transforming data</p></li>
+</ul>
+<p>You can download the full contents of the tidyverse in one go by installing the tidyverse “mega-package” directly.
+Alternatively you can download each package separately, as and when needed.
+For more information about using R, in general, our blog <span class="xref myst">Introduction to R</span>, provides a helpful introduction.</p>
+<div class="section" id="readr">
+<h2>readr<a class="headerlink" href="#readr" title="Permalink to this headline">¶</a></h2>
+<p>Datasets with billions of data points are no longer uncommon.
+Just 20 years of a company’s premium data can easily exceed this.
+By specifying the number of rows and columns to be imported, <code class="docutils literal notranslate"><span class="pre">readr</span></code>’s <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function allows users to import large datasets (or subsets of the data) into R quickly.
+It is faster than opening the same files in Excel, particularly when your only purpose is to check the first few rows of content.
+This becomes especially practical when the number of rows of data exceed the number of rows in an Excel spreadsheet.
+Similarly, once you’ve used R to import and play around with your data, you can quickly write the file back out using the <code class="docutils literal notranslate"><span class="pre">write_csv</span></code> function.</p>
+</div>
+<div class="section" id="tidyr">
+<h2>tidyr<a class="headerlink" href="#tidyr" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">tidyr</span></code> contains a collection of tools for transforming data into an easy-to-process format.
+To list a few, there are functions that can remove/replace NAs; separate out individual column entries; and expand/contract datasets into more manageable formats.
+Rather than resort to Excel, where these operations can often require hard coding or complex functions, <code class="docutils literal notranslate"><span class="pre">tidyr</span></code> provides a clear and reproducible way of transforming data.</p>
+<p>One of my favourite <code class="docutils literal notranslate"><span class="pre">tidyr</span></code> functions is the complete function, which can be used to populate an incomplete table of triangular claims data with missing cohort and development period entries.</p>
+</div>
+<div class="section" id="dplyr">
+<h2>dplyr<a class="headerlink" href="#dplyr" title="Permalink to this headline">¶</a></h2>
+<p>Once data has been imported and tidied, <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> contains the functions to filter, group, merge and summarise data.
+The speed of operations is also less sensitive to dataset size than Excel – unlike Index Match, which will break down on a few thousand rows of data, <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>’s equivalent <code class="docutils literal notranslate"><span class="pre">left_join</span></code> function can handle millions of rows in a matter of seconds.</p>
+<p>If, for example, you have separate claims data files for individual lines of business, <code class="docutils literal notranslate"><span class="pre">left_join</span></code> provides a convenient way of aligning all datasets with their appropriate development periods and cohorts in one table.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> syntax sits at the heart of the tidyverse and is therefore a great first package to learn.
+The function names are deliberately interpretable making collaborative projects easy to follow.
+For those already familiar with <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>, take a look at the blog post accompanying the <a class="reference external" href="https://www.tidyverse.org/blog/2020/06/dplyr-1-0-0/">most recent major update</a>, which lists some useful new features.</p>
+<p>Since all tidyverse packages share the same design philosophy, each new package learned can naturally be incorporated into your existing models/processes.</p>
+<p>It’s also possible to use <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> with other backends for accessing code.
+In particular:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dtplyr</span></code> works with <code class="docutils literal notranslate"><span class="pre">data.table</span></code> so you have access to <code class="docutils literal notranslate"><span class="pre">data.table</span></code>’s speed while using <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> syntax</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dbplyr</span></code> translates your dplyr code to SQL for data stored in relational databases</p></li>
+</ul>
+</div>
+<div class="section" id="where-to-look-next">
+<h2>Where to look next<a class="headerlink" href="#where-to-look-next" title="Permalink to this headline">¶</a></h2>
+<p>All packages have their pros and cons, although the tidyverse is both fast and easy to read, there is a trade-off present, namely speed and dependencies.
+If processing speed is your number one priority and you want to limit your dependencies, then the <a class="reference external" href="https://rdatatable.gitlab.io/data.table/">data.table package</a> may be of particular interest.
+The performances of popular data processing packages are benchmarked at <a class="reference external" href="https://h2oai.github.io/db-benchmark/">https://h2oai.github.io/db-benchmark/</a>, which can be a useful page to check before deciding what package to use for a certain piece of work.</p>
+<p>I encourage anyone wishing to learn more to read <a class="reference external" href="https://r4ds.had.co.nz/">R for data science</a> by Garrett Grolemund and Hadley Wickham, which is available for free online.
+It formally introduces the points above as well as other tidyverse tools for data science including the <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> package for data visualisation, the <code class="docutils literal notranslate"><span class="pre">stringr</span></code> package for working with strings and the <code class="docutils literal notranslate"><span class="pre">purrr</span></code> package for more advanced functional programming.
+There is an active tidyverse community on Twitter and Stack Overflow with answers to practical problems other users have already faced and the packages themselves are constantly being developed and improved.
+I also recommend following Keith McNulty, who shares a lot of useful material on LinkedIn, <a class="reference external" href="https://towardsdatascience.com/">Towards Data Science</a> and his <a class="reference external" href="https://drkeithmcnulty.com/">own blog</a> as well as having a look at the <a class="reference external" href="https://www.tidyverse.org/">tidyverse website</a> itself.</p>
+</div>
+<div class="section" id="final-take-away">
+<h2>Final take away<a class="headerlink" href="#final-take-away" title="Permalink to this headline">¶</a></h2>
+<p>Whether you work with big data or not, the tidyverse provides a great framework to write reproducible, easy-to-follow code for manipulating and summarising data.
+It will certainly help to:</p>
+<ul class="simple">
+<li><p>avoid hard coding and misinterpreting complex excel functions</p></li>
+<li><p>improve the interpretation and speed of existing R models</p></li>
+<li><p>construct new models/data processing systems in a harmonious framework</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ActuariesInstitute/cookbook",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -628,17 +768,15 @@ It will certainly help to:</p>
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By YDAWG, DAPC, YAC and other contributors.<br/>
-        
-          <div class="extra_footer">
-             The Actuaries' Analytical Cookbook is a series of data and analytics recipes to help actuaries quickly get started with a new project.   This site is intended to be a resource to actuaries in both data science and traditional fields.  Opinions expressed in this publication are the opinions of contributors and do not necessarily represent those of either the Institute of Actuaries of Australia (the ‘Institute’), its members, directors, officers, employees, agents, or that of the employers of the contributors. <br>© Institute of Actuaries of Australia and Contributors 2021. All rights reserved.
-          </div>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By YDAWG, DAPC, YAC and other contributors.<br/>
+    
+      <div class="extra_footer">
+         The Actuaries' Analytical Cookbook is a series of data and analytics recipes to help actuaries quickly get started with a new project.   This site is intended to be a resource to actuaries in both data science and traditional fields.  Opinions expressed in this publication are the opinions of contributors and do not necessarily represent those of either the Institute of Actuaries of Australia (the ‘Institute’), its members, directors, officers, employees, agents, or that of the employers of the contributors. <br>© Institute of Actuaries of Australia and Contributors 2021. All rights reserved.
+      </div>
+  </p>
+</footer>
 </main>
 
 
