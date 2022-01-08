@@ -17,40 +17,28 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import os
-import sys
-import zipfile
+import pandas as pd # Used for data management.
 
+import matplotlib.pyplot as plt
+%matplotlib inline 
 
-def csv_files(source_dir):
-    for filename in os.listdir(source_dir):
-        if filename.endswith('.csv'):
-            yield filename
-
-
-source_dir = '~/Downloads/drive-download-20211120T082520Z-001' 
-dest_dir = '~/Downloads/drive-download-20211120T082520Z-001'
-
-os.chdir(dest_dir)  # To work around zipfile limitations
-
-for csv_filename in csv_files(source_dir):
-    file_root = os.path.splitext(csv_filename)[0]
-    zip_file_name = file_root + '.zip'
-    zip_file_path = os.path.join(dest_dir, zip_file_name)
-    with zipfile.ZipFile(zip_file_path, 'w', zipfile.ZIP_DEFLATED) as zf:
-        zf.write(csv_filename)
+# The following scikit-learn libraries will be used
+# to standardise the features and run K-means clustering.
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
 
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/tmp/ipykernel_3137/2622171480.py[0m in [0;36m<module>[0;34m[0m
-[1;32m     13[0m [0mdest_dir[0m [0;34m=[0m [0;34m'~/Downloads/drive-download-20211120T082520Z-001'[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     14[0m [0;34m[0m[0m
-[0;32m---> 15[0;31m [0mos[0m[0;34m.[0m[0mchdir[0m[0;34m([0m[0mdest_dir[0m[0;34m)[0m  [0;31m# To work around zipfile limitations[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     16[0m [0;34m[0m[0m
-[1;32m     17[0m [0;32mfor[0m [0mcsv_filename[0m [0;32min[0m [0mcsv_files[0m[0;34m([0m[0msource_dir[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m/tmp/ipykernel_3049/1597747318.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      6[0m [0;31m# The following scikit-learn libraries will be used[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      7[0m [0;31m# to standardise the features and run K-means clustering.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 8[0;31m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mpipeline[0m [0;32mimport[0m [0mmake_pipeline[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      9[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mpreprocessing[0m [0;32mimport[0m [0mStandardScaler[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     10[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mcluster[0m [0;32mimport[0m [0mKMeans[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '~/Downloads/drive-download-20211120T082520Z-001'
-FileNotFoundError: [Errno 2] No such file or directory: '~/Downloads/drive-download-20211120T082520Z-001'
+[0;31mModuleNotFoundError[0m: No module named 'sklearn'
+ModuleNotFoundError: No module named 'sklearn'
 

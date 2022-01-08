@@ -155,11 +155,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="MLRWP_R_Tidyverse.html">
-   R: The tidyverse for actuaries
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="MLRWP_R_DataTable.html">
    R: data.table for actuaries
   </a>
@@ -240,21 +235,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="MLRWP_Py_triangles_example.html">
    Py: Machine Learning Triangles
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="MLRWP_R_Bauldry_Notebook_1_SimulateData_v1.html">
-   R: Bauldry ML Reserving Pt 1
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="MLRWP_R_Bauldry_Notebook_2_CreateReservingDatabase_v1.html">
-   R: Bauldry ML Reserving Pt 2
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="MLRWP_R_Bauldry_Notebook_3_ApplyMachineLearningReserving_v1.html">
-   R: Bauldry ML Reserving Pt 3
   </a>
  </li>
 </ul>
@@ -781,6 +761,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="r-reserving-with-lasso">
 <h1>R: Reserving with LASSO<a class="headerlink" href="#r-reserving-with-lasso" title="Permalink to this headline">¶</a></h1>
+<p><em>This article was originally created by Grainne McGuire and Greg Taylor and published in the <a class="reference external" href="https://institute-and-faculty-of-actuaries.github.io/mlr-blog/">General Insurance Machine Learning for Reserving Working Party (“MLR-WP”) blog</a>. The MLR-WP is an international research group on machine learning techniques to reserving, with over 50 actuaries from around the globe. The goal of the group is to bring machine learning techniques into widespread adoption ‘on the ground’ by identifying what the barriers are, communicating any benefits, and helping develop the research techniques in pragmatic ways. Whilst some articles have been brought into this cookbook, consider exploring the <a class="reference external" href="https://institute-and-faculty-of-actuaries.github.io/mlr-blog/">blog</a> further for additional content including detailed walkthroughs of more advanced models.</em></p>
 <p><em>In this post we look at how regularised regression techniques such as the LASSO can be used to set reserves for triangles.</em></p>
 <p>The <span class="xref myst">Foundation Workstream’s first post</span> set out a suggested path to getting to grips with machine learning. The first step was to start by applying GLMs to reserving and one way of doing this was covered in our most recent post (<a class="reference external" href="https://institute-and-faculty-of-actuaries.github.io/mlr-blog/post/glms/">Reserving with GLMs</a>).</p>
 <p>In this post, we move onto the next step which is to use regularised regression methods. These allow us to build something that looks like a GLM but in a machine learning way - i.e. the machine selects the model.
