@@ -1,0 +1,3515 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL: Queries for Making Triangles &#8212; Actuaries&#39; Analytical Cookbook</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="R: Reserving with GLMs" href="MLRWP_R_GLMs.html" />
+    <link rel="prev" title="R: Life Industry Stats in Tableau and R" href="life_stats.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/actuaries-logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Actuaries' Analytical Cookbook</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="about_py.html">
+   About Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="getting_started.html">
+   Setting up Your Python Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_by_example.html">
+   An Introductory Example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="learn_more.html">
+   Learn More
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Useful_Python_packages.html">
+   Useful Python packages for Data Science
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to R
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="about_R.html">
+   About R
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="getting_started_R.html">
+   Setting Up R
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="introductory_R.html">
+   Introduction to R
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="intermediate_R.html">
+   Next Steps With R
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="top_ten_r_packages.html">
+   Useful Packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_DataTable.html">
+   R: data.table for actuaries
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Workflow Management
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="version_control.html">
+   Version control
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Regression, Classification and Technical Price
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAA_M05_CS1.html">
+   Py: Customer Churn Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="multitasking_risk_pricing.html">
+   Py/R: Multitasking Risk Pricing Using Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="py_shap_values.html">
+   Py: Explainable Models with SHAP
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Life Insurance
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="LifeRecipeBook.html">
+   R: Life Modelling Recipes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="life_stats.html">
+   R: Life Industry Stats in Tableau and R
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  General Insurance
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   SQL: Queries for Making Triangles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_GLMs.html">
+   R: Reserving with GLMs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_Lasso.html">
+   R: Reserving with LASSO
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_mlr3.html">
+   R: Machine Learning Triangles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_Py_triangles_example.html">
+   Py: Machine Learning Triangles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_Bauldry_Notebook_1_SimulateData_v1.html">
+   R: Bauldry ML Reserving Pt 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_Bauldry_Notebook_2_CreateReservingDatabase_v1.html">
+   R: Bauldry ML Reserving Pt 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MLRWP_R_Bauldry_Notebook_3_ApplyMachineLearningReserving_v1.html">
+   R: Bauldry ML Reserving Pt 3
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Unsupervised Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAA_M06_CS1.html">
+   Py: Socio-Economic Index Construction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAA_M06_CS2.html">
+   Py: Clustering Credit Card Fraud
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAA_M06_Ex4.html">
+   Py: K-means clustering of COVID dataset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAA_M06_Ex5.html">
+   Py: Hierarchical clustering on COVID dataset
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Natural Language Processing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="R_case_study_word_cloud.html">
+   R: Word Cloud Case Study
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="textClassificationEntry.html">
+   Py: Text Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAA_M05_Ex10.html">
+   Py: Decision Tree Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAA_M05_Ex18.html">
+   Py: Neural Net Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAA_M07_CS1.html">
+   Py: Classifying review sentiment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAA_M07_CS2.html">
+   Py: Customer Sentiment Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Business Optimization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAA_2021_S2_Tutorial10_exercise_scipy.html">
+   Py: Linear Programming
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Image Recognition
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAA_M05_CS2.html">
+   Py: Image Recognition
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Ethics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="automated_decision.html">
+   Automated Decision-Making Systems
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contributing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="contributing.html">
+   Contributing
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/SQL Query for Triangles.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ActuariesInstitute/cookbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/ActuariesInstitute/cookbook/edit/main/cookbook/docs/SQL Query for Triangles.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ActuariesInstitute/cookbook/main?urlpath=tree/cookbook/docs/SQL Query for Triangles.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/ActuariesInstitute/cookbook/blob/main/cookbook/docs/SQL Query for Triangles.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transaction-data">
+   Transaction Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-sql">
+     Using SQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guaranteeing-all-rows-columns">
+   Guaranteeing all rows/columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion-and-next-steps">
+   Conclusion and next steps:
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>SQL: Queries for Making Triangles</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transaction-data">
+   Transaction Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-sql">
+     Using SQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guaranteeing-all-rows-columns">
+   Guaranteeing all rows/columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion-and-next-steps">
+   Conclusion and next steps:
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="sql-queries-for-making-triangles">
+<h1>SQL: Queries for Making Triangles<a class="headerlink" href="#sql-queries-for-making-triangles" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Here is an example of how to use SQL to convert a transactional claims dataset to a triangle.</p>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>This session uses <code class="docutils literal notranslate"><span class="pre">duckdb</span></code> for SQL:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip show duckdb
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: duckdb
+Version: 0.3.2
+Summary: DuckDB embedded database
+Home-page: https://www.duckdb.org
+Author: 
+Author-email: 
+License: MIT
+Location: /Users/jacky/miniforge3/lib/python3.9/site-packages
+Requires: numpy
+Required-by: 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Import the libraries:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">duckdb</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># start an in-memory database</span>
+<span class="n">con</span> <span class="o">=</span> <span class="n">duckdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="s1">&#39;:memory:&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="transaction-data">
+<h2>Transaction Data<a class="headerlink" href="#transaction-data" title="Permalink to this headline">¶</a></h2>
+<p>For some example reserving data, we use a simulated dataset from the SynthETIC R package. We will need to do some manipulation to it to look like a real dataset and will use pandas to do that.</p>
+<p>Duckdb can read and query CSVs directly from file, see <a class="reference external" href="https://duckdb.org/docs/data/csv">this link</a> - but with the internet it’s easier to read it with pandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;https://raw.githubusercontent.com/JackyP/SyntheticExports/main/synthetic_test_transaction_dataset.csv&quot;</span>
+<span class="p">)</span>
+<span class="n">transactions</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>claim_no</th>
+      <th>pmt_no</th>
+      <th>occurrence_period</th>
+      <th>occurrence_time</th>
+      <th>claim_size</th>
+      <th>notidel</th>
+      <th>setldel</th>
+      <th>payment_time</th>
+      <th>payment_period</th>
+      <th>payment_size</th>
+      <th>payment_inflated</th>
+      <th>payment_delay</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.623835</td>
+      <td>785870.789628</td>
+      <td>0.065163</td>
+      <td>18.228022</td>
+      <td>4.197594</td>
+      <td>5</td>
+      <td>25104.778182</td>
+      <td>25631.935128</td>
+      <td>3.508595</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0.623835</td>
+      <td>785870.789628</td>
+      <td>0.065163</td>
+      <td>18.228022</td>
+      <td>7.096012</td>
+      <td>8</td>
+      <td>26176.620067</td>
+      <td>27112.545886</td>
+      <td>2.898418</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0.623835</td>
+      <td>785870.789628</td>
+      <td>0.065163</td>
+      <td>18.228022</td>
+      <td>11.157697</td>
+      <td>12</td>
+      <td>26333.186750</td>
+      <td>27828.701791</td>
+      <td>4.061685</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0.623835</td>
+      <td>785870.789628</td>
+      <td>0.065163</td>
+      <td>18.228022</td>
+      <td>14.445762</td>
+      <td>15</td>
+      <td>26341.097381</td>
+      <td>28293.903794</td>
+      <td>3.288065</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>5</td>
+      <td>1</td>
+      <td>0.623835</td>
+      <td>785870.789628</td>
+      <td>0.065163</td>
+      <td>18.228022</td>
+      <td>18.452453</td>
+      <td>19</td>
+      <td>592456.913866</td>
+      <td>649127.994604</td>
+      <td>4.006691</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>18978</th>
+      <td>3624</td>
+      <td>2</td>
+      <td>40</td>
+      <td>39.767468</td>
+      <td>270737.291484</td>
+      <td>0.666458</td>
+      <td>2.920804</td>
+      <td>41.622132</td>
+      <td>42</td>
+      <td>6586.081338</td>
+      <td>8093.128975</td>
+      <td>0.670541</td>
+    </tr>
+    <tr>
+      <th>18979</th>
+      <td>3624</td>
+      <td>3</td>
+      <td>40</td>
+      <td>39.767468</td>
+      <td>270737.291484</td>
+      <td>0.666458</td>
+      <td>2.920804</td>
+      <td>42.081820</td>
+      <td>43</td>
+      <td>9716.975065</td>
+      <td>11967.648057</td>
+      <td>0.459688</td>
+    </tr>
+    <tr>
+      <th>18980</th>
+      <td>3624</td>
+      <td>4</td>
+      <td>40</td>
+      <td>39.767468</td>
+      <td>270737.291484</td>
+      <td>0.666458</td>
+      <td>2.920804</td>
+      <td>42.407479</td>
+      <td>43</td>
+      <td>7770.338755</td>
+      <td>9585.568042</td>
+      <td>0.325659</td>
+    </tr>
+    <tr>
+      <th>18981</th>
+      <td>3624</td>
+      <td>5</td>
+      <td>40</td>
+      <td>39.767468</td>
+      <td>270737.291484</td>
+      <td>0.666458</td>
+      <td>2.920804</td>
+      <td>43.066655</td>
+      <td>44</td>
+      <td>203618.760893</td>
+      <td>252007.199917</td>
+      <td>0.659176</td>
+    </tr>
+    <tr>
+      <th>18982</th>
+      <td>3624</td>
+      <td>6</td>
+      <td>40</td>
+      <td>39.767468</td>
+      <td>270737.291484</td>
+      <td>0.666458</td>
+      <td>2.920804</td>
+      <td>43.354731</td>
+      <td>44</td>
+      <td>34908.748394</td>
+      <td>43266.205665</td>
+      <td>0.288075</td>
+    </tr>
+  </tbody>
+</table>
+<p>18983 rows × 12 columns</p>
+</div></div></div>
+</div>
+<p>The dataset to use initially is the transaction dataset. It contains paid transactions only.</p>
+<p>For this exercise since we want to explain how to create a triangle from a real dataset, we want to show how you can create the periods from scratch. So we will dummy up some dates, hide some columns and create a dataset that resembles what you may get in practice. Feel free to skim through this part.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="n">relativedelta</span>
+
+<span class="n">dummy_start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;occurrence_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">dummy_start_date</span> <span class="o">+</span> 
+               <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;occurrence_time&#39;</span><span class="p">]))</span> <span class="o">+</span> 
+               <span class="n">relativedelta</span><span class="p">(</span><span class="n">days</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;occurrence_time&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">28</span><span class="p">))</span>
+              <span class="p">),</span> 
+    <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="n">transactions</span><span class="p">[</span><span class="s1">&#39;payment_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">dummy_start_date</span> <span class="o">+</span> 
+               <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;payment_time&#39;</span><span class="p">]))</span> <span class="o">+</span> 
+               <span class="n">relativedelta</span><span class="p">(</span><span class="n">days</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;payment_time&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">28</span><span class="p">))</span>
+              <span class="p">),</span> 
+    <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">transactions2</span> <span class="o">=</span> <span class="n">transactions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">payment_time</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">,</span> 
+    <span class="p">[</span><span class="s2">&quot;claim_no&quot;</span><span class="p">,</span> <span class="s2">&quot;pmt_no&quot;</span><span class="p">,</span> <span class="s2">&quot;occurrence_date&quot;</span><span class="p">,</span> <span class="s2">&quot;payment_date&quot;</span><span class="p">,</span> <span class="s2">&quot;payment_size&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So we will register this pandas table in SQL and pretend we had a dataset that looks like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># register the table in sql</span>
+<span class="n">con</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s1">&#39;transactions_view&#39;</span><span class="p">,</span> <span class="n">transactions2</span><span class="p">)</span>
+
+<span class="n">transactions2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>claim_no</th>
+      <th>pmt_no</th>
+      <th>occurrence_date</th>
+      <th>payment_date</th>
+      <th>payment_size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>2000-01-18</td>
+      <td>2000-05-06</td>
+      <td>25104.778182</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>2</td>
+      <td>2000-01-18</td>
+      <td>2000-08-03</td>
+      <td>26176.620067</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>3</td>
+      <td>2000-01-18</td>
+      <td>2000-12-05</td>
+      <td>26333.186750</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>4</td>
+      <td>2000-01-18</td>
+      <td>2001-03-13</td>
+      <td>26341.097381</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>5</td>
+      <td>2000-01-18</td>
+      <td>2001-07-13</td>
+      <td>592456.913866</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>18522</th>
+      <td>3540</td>
+      <td>1</td>
+      <td>2003-03-22</td>
+      <td>2003-04-15</td>
+      <td>7408.273603</td>
+    </tr>
+    <tr>
+      <th>18523</th>
+      <td>3540</td>
+      <td>2</td>
+      <td>2003-03-22</td>
+      <td>2003-04-23</td>
+      <td>7557.339854</td>
+    </tr>
+    <tr>
+      <th>18539</th>
+      <td>3543</td>
+      <td>1</td>
+      <td>2003-04-04</td>
+      <td>2003-04-25</td>
+      <td>11149.853130</td>
+    </tr>
+    <tr>
+      <th>18691</th>
+      <td>3570</td>
+      <td>1</td>
+      <td>2003-04-07</td>
+      <td>2003-04-26</td>
+      <td>3354.405206</td>
+    </tr>
+    <tr>
+      <th>18802</th>
+      <td>3588</td>
+      <td>1</td>
+      <td>2003-04-09</td>
+      <td>2003-04-26</td>
+      <td>2018.080359</td>
+    </tr>
+  </tbody>
+</table>
+<p>14951 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="using-sql">
+<h3>Using SQL<a class="headerlink" href="#using-sql" title="Permalink to this headline">¶</a></h3>
+<p>Here is the SQL query. Uncomment claim_no and pmt_no to test this query and see if it works.</p>
+<p>N.b. in the above code, we used a start date of 2000-01-01, and months.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE OR REPLACE VIEW triangle AS </span>
+<span class="s2">    SELECT </span>
+<span class="s2">        --claim_no,</span>
+<span class="s2">        --pmt_no,</span>
+<span class="s2">        DATE_DIFF(&#39;month&#39;, DATE &#39;2000-01-01&#39;, STRPTIME(occurrence_date, &#39;%Y-%m-</span><span class="si">%d</span><span class="s2">&#39;)) + 1 as occurrence_period,</span>
+<span class="s2">        DATE_DIFF(&#39;month&#39;, DATE &#39;2000-01-01&#39;, STRPTIME(payment_date, &#39;%Y-%m-</span><span class="si">%d</span><span class="s2">&#39;)) + 1 as payment_period,</span>
+<span class="s2">        DATE_DIFF(&#39;month&#39;, DATE &#39;2000-01-01&#39;, STRPTIME(payment_date, &#39;%Y-%m-</span><span class="si">%d</span><span class="s2">&#39;)) - </span>
+<span class="s2">          DATE_DIFF(&#39;month&#39;,  DATE &#39;2000-01-01&#39;, STRPTIME(occurrence_date, &#39;%Y-%m-</span><span class="si">%d</span><span class="s2">&#39;)) + 1 as development_period,        </span>
+<span class="s2">        SUM(payment_size) as payments</span>
+
+<span class="s2">    FROM </span>
+<span class="s2">        transactions_view</span>
+<span class="s2">    GROUP BY </span>
+<span class="s2">        --claim_no,</span>
+<span class="s2">        --pmt_no,        </span>
+<span class="s2">        occurrence_period,</span>
+<span class="s2">        development_period,</span>
+<span class="s2">        payment_period</span>
+<span class="s2">        </span>
+<span class="s2">    ORDER BY</span>
+<span class="s2">        --claim_no,</span>
+<span class="s2">        --pmt_no,        </span>
+<span class="s2">        occurrence_period,</span>
+<span class="s2">        development_period,</span>
+<span class="s2">        payment_period</span>
+<span class="s2">;</span>
+<span class="s2">        </span>
+<span class="s2">    SELECT * FROM triangle;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+<span class="n">triangle</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">fetchdf</span><span class="p">()</span>
+<span class="n">triangle</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>occurrence_period</th>
+      <th>payment_period</th>
+      <th>development_period</th>
+      <th>payments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>46985.029619</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>392545.850638</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+      <td>185946.113394</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>5</td>
+      <td>5</td>
+      <td>700630.302735</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>6</td>
+      <td>6</td>
+      <td>261024.509136</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>765</th>
+      <td>37</td>
+      <td>40</td>
+      <td>4</td>
+      <td>338030.875016</td>
+    </tr>
+    <tr>
+      <th>766</th>
+      <td>38</td>
+      <td>39</td>
+      <td>2</td>
+      <td>97489.963585</td>
+    </tr>
+    <tr>
+      <th>767</th>
+      <td>38</td>
+      <td>40</td>
+      <td>3</td>
+      <td>259540.894156</td>
+    </tr>
+    <tr>
+      <th>768</th>
+      <td>39</td>
+      <td>40</td>
+      <td>2</td>
+      <td>69383.491649</td>
+    </tr>
+    <tr>
+      <th>769</th>
+      <td>40</td>
+      <td>40</td>
+      <td>1</td>
+      <td>16522.338695</td>
+    </tr>
+  </tbody>
+</table>
+<p>770 rows × 4 columns</p>
+</div></div></div>
+</div>
+<p>For the triangle format, it is easier to pivot in pandas in Python or dplyr for R:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">triangle</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;occurrence_period&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;development_period&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;payments&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>development_period</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>...</th>
+      <th>30</th>
+      <th>31</th>
+      <th>32</th>
+      <th>33</th>
+      <th>34</th>
+      <th>35</th>
+      <th>36</th>
+      <th>37</th>
+      <th>38</th>
+      <th>39</th>
+    </tr>
+    <tr>
+      <th>occurrence_period</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>46985.029619</td>
+      <td>392545.850638</td>
+      <td>1.859461e+05</td>
+      <td>7.006303e+05</td>
+      <td>2.610245e+05</td>
+      <td>3.329688e+05</td>
+      <td>2.646413e+05</td>
+      <td>6.057430e+05</td>
+      <td>1.434176e+05</td>
+      <td>...</td>
+      <td>1.771805e+06</td>
+      <td>507751.595236</td>
+      <td>1.267975e+06</td>
+      <td>205780.737653</td>
+      <td>6226.894042</td>
+      <td>NaN</td>
+      <td>5.087788e+05</td>
+      <td>55918.782513</td>
+      <td>NaN</td>
+      <td>412516.399423</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>64334.385165</td>
+      <td>103991.537490</td>
+      <td>134383.992047</td>
+      <td>2.940818e+05</td>
+      <td>4.868833e+05</td>
+      <td>2.805029e+06</td>
+      <td>3.835312e+05</td>
+      <td>1.475784e+05</td>
+      <td>2.536358e+05</td>
+      <td>5.385814e+05</td>
+      <td>...</td>
+      <td>8.616884e+04</td>
+      <td>8745.529181</td>
+      <td>3.974022e+05</td>
+      <td>714117.521603</td>
+      <td>89465.857732</td>
+      <td>128332.630805</td>
+      <td>5.301655e+05</td>
+      <td>349790.454839</td>
+      <td>12587.59026</td>
+      <td>90955.620959</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3142.606330</td>
+      <td>43202.971210</td>
+      <td>156562.667084</td>
+      <td>2.792880e+05</td>
+      <td>5.374176e+05</td>
+      <td>4.028233e+05</td>
+      <td>6.908980e+05</td>
+      <td>4.429766e+05</td>
+      <td>7.212855e+05</td>
+      <td>8.362954e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>20938.965519</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>19996.986384</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>61865.265714</td>
+      <td>57298.919248</td>
+      <td>1.859610e+05</td>
+      <td>1.862006e+05</td>
+      <td>1.453144e+05</td>
+      <td>2.696107e+05</td>
+      <td>4.480261e+05</td>
+      <td>1.742546e+05</td>
+      <td>9.715882e+05</td>
+      <td>...</td>
+      <td>4.688630e+05</td>
+      <td>NaN</td>
+      <td>6.155031e+05</td>
+      <td>197934.940768</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.830643e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5346.166482</td>
+      <td>54954.008437</td>
+      <td>264498.220981</td>
+      <td>2.036823e+05</td>
+      <td>4.472988e+05</td>
+      <td>2.633055e+05</td>
+      <td>3.387926e+05</td>
+      <td>3.150558e+05</td>
+      <td>7.504150e+05</td>
+      <td>2.611304e+05</td>
+      <td>...</td>
+      <td>1.103665e+05</td>
+      <td>587681.103745</td>
+      <td>2.201814e+04</td>
+      <td>87364.263674</td>
+      <td>NaN</td>
+      <td>322793.116875</td>
+      <td>1.043557e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>4222.377626</td>
+      <td>117425.751392</td>
+      <td>537503.282266</td>
+      <td>4.137136e+05</td>
+      <td>3.769690e+05</td>
+      <td>6.769168e+05</td>
+      <td>1.084063e+06</td>
+      <td>8.276801e+05</td>
+      <td>8.531432e+05</td>
+      <td>2.054070e+05</td>
+      <td>...</td>
+      <td>6.795053e+04</td>
+      <td>NaN</td>
+      <td>1.900894e+06</td>
+      <td>NaN</td>
+      <td>189803.137289</td>
+      <td>165066.293055</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>NaN</td>
+      <td>51733.238185</td>
+      <td>121187.914637</td>
+      <td>2.782337e+05</td>
+      <td>3.766345e+05</td>
+      <td>5.262455e+05</td>
+      <td>4.970687e+05</td>
+      <td>6.972138e+05</td>
+      <td>7.314588e+05</td>
+      <td>6.290212e+05</td>
+      <td>...</td>
+      <td>1.041520e+04</td>
+      <td>40683.584878</td>
+      <td>4.737402e+05</td>
+      <td>NaN</td>
+      <td>874535.741565</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NaN</td>
+      <td>29161.090791</td>
+      <td>182951.743887</td>
+      <td>3.381624e+05</td>
+      <td>2.823336e+05</td>
+      <td>3.432786e+05</td>
+      <td>1.183421e+06</td>
+      <td>9.014267e+05</td>
+      <td>1.167906e+06</td>
+      <td>4.107145e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>493829.570893</td>
+      <td>3.123278e+05</td>
+      <td>58747.903282</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>NaN</td>
+      <td>133157.263191</td>
+      <td>215744.746038</td>
+      <td>1.374049e+06</td>
+      <td>7.828536e+05</td>
+      <td>7.966235e+05</td>
+      <td>4.644824e+05</td>
+      <td>9.741834e+05</td>
+      <td>5.535232e+05</td>
+      <td>5.008409e+05</td>
+      <td>...</td>
+      <td>1.230771e+04</td>
+      <td>117212.190268</td>
+      <td>3.179059e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>NaN</td>
+      <td>79641.863426</td>
+      <td>575926.050990</td>
+      <td>1.356863e+06</td>
+      <td>6.072203e+05</td>
+      <td>4.012266e+05</td>
+      <td>1.216483e+06</td>
+      <td>1.395769e+06</td>
+      <td>4.876399e+05</td>
+      <td>2.889569e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>NaN</td>
+      <td>100416.983371</td>
+      <td>292038.198343</td>
+      <td>4.448307e+05</td>
+      <td>5.126842e+05</td>
+      <td>3.632974e+05</td>
+      <td>1.872042e+06</td>
+      <td>8.211516e+05</td>
+      <td>5.397643e+05</td>
+      <td>4.108131e+05</td>
+      <td>...</td>
+      <td>1.069290e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>NaN</td>
+      <td>71522.558157</td>
+      <td>458885.392198</td>
+      <td>1.747373e+05</td>
+      <td>2.250982e+05</td>
+      <td>4.301923e+05</td>
+      <td>3.891993e+05</td>
+      <td>1.278298e+06</td>
+      <td>2.775127e+05</td>
+      <td>2.709438e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>NaN</td>
+      <td>79064.667239</td>
+      <td>254608.617474</td>
+      <td>4.293419e+05</td>
+      <td>1.876411e+06</td>
+      <td>5.398142e+05</td>
+      <td>6.579055e+05</td>
+      <td>8.572567e+05</td>
+      <td>3.248639e+05</td>
+      <td>2.372064e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>NaN</td>
+      <td>96277.421753</td>
+      <td>497171.088993</td>
+      <td>1.677511e+05</td>
+      <td>5.025259e+05</td>
+      <td>3.275906e+05</td>
+      <td>5.593842e+05</td>
+      <td>4.950296e+05</td>
+      <td>6.022564e+05</td>
+      <td>7.874864e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>NaN</td>
+      <td>21066.291384</td>
+      <td>131006.302772</td>
+      <td>2.469400e+05</td>
+      <td>1.794551e+05</td>
+      <td>2.232539e+05</td>
+      <td>4.005883e+05</td>
+      <td>1.158106e+06</td>
+      <td>1.432307e+06</td>
+      <td>4.311331e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>NaN</td>
+      <td>40871.450031</td>
+      <td>181169.969846</td>
+      <td>5.136258e+05</td>
+      <td>9.165714e+05</td>
+      <td>2.441091e+05</td>
+      <td>6.139660e+05</td>
+      <td>8.670557e+05</td>
+      <td>1.456116e+06</td>
+      <td>9.063431e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>21559.053170</td>
+      <td>98325.244742</td>
+      <td>111475.307366</td>
+      <td>6.413985e+05</td>
+      <td>6.213374e+05</td>
+      <td>7.985672e+05</td>
+      <td>1.252059e+06</td>
+      <td>9.138599e+05</td>
+      <td>1.066295e+06</td>
+      <td>3.610327e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>NaN</td>
+      <td>51441.830587</td>
+      <td>135464.967542</td>
+      <td>2.466380e+05</td>
+      <td>3.549195e+05</td>
+      <td>7.319261e+05</td>
+      <td>4.614343e+05</td>
+      <td>3.535514e+05</td>
+      <td>5.865144e+05</td>
+      <td>1.090865e+06</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>NaN</td>
+      <td>70653.792105</td>
+      <td>453457.316593</td>
+      <td>4.380374e+05</td>
+      <td>1.137775e+06</td>
+      <td>1.579018e+06</td>
+      <td>9.959784e+05</td>
+      <td>8.986285e+05</td>
+      <td>1.351723e+06</td>
+      <td>1.012969e+06</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>NaN</td>
+      <td>143003.416713</td>
+      <td>780501.376194</td>
+      <td>3.219736e+05</td>
+      <td>1.125306e+06</td>
+      <td>3.863964e+05</td>
+      <td>3.987071e+05</td>
+      <td>7.493505e+05</td>
+      <td>5.173210e+05</td>
+      <td>2.957905e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>440.166014</td>
+      <td>96436.510110</td>
+      <td>932830.920427</td>
+      <td>6.675994e+05</td>
+      <td>8.898485e+05</td>
+      <td>5.927916e+05</td>
+      <td>1.256132e+06</td>
+      <td>1.541598e+06</td>
+      <td>2.055776e+06</td>
+      <td>4.470712e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>5071.193962</td>
+      <td>114720.424477</td>
+      <td>407660.107716</td>
+      <td>4.120153e+05</td>
+      <td>3.215467e+05</td>
+      <td>4.644149e+05</td>
+      <td>1.129388e+06</td>
+      <td>7.422531e+05</td>
+      <td>2.230668e+06</td>
+      <td>1.509081e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>NaN</td>
+      <td>67368.580343</td>
+      <td>296994.656315</td>
+      <td>1.742078e+05</td>
+      <td>6.093717e+05</td>
+      <td>6.336027e+05</td>
+      <td>4.269155e+05</td>
+      <td>1.150700e+06</td>
+      <td>3.514760e+05</td>
+      <td>3.263753e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2538.223611</td>
+      <td>60928.691028</td>
+      <td>474989.573924</td>
+      <td>2.655743e+05</td>
+      <td>3.890088e+05</td>
+      <td>7.493399e+05</td>
+      <td>1.231399e+06</td>
+      <td>6.559668e+05</td>
+      <td>6.981326e+05</td>
+      <td>3.937930e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1179.531504</td>
+      <td>17397.734757</td>
+      <td>125719.238936</td>
+      <td>4.522247e+05</td>
+      <td>5.405587e+05</td>
+      <td>6.677909e+05</td>
+      <td>1.147964e+06</td>
+      <td>1.547991e+06</td>
+      <td>7.713320e+05</td>
+      <td>5.950225e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>18834.212213</td>
+      <td>54467.867400</td>
+      <td>301098.228443</td>
+      <td>1.205226e+06</td>
+      <td>6.651762e+05</td>
+      <td>1.773508e+06</td>
+      <td>2.409755e+05</td>
+      <td>3.835268e+05</td>
+      <td>1.634412e+06</td>
+      <td>4.614016e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>NaN</td>
+      <td>16208.391804</td>
+      <td>129023.820713</td>
+      <td>3.686506e+05</td>
+      <td>5.212379e+05</td>
+      <td>2.942529e+05</td>
+      <td>4.663017e+05</td>
+      <td>5.628172e+05</td>
+      <td>6.043287e+05</td>
+      <td>6.298926e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>15268.662911</td>
+      <td>394082.054498</td>
+      <td>221508.422890</td>
+      <td>2.374703e+05</td>
+      <td>2.292117e+05</td>
+      <td>4.800493e+05</td>
+      <td>8.586132e+05</td>
+      <td>4.008364e+05</td>
+      <td>1.122428e+06</td>
+      <td>3.405180e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>3088.130242</td>
+      <td>11868.998623</td>
+      <td>171285.569611</td>
+      <td>6.625948e+05</td>
+      <td>5.220645e+05</td>
+      <td>4.140340e+05</td>
+      <td>6.895261e+05</td>
+      <td>1.054986e+06</td>
+      <td>9.524665e+05</td>
+      <td>8.048602e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>5760.506354</td>
+      <td>154821.974483</td>
+      <td>655525.150619</td>
+      <td>4.317146e+05</td>
+      <td>1.124190e+06</td>
+      <td>2.260838e+05</td>
+      <td>6.135078e+05</td>
+      <td>4.430098e+05</td>
+      <td>1.993302e+05</td>
+      <td>2.101516e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>4495.370500</td>
+      <td>39937.684328</td>
+      <td>156494.223044</td>
+      <td>1.601225e+05</td>
+      <td>4.273681e+05</td>
+      <td>3.515268e+05</td>
+      <td>4.448231e+05</td>
+      <td>2.566694e+05</td>
+      <td>7.195764e+05</td>
+      <td>4.164395e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>9929.179761</td>
+      <td>74453.718579</td>
+      <td>371373.646586</td>
+      <td>1.127049e+06</td>
+      <td>8.716352e+05</td>
+      <td>7.048680e+05</td>
+      <td>4.415583e+05</td>
+      <td>9.356616e+05</td>
+      <td>5.691857e+05</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>NaN</td>
+      <td>20348.062312</td>
+      <td>170218.459706</td>
+      <td>3.565538e+05</td>
+      <td>1.227990e+06</td>
+      <td>4.104408e+05</td>
+      <td>5.005702e+05</td>
+      <td>9.153730e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>NaN</td>
+      <td>60272.602312</td>
+      <td>244223.415605</td>
+      <td>6.362106e+05</td>
+      <td>7.611882e+05</td>
+      <td>4.975266e+05</td>
+      <td>1.682282e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>NaN</td>
+      <td>29157.569363</td>
+      <td>140597.374295</td>
+      <td>2.988598e+05</td>
+      <td>9.378148e+05</td>
+      <td>9.179868e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>1740.439458</td>
+      <td>71028.928995</td>
+      <td>159736.350719</td>
+      <td>4.944280e+05</td>
+      <td>5.790932e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>2417.098113</td>
+      <td>60756.081859</td>
+      <td>219417.111202</td>
+      <td>3.380309e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>NaN</td>
+      <td>97489.963585</td>
+      <td>259540.894156</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>NaN</td>
+      <td>69383.491649</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>16522.338695</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>40 rows × 39 columns</p>
+</div></div></div>
+</div>
+<p>Finally we have a plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">triangle</span>
+    <span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;development_period&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;occurrence_period&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;payments&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1259ed2b0&gt;
+</pre></div>
+</div>
+<img alt="../_images/SQL Query for Triangles_20_1.png" src="../_images/SQL Query for Triangles_20_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="guaranteeing-all-rows-columns">
+<h2>Guaranteeing all rows/columns<a class="headerlink" href="#guaranteeing-all-rows-columns" title="Permalink to this headline">¶</a></h2>
+<p>With the above dataset, some columns are missing if they do not have data. If you’re exporting to Excel, this could break some things.</p>
+<p>You can create custom functions as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define a fill null function</span>
+<span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE MACRO FILL_NULL(a, b) AS CASE WHEN a IS NULL THEN b ELSE a END;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;duckdb.DuckDBPyConnection at 0x1257d40f0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">range_occurrence</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span><span class="s2">&quot;occurrence_period&quot;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">40</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)})</span>
+<span class="n">range_development</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span><span class="s2">&quot;development_period&quot;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">56</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s1">&#39;range_occurrence_view&#39;</span><span class="p">,</span> <span class="n">range_occurrence</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s1">&#39;range_development_view&#39;</span><span class="p">,</span> <span class="n">range_development</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;duckdb.DuckDBPyConnection at 0x1257d40f0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE OR REPLACE VIEW triangle_fill AS </span>
+<span class="s2">    </span>
+<span class="s2">    WITH full_tri as (</span>
+<span class="s2">    SELECT </span>
+<span class="s2">        o.occurrence_period,</span>
+<span class="s2">        d.development_period,</span>
+<span class="s2">        d.development_period + o.occurrence_period - 1 as payment_period</span>
+
+<span class="s2">    FROM </span>
+<span class="s2">        range_occurrence_view as o,</span>
+<span class="s2">        range_development_view as d</span>
+<span class="s2">    )</span>
+<span class="s2">    SELECT </span>
+<span class="s2">        full_tri.*, </span>
+<span class="s2">        FILL_NULL(triangle.payments, 0) as payments</span>
+<span class="s2">    FROM </span>
+<span class="s2">        full_tri</span>
+
+<span class="s2">    LEFT JOIN</span>
+<span class="s2">        triangle</span>
+<span class="s2">    ON</span>
+<span class="s2">        full_tri.occurrence_period  = triangle.occurrence_period</span>
+<span class="s2">    AND full_tri.development_period = triangle.development_period</span>
+<span class="s2">    AND full_tri.payment_period     = triangle.payment_period</span>
+<span class="s2">    </span>
+<span class="s2">    WHERE</span>
+<span class="s2">        full_tri.payment_period &lt;= 40 </span>
+<span class="s2">        -- if triangle is cut off at particular calendar period    </span>
+<span class="s2">;</span>
+<span class="s2">        </span>
+<span class="s2">    SELECT * FROM triangle_fill;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+<span class="n">triangle_fill</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">fetchdf</span><span class="p">()</span>
+<span class="n">triangle_fill</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>occurrence_period</th>
+      <th>development_period</th>
+      <th>payment_period</th>
+      <th>payments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>46985.029619</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>392545.850638</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+      <td>185946.113394</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>5</td>
+      <td>5</td>
+      <td>700630.302735</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>6</td>
+      <td>6</td>
+      <td>261024.509136</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>815</th>
+      <td>33</td>
+      <td>1</td>
+      <td>33</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>816</th>
+      <td>34</td>
+      <td>1</td>
+      <td>34</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>817</th>
+      <td>35</td>
+      <td>1</td>
+      <td>35</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>818</th>
+      <td>38</td>
+      <td>1</td>
+      <td>38</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>819</th>
+      <td>39</td>
+      <td>1</td>
+      <td>39</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>820 rows × 4 columns</p>
+</div></div></div>
+</div>
+<p>So here is the triangle:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">triangle_fill</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;occurrence_period&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;development_period&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;payments&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>development_period</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>...</th>
+      <th>31</th>
+      <th>32</th>
+      <th>33</th>
+      <th>34</th>
+      <th>35</th>
+      <th>36</th>
+      <th>37</th>
+      <th>38</th>
+      <th>39</th>
+      <th>40</th>
+    </tr>
+    <tr>
+      <th>occurrence_period</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.000000</td>
+      <td>46985.029619</td>
+      <td>392545.850638</td>
+      <td>1.859461e+05</td>
+      <td>7.006303e+05</td>
+      <td>2.610245e+05</td>
+      <td>3.329688e+05</td>
+      <td>2.646413e+05</td>
+      <td>6.057430e+05</td>
+      <td>1.434176e+05</td>
+      <td>...</td>
+      <td>507751.595236</td>
+      <td>1.267975e+06</td>
+      <td>205780.737653</td>
+      <td>6226.894042</td>
+      <td>0.000000</td>
+      <td>5.087788e+05</td>
+      <td>55918.782513</td>
+      <td>0.00000</td>
+      <td>412516.399423</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>64334.385165</td>
+      <td>103991.537490</td>
+      <td>134383.992047</td>
+      <td>2.940818e+05</td>
+      <td>4.868833e+05</td>
+      <td>2.805029e+06</td>
+      <td>3.835312e+05</td>
+      <td>1.475784e+05</td>
+      <td>2.536358e+05</td>
+      <td>5.385814e+05</td>
+      <td>...</td>
+      <td>8745.529181</td>
+      <td>3.974022e+05</td>
+      <td>714117.521603</td>
+      <td>89465.857732</td>
+      <td>128332.630805</td>
+      <td>5.301655e+05</td>
+      <td>349790.454839</td>
+      <td>12587.59026</td>
+      <td>90955.620959</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3142.606330</td>
+      <td>43202.971210</td>
+      <td>156562.667084</td>
+      <td>2.792880e+05</td>
+      <td>5.374176e+05</td>
+      <td>4.028233e+05</td>
+      <td>6.908980e+05</td>
+      <td>4.429766e+05</td>
+      <td>7.212855e+05</td>
+      <td>8.362954e+05</td>
+      <td>...</td>
+      <td>20938.965519</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>19996.986384</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.000000</td>
+      <td>61865.265714</td>
+      <td>57298.919248</td>
+      <td>1.859610e+05</td>
+      <td>1.862006e+05</td>
+      <td>1.453144e+05</td>
+      <td>2.696107e+05</td>
+      <td>4.480261e+05</td>
+      <td>1.742546e+05</td>
+      <td>9.715882e+05</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>6.155031e+05</td>
+      <td>197934.940768</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>3.830643e+05</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5346.166482</td>
+      <td>54954.008437</td>
+      <td>264498.220981</td>
+      <td>2.036823e+05</td>
+      <td>4.472988e+05</td>
+      <td>2.633055e+05</td>
+      <td>3.387926e+05</td>
+      <td>3.150558e+05</td>
+      <td>7.504150e+05</td>
+      <td>2.611304e+05</td>
+      <td>...</td>
+      <td>587681.103745</td>
+      <td>2.201814e+04</td>
+      <td>87364.263674</td>
+      <td>0.000000</td>
+      <td>322793.116875</td>
+      <td>1.043557e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>4222.377626</td>
+      <td>117425.751392</td>
+      <td>537503.282266</td>
+      <td>4.137136e+05</td>
+      <td>3.769690e+05</td>
+      <td>6.769168e+05</td>
+      <td>1.084063e+06</td>
+      <td>8.276801e+05</td>
+      <td>8.531432e+05</td>
+      <td>2.054070e+05</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>1.900894e+06</td>
+      <td>0.000000</td>
+      <td>189803.137289</td>
+      <td>165066.293055</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.000000</td>
+      <td>51733.238185</td>
+      <td>121187.914637</td>
+      <td>2.782337e+05</td>
+      <td>3.766345e+05</td>
+      <td>5.262455e+05</td>
+      <td>4.970687e+05</td>
+      <td>6.972138e+05</td>
+      <td>7.314588e+05</td>
+      <td>6.290212e+05</td>
+      <td>...</td>
+      <td>40683.584878</td>
+      <td>4.737402e+05</td>
+      <td>0.000000</td>
+      <td>874535.741565</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.000000</td>
+      <td>29161.090791</td>
+      <td>182951.743887</td>
+      <td>3.381624e+05</td>
+      <td>2.823336e+05</td>
+      <td>3.432786e+05</td>
+      <td>1.183421e+06</td>
+      <td>9.014267e+05</td>
+      <td>1.167906e+06</td>
+      <td>4.107145e+05</td>
+      <td>...</td>
+      <td>493829.570893</td>
+      <td>3.123278e+05</td>
+      <td>58747.903282</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.000000</td>
+      <td>133157.263191</td>
+      <td>215744.746038</td>
+      <td>1.374049e+06</td>
+      <td>7.828536e+05</td>
+      <td>7.966235e+05</td>
+      <td>4.644824e+05</td>
+      <td>9.741834e+05</td>
+      <td>5.535232e+05</td>
+      <td>5.008409e+05</td>
+      <td>...</td>
+      <td>117212.190268</td>
+      <td>3.179059e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.000000</td>
+      <td>79641.863426</td>
+      <td>575926.050990</td>
+      <td>1.356863e+06</td>
+      <td>6.072203e+05</td>
+      <td>4.012266e+05</td>
+      <td>1.216483e+06</td>
+      <td>1.395769e+06</td>
+      <td>4.876399e+05</td>
+      <td>2.889569e+05</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0.000000</td>
+      <td>100416.983371</td>
+      <td>292038.198343</td>
+      <td>4.448307e+05</td>
+      <td>5.126842e+05</td>
+      <td>3.632974e+05</td>
+      <td>1.872042e+06</td>
+      <td>8.211516e+05</td>
+      <td>5.397643e+05</td>
+      <td>4.108131e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0.000000</td>
+      <td>71522.558157</td>
+      <td>458885.392198</td>
+      <td>1.747373e+05</td>
+      <td>2.250982e+05</td>
+      <td>4.301923e+05</td>
+      <td>3.891993e+05</td>
+      <td>1.278298e+06</td>
+      <td>2.775127e+05</td>
+      <td>2.709438e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0.000000</td>
+      <td>79064.667239</td>
+      <td>254608.617474</td>
+      <td>4.293419e+05</td>
+      <td>1.876411e+06</td>
+      <td>5.398142e+05</td>
+      <td>6.579055e+05</td>
+      <td>8.572567e+05</td>
+      <td>3.248639e+05</td>
+      <td>2.372064e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0.000000</td>
+      <td>96277.421753</td>
+      <td>497171.088993</td>
+      <td>1.677511e+05</td>
+      <td>5.025259e+05</td>
+      <td>3.275906e+05</td>
+      <td>5.593842e+05</td>
+      <td>4.950296e+05</td>
+      <td>6.022564e+05</td>
+      <td>7.874864e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>0.000000</td>
+      <td>21066.291384</td>
+      <td>131006.302772</td>
+      <td>2.469400e+05</td>
+      <td>1.794551e+05</td>
+      <td>2.232539e+05</td>
+      <td>4.005883e+05</td>
+      <td>1.158106e+06</td>
+      <td>1.432307e+06</td>
+      <td>4.311331e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0.000000</td>
+      <td>40871.450031</td>
+      <td>181169.969846</td>
+      <td>5.136258e+05</td>
+      <td>9.165714e+05</td>
+      <td>2.441091e+05</td>
+      <td>6.139660e+05</td>
+      <td>8.670557e+05</td>
+      <td>1.456116e+06</td>
+      <td>9.063431e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>21559.053170</td>
+      <td>98325.244742</td>
+      <td>111475.307366</td>
+      <td>6.413985e+05</td>
+      <td>6.213374e+05</td>
+      <td>7.985672e+05</td>
+      <td>1.252059e+06</td>
+      <td>9.138599e+05</td>
+      <td>1.066295e+06</td>
+      <td>3.610327e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0.000000</td>
+      <td>51441.830587</td>
+      <td>135464.967542</td>
+      <td>2.466380e+05</td>
+      <td>3.549195e+05</td>
+      <td>7.319261e+05</td>
+      <td>4.614343e+05</td>
+      <td>3.535514e+05</td>
+      <td>5.865144e+05</td>
+      <td>1.090865e+06</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>0.000000</td>
+      <td>70653.792105</td>
+      <td>453457.316593</td>
+      <td>4.380374e+05</td>
+      <td>1.137775e+06</td>
+      <td>1.579018e+06</td>
+      <td>9.959784e+05</td>
+      <td>8.986285e+05</td>
+      <td>1.351723e+06</td>
+      <td>1.012969e+06</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0.000000</td>
+      <td>143003.416713</td>
+      <td>780501.376194</td>
+      <td>3.219736e+05</td>
+      <td>1.125306e+06</td>
+      <td>3.863964e+05</td>
+      <td>3.987071e+05</td>
+      <td>7.493505e+05</td>
+      <td>5.173210e+05</td>
+      <td>2.957905e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>440.166014</td>
+      <td>96436.510110</td>
+      <td>932830.920427</td>
+      <td>6.675994e+05</td>
+      <td>8.898485e+05</td>
+      <td>5.927916e+05</td>
+      <td>1.256132e+06</td>
+      <td>1.541598e+06</td>
+      <td>2.055776e+06</td>
+      <td>4.470712e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>5071.193962</td>
+      <td>114720.424477</td>
+      <td>407660.107716</td>
+      <td>4.120153e+05</td>
+      <td>3.215467e+05</td>
+      <td>4.644149e+05</td>
+      <td>1.129388e+06</td>
+      <td>7.422531e+05</td>
+      <td>2.230668e+06</td>
+      <td>1.509081e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>0.000000</td>
+      <td>67368.580343</td>
+      <td>296994.656315</td>
+      <td>1.742078e+05</td>
+      <td>6.093717e+05</td>
+      <td>6.336027e+05</td>
+      <td>4.269155e+05</td>
+      <td>1.150700e+06</td>
+      <td>3.514760e+05</td>
+      <td>3.263753e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2538.223611</td>
+      <td>60928.691028</td>
+      <td>474989.573924</td>
+      <td>2.655743e+05</td>
+      <td>3.890088e+05</td>
+      <td>7.493399e+05</td>
+      <td>1.231399e+06</td>
+      <td>6.559668e+05</td>
+      <td>6.981326e+05</td>
+      <td>3.937930e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1179.531504</td>
+      <td>17397.734757</td>
+      <td>125719.238936</td>
+      <td>4.522247e+05</td>
+      <td>5.405587e+05</td>
+      <td>6.677909e+05</td>
+      <td>1.147964e+06</td>
+      <td>1.547991e+06</td>
+      <td>7.713320e+05</td>
+      <td>5.950225e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>18834.212213</td>
+      <td>54467.867400</td>
+      <td>301098.228443</td>
+      <td>1.205226e+06</td>
+      <td>6.651762e+05</td>
+      <td>1.773508e+06</td>
+      <td>2.409755e+05</td>
+      <td>3.835268e+05</td>
+      <td>1.634412e+06</td>
+      <td>4.614016e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>0.000000</td>
+      <td>16208.391804</td>
+      <td>129023.820713</td>
+      <td>3.686506e+05</td>
+      <td>5.212379e+05</td>
+      <td>2.942529e+05</td>
+      <td>4.663017e+05</td>
+      <td>5.628172e+05</td>
+      <td>6.043287e+05</td>
+      <td>6.298926e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>15268.662911</td>
+      <td>394082.054498</td>
+      <td>221508.422890</td>
+      <td>2.374703e+05</td>
+      <td>2.292117e+05</td>
+      <td>4.800493e+05</td>
+      <td>8.586132e+05</td>
+      <td>4.008364e+05</td>
+      <td>1.122428e+06</td>
+      <td>3.405180e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>3088.130242</td>
+      <td>11868.998623</td>
+      <td>171285.569611</td>
+      <td>6.625948e+05</td>
+      <td>5.220645e+05</td>
+      <td>4.140340e+05</td>
+      <td>6.895261e+05</td>
+      <td>1.054986e+06</td>
+      <td>9.524665e+05</td>
+      <td>8.048602e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>5760.506354</td>
+      <td>154821.974483</td>
+      <td>655525.150619</td>
+      <td>4.317146e+05</td>
+      <td>1.124190e+06</td>
+      <td>2.260838e+05</td>
+      <td>6.135078e+05</td>
+      <td>4.430098e+05</td>
+      <td>1.993302e+05</td>
+      <td>2.101516e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>4495.370500</td>
+      <td>39937.684328</td>
+      <td>156494.223044</td>
+      <td>1.601225e+05</td>
+      <td>4.273681e+05</td>
+      <td>3.515268e+05</td>
+      <td>4.448231e+05</td>
+      <td>2.566694e+05</td>
+      <td>7.195764e+05</td>
+      <td>4.164395e+05</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>9929.179761</td>
+      <td>74453.718579</td>
+      <td>371373.646586</td>
+      <td>1.127049e+06</td>
+      <td>8.716352e+05</td>
+      <td>7.048680e+05</td>
+      <td>4.415583e+05</td>
+      <td>9.356616e+05</td>
+      <td>5.691857e+05</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>0.000000</td>
+      <td>20348.062312</td>
+      <td>170218.459706</td>
+      <td>3.565538e+05</td>
+      <td>1.227990e+06</td>
+      <td>4.104408e+05</td>
+      <td>5.005702e+05</td>
+      <td>9.153730e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>0.000000</td>
+      <td>60272.602312</td>
+      <td>244223.415605</td>
+      <td>6.362106e+05</td>
+      <td>7.611882e+05</td>
+      <td>4.975266e+05</td>
+      <td>1.682282e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>0.000000</td>
+      <td>29157.569363</td>
+      <td>140597.374295</td>
+      <td>2.988598e+05</td>
+      <td>9.378148e+05</td>
+      <td>9.179868e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>1740.439458</td>
+      <td>71028.928995</td>
+      <td>159736.350719</td>
+      <td>4.944280e+05</td>
+      <td>5.790932e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>2417.098113</td>
+      <td>60756.081859</td>
+      <td>219417.111202</td>
+      <td>3.380309e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>0.000000</td>
+      <td>97489.963585</td>
+      <td>259540.894156</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>0.000000</td>
+      <td>69383.491649</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>16522.338695</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>40 rows × 40 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="conclusion-and-next-steps">
+<h2>Conclusion and next steps:<a class="headerlink" href="#conclusion-and-next-steps" title="Permalink to this headline">¶</a></h2>
+<p>It is fairly easy to transform data into the right format in SQL with Python and can create triangle summaries for claims projections.</p>
+<p>For further analysis in Excel, you can export to xlsx format, or use something like <a class="reference external" href="https://www.xlwings.org">xlwings</a> in Python to direct modify an existing spreadsheet.</p>
+<p>But you can also do triangle methods in Python or R as well. Check out, for example, <a class="reference external" href="https://chainladder-python.readthedocs.io/en/latest/intro.html">chainladder</a> which is a project led out of casact.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ActuariesInstitute/cookbook",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="life_stats.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">R: Life Industry Stats in Tableau and R</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="MLRWP_R_GLMs.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">R: Reserving with GLMs</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By YDAWG, DAPC, YAC and other contributors.<br/>
+    
+      <div class="extra_footer">
+         The Actuaries' Analytical Cookbook is a series of data and analytics recipes to help actuaries quickly get started with a new project.   This site is intended to be a resource to actuaries in both data science and traditional fields.  Opinions expressed in this publication are the opinions of contributors and do not necessarily represent those of either the Institute of Actuaries of Australia (the ‘Institute’), its members, directors, officers, employees, agents, or that of the employers of the contributors. <br>© Institute of Actuaries of Australia and Contributors 2021. All rights reserved.
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
