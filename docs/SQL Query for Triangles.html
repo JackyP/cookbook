@@ -498,8 +498,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#guaranteeing-all-rows-columns">
-   Guaranteeing all rows/columns
+  <a class="reference internal nav-link" href="#guaranteeing-all-cells">
+   Guaranteeing all cells
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -545,8 +545,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#guaranteeing-all-rows-columns">
-   Guaranteeing all rows/columns
+  <a class="reference internal nav-link" href="#guaranteeing-all-cells">
+   Guaranteeing all cells
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -565,10 +565,10 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="sql-queries-to-create-triangles">
 <h1>SQL: Queries to Create Triangles<a class="headerlink" href="#sql-queries-to-create-triangles" title="Permalink to this headline">¶</a></h1>
-<p>By Jacky Poon.</p>
+<p>This notebook was created by Jacky Poon for the <a class="reference external" href="https://actuariesinstitute.github.io/cookbook/docs/index.html">Actuaries’ Analytical Cookbook</a>.</p>
 <div class="section" id="introduction-and-setup">
 <h2>Introduction and Setup<a class="headerlink" href="#introduction-and-setup" title="Permalink to this headline">¶</a></h2>
-<p>This article will explain how to use SQL to convert a transactional claims dataset to a triangle. We will use Python for constructing our dummy dataset, and connecting to the SQL database, <code class="docutils literal notranslate"><span class="pre">duckdb</span></code>:</p>
+<p>This article describes a method with SQL to convert a transactional claims dataset to a triangle. We will use Python for constructing our dummy dataset, and use <code class="docutils literal notranslate"><span class="pre">duckdb</span></code> as our SQL database, but basic concepts should apply similarly to other SQL databases.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip show duckdb
@@ -614,7 +614,7 @@ Required-by:
 </div>
 <div class="section" id="transaction-data">
 <h2>Transaction Data<a class="headerlink" href="#transaction-data" title="Permalink to this headline">¶</a></h2>
-<p>For the example reserving data, we use a simulated dataset from the <a class="reference external" href="https://arxiv.org/pdf/2008.05693.pdf">SynthETIC</a> R package, with further adjustments to it to make it look like a real dataset.</p>
+<p>For the example reserving data, we use a simulated dataset from the <a class="reference external" href="https://arxiv.org/pdf/2008.05693.pdf">SynthETIC</a> R package, with further adjustments to it to make it resemble a real dataset.</p>
 <p>DuckDB can <a class="reference external" href="https://duckdb.org/docs/data/csv">read and query CSVs directly from local files</a> - but with CSV files from the internet it is easier to read it with Python in pandas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -829,7 +829,7 @@ Required-by:
 <p>18983 rows × 12 columns</p>
 </div></div></div>
 </div>
-<p>This is a transactional dataset with paid transactions only. Times are represented as arbitrary time period units rather than dates. However, for this exercise since we want to explain how to create a triangle from a real dataset, we want to show how you can create the periods from scratch. So for the time periods, we will convert it to a date format with months from a start date of 2000-01-01, hide some columns - to create a dataset that resembles real datasets in practice.</p>
+<p>This is a transactional dataset with payments. The dataset has times are represented as arbitrary time period units rather than dates, and some additional calculated fields are already available. However, for this exercise, we want to demonstrate how to create these columns in real world situations where the raw datasets are unlikely to include them. So the time periods will be converted to date formats with months from a start date of 2000-01-01 and some columns hidden to create a dataset that resembles real datasets in practice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Feel free to skim through this part.</span>
@@ -993,7 +993,7 @@ Required-by:
 </div>
 <div class="section" id="using-sql">
 <h3>Using SQL<a class="headerlink" href="#using-sql" title="Permalink to this headline">¶</a></h3>
-<p>Here is the SQL query. Uncomment <code class="docutils literal notranslate"><span class="pre">claim_no</span></code> and <code class="docutils literal notranslate"><span class="pre">pmt_no</span></code> to get a more detailed view for testing that the logic works.</p>
+<p>Here is the SQL query. It creates accident, development and payment/calendar periods from the dataset, and sums up at that triangle level. Uncomment <code class="docutils literal notranslate"><span class="pre">claim_no</span></code> and <code class="docutils literal notranslate"><span class="pre">pmt_no</span></code> to get a more detailed view - this is helpful for testing that the logic works also.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
@@ -2199,9 +2199,9 @@ Required-by:
 </div>
 </div>
 </div>
-<div class="section" id="guaranteeing-all-rows-columns">
-<h2>Guaranteeing all rows/columns<a class="headerlink" href="#guaranteeing-all-rows-columns" title="Permalink to this headline">¶</a></h2>
-<p>With the above dataset, records will be missing if they do not have any claims transactions. This can be problematic if the models or calculations later on in the process flow rely on the dataset having every single accident/development period combination. However this is not too difficult to solve for in SQL.</p>
+<div class="section" id="guaranteeing-all-cells">
+<h2>Guaranteeing all cells<a class="headerlink" href="#guaranteeing-all-cells" title="Permalink to this headline">¶</a></h2>
+<p>With the above dataset, records will be missing if they do not have any claims transactions. This can be problematic if the models or calculations later on in the process flow rely on the dataset having every single accident/development period combination. To include these zero cells is not too difficult to implement in SQL.</p>
 <p>Firstly, <code class="docutils literal notranslate"><span class="pre">duckdb</span></code> allows creating custom “macro” functions as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2218,6 +2218,7 @@ Required-by:
 </div>
 </div>
 </div>
+<p>The original dataset will be joined to a dummy dataset with the full range of accident/occurence and development periods.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dummy table of periods</span>
@@ -2428,6 +2429,7 @@ Required-by:
 </div>
 </div>
 </div>
+<p>The join logic can be constructed as follows. First <code class="docutils literal notranslate"><span class="pre">full_tri</span></code> is defined which has every combination of occurence and development period, then the original dataset is left joined onto it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
@@ -3620,7 +3622,7 @@ Required-by:
 <div class="section" id="where-to-go-from-here">
 <h2>Where to go from here:<a class="headerlink" href="#where-to-go-from-here" title="Permalink to this headline">¶</a></h2>
 <p>As demonstrated, it is fairly straightforward to transform claims data into the right format in SQL and create summaries for claims triangle projections.</p>
-<p>For further analysis in Excel, in Python (similar tools exist in R), <code class="docutils literal notranslate"><span class="pre">pandas</span></code> can export to xlsx format with <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html"><code class="docutils literal notranslate"><span class="pre">to_excel</span></code></a>, or <a class="reference external" href="https://www.xlwings.org">xlwings</a> can directly control Excel for further VBA macro-style automation.</p>
+<p>For further analysis in Excel, in Python (similar tools exist in R), <code class="docutils literal notranslate"><span class="pre">pandas</span></code> can export to xlsx format with <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html"><code class="docutils literal notranslate"><span class="pre">to_excel</span></code></a>, or <a class="reference external" href="https://www.xlwings.org">xlwings</a> can directly control Excel for additional VBA macro-style automation.</p>
 <p>Triangle methods can also be applied directly within Python without exporting to Excel or another tool. Consider for example, <a class="reference external" href="https://chainladder-python.readthedocs.io/en/latest/intro.html">chainladder</a>, a project led out of casact which provides a number of claims development models.</p>
 </div>
 </div>
