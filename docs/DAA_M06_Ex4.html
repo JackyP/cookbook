@@ -185,6 +185,11 @@ const thebe_selector_output = ".output, .cell_output"
    Version control
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="predict_API_gradio.html">
+   Py: Productionising predictive models as API
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -937,23 +942,23 @@ print(df.sort_values(by=&#39;labels&#39;))
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    labels       countries
-0        0         Austria
-14       0           Spain
-12       0        Portugal
-10       0           Italy
-9        0          Israel
-15       0  United Kingdom
 8        0         Ireland
-1        0         Belgium
+3        0          Canada
+4        0          Cyprus
+5        0         Denmark
 6        0         Estonia
-7        1         Finland
-5        1         Denmark
-4        1          Cyprus
-3        1          Canada
-11       1      Luxembourg
-2        2        Bulgaria
-13       2        Slovenia
-16       2   United States
+7        0         Finland
+9        0          Israel
+14       1           Spain
+13       1        Slovenia
+12       1        Portugal
+0        1         Austria
+15       1  United Kingdom
+2        1        Bulgaria
+1        1         Belgium
+10       1           Italy
+16       1   United States
+11       2      Luxembourg
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda3/envs/main-conda-env/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
@@ -1000,11 +1005,11 @@ plt.show()
   warnings.warn(
 /usr/share/miniconda3/envs/main-conda-env/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
   warnings.warn(
+/usr/share/miniconda3/envs/main-conda-env/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda3/envs/main-conda-env/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
-/usr/share/miniconda3/envs/main-conda-env/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
   warnings.warn(
 /usr/share/miniconda3/envs/main-conda-env/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
   warnings.warn(
