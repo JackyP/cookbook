@@ -226,6 +226,16 @@ const thebe_selector_output = ".output, .cell_output"
    R: Life Industry Stats in Tableau and R
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bayesian-applications.html">
+   R: Bayesian Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="trees.html">
+   R: Decision Tree Applications
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -259,18 +269,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="MLRWP_R_Bauldry_Notebook_1_SimulateData_v1.html">
-   R: Bauldry ML Reserving Pt 1
+  <a class="reference internal" href="MLRWP_R_Baudry_Notebook_1_SimulateData_v1.html">
+   R: Baudry ML Reserving Pt 1
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="MLRWP_R_Bauldry_Notebook_2_CreateReservingDatabase_v1.html">
-   R: Bauldry ML Reserving Pt 2
+  <a class="reference internal" href="MLRWP_R_Baudry_Notebook_2_CreateReservingDatabase_v1.html">
+   R: Baudry ML Reserving Pt 2
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="MLRWP_R_Bauldry_Notebook_3_ApplyMachineLearningReserving_v1.html">
-   R: Bauldry ML Reserving Pt 3
+  <a class="reference internal" href="MLRWP_R_Baudry_Notebook_3_ApplyMachineLearningReserving_v1.html">
+   R: Baudry ML Reserving Pt 3
   </a>
  </li>
 </ul>
@@ -371,6 +381,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="automated_decision.html">
    Automated Decision-Making Systems
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="zbibliography.html">
+   Bibliography
   </a>
  </li>
 </ul>
@@ -1053,24 +1075,24 @@ your code.</p>
 <p>On that page, you’ll see the following code</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
 
-<span class="c1"># Fixing random state for reproducibility</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19680801</span><span class="p">)</span>
+# Fixing random state for reproducibility
+np.random.seed(19680801)
 
-<span class="c1"># Compute pie slices</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">θ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">radii</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-<span class="n">width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">radii</span> <span class="o">/</span> <span class="mf">10.</span><span class="p">)</span>
+# Compute pie slices
+N = 20
+θ = np.linspace(0.0, 2 * np.pi, N, endpoint=False)
+radii = 10 * np.random.rand(N)
+width = np.pi / 4 * np.random.rand(N)
+colors = plt.cm.viridis(radii / 10.)
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;polar&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">θ</span><span class="p">,</span> <span class="n">radii</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+ax = plt.subplot(111, projection=&#39;polar&#39;)
+ax.bar(θ, radii, width=width, bottom=0.0, color=colors, alpha=0.5)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.show()
 </pre></div>
 </div>
 </div>
