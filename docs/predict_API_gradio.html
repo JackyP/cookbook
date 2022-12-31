@@ -657,7 +657,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="py-productionising-predictive-models-as-api">
 <h1>Py: Productionising predictive models as API<a class="headerlink" href="#py-productionising-predictive-models-as-api" title="Permalink to this headline">#</a></h1>
 <hr class="docutils" />
-<p>Jacky Poon</p>
+<p><em>By Jacky Poon</em></p>
 <p>Once a model is complete, there may be a need to deliver ongoing predictions in some way. The quintessential example for actuaries in insurance would be a pricing model, where, by some mechanism, the modelled prices need to be calculated and displayed to potential customers. However, applications extend beyond this - for example scoring models for triaging requests, identifying fraud, marketing and operational decisions.</p>
 <p>No matter the application, it is very useful when designing predictive models to have:</p>
 <ol class="simple">
@@ -747,7 +747,11 @@ To create a public link, set `share=True` in `launch()`.
 </div>
 </div>
 </div>
+<p>Screenshots of the output:
+<img alt="image.png" src="docs/attachment:image.png" /></p>
 <p>At the bottom of the panel (scroll down if needed), when the gradio server is running, click on “Use via API” to get details of the API as well as sample Python code for querying it. As a data scientist, one can provide this API specification to the tech team so that other systems interfacing with this prediction server can submit data and receive predictions in a pre-agreed format.</p>
+<p>This will provide something like the below:</p>
+<p>t the bottom of the panel (scroll down if needed), when the gradio server is running, click on “Use via API” to get details of the API as well as sample Python code for querying it. As a data scientist, one can provide this API specification to the tech team so that other systems interfacing with this prediction server can submit data and receive predictions in a pre-agreed format.</p>
 <p>This will provide something like the below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -775,14 +779,15 @@ response[&quot;data&quot;]
 </div>
 <p>Running it returns a list with the price, and the tax amount.</p>
 <p>So the idea for production use would be this Python code could run on a server or in a docker container on the cloud, and the other systems would use the API to query it and get the required predictions (in this case, prices and financials). And during development, gradio can also be used by the data scientist and stakeholders to test and review individual predictions.</p>
-<p>This is a short article as the <code class="docutils literal notranslate"><span class="pre">gradio</span></code> package just appears to be very user friendly to use.</p>
+<p>This is a short article as the <strong>gradio</strong> package just appears to be very user friendly to use.</p>
 <p>For further development on this idea, some tips on best practices to that would work with this approach:</p>
 <ul class="simple">
-<li><p>Important model code can be version controlled with ``git` can be used to version control important model code. See <a class="reference external" href="https://actuariesinstitute.github.io/cookbook/docs/version_control.html">https://actuariesinstitute.github.io/cookbook/docs/version_control.html</a>.</p></li>
+<li><p>Important model code can be <a class="reference external" href="https://actuariesinstitute.github.io/cookbook/docs/version_control.html">version controlled</a> to reduce risk of errors.</p></li>
 <li><p>Data and models can be <a class="reference external" href="https://dvc.org/doc/use-cases/versioning-data-and-models">version controlled too.</a></p></li>
 <li><p>Continuous Integration tools can perform automated testing of the API whenever there is a change, and automate deployment of updated models.</p></li>
-<li><p><a class="reference external" href="https://numba.pydata.org">numba</a> can provide just-in-time compilation to speed up Python calculations like those used for the financial calculations above at scale. Upgrading to latest Python 3.11 may also help with performance.</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/functools.html#functools.lru_cache">Caching results from recent queries</a> may also be helpful to performance if calculations are complex, but duplicate queries are expected.</p></li>
+<li><p>Performance is relevant to scalability to a high number of predictions per second. Upgrading to latest Python version may also help with performance, 3.11 claims <a class="reference external" href="https://docs.python.org/3/whatsnew/3.11.html">10-60% performance improvement</a></p></li>
+<li><p><a class="reference external" href="https://numba.pydata.org">Numba</a> can also provide just-in-time compilation to speed up Python calculations (like those used for the financial calculations above) at scale.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functools.html#functools.lru_cache">Caching results from recent queries</a> may also be helpful to performance if the calculations are time consuming, but duplicate queries are expected.</p></li>
 </ul>
 </section>
 
