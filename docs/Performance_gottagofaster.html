@@ -138,9 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   <h1 style="font-family:Impact,Verdana;font-size:60px;">
-    Py: Python for Performance
-   </h1>
+   Py: Python for Performance
   </a>
  </li>
 </ul>
@@ -637,23 +635,100 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#avoiding-explicit-loops">
+   Avoiding explicit loops
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numba-jit-just-in-time-compilation">
+   Numba JIT (Just-in-time compilation)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-transformations-with-faster-packages">
+   Data transformations with faster packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-insufficient-memory">
+   Working with insufficient memory
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><h1 style="font-family:Impact,Verdana;font-size:60px;">Py: Python for Performance</h1></h1>
+                <h1>Py: Python for Performance</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#avoiding-explicit-loops">
+   Avoiding explicit loops
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numba-jit-just-in-time-compilation">
+   Numba JIT (Just-in-time compilation)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-transformations-with-faster-packages">
+   Data transformations with faster packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-insufficient-memory">
+   Working with insufficient memory
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -661,15 +736,18 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="h1-style-font-family-impact-verdana-font-size-60px-py-python-for-performance-h1">
-<h1><h1 style="font-family:Impact,Verdana;font-size:60px;">Py: Python for Performance</h1><a class="headerlink" href="#h1-style-font-family-impact-verdana-font-size-60px-py-python-for-performance-h1" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="py-python-for-performance">
+<h1>Py: Python for Performance<a class="headerlink" href="#py-python-for-performance" title="Permalink to this headline">#</a></h1>
 <p><em>Gotta go faster</em></p>
 <p>By Henry Ma and Jacky Poon</p>
 </p>
-<hr style="height:5px;border:none;color:#333;background-color:#333;" /><h1>Introduction</h1>
+<hr style="height:5px;border:none;color:#333;background-color:#333;" /><section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>For data analysis, efficiency matters when working with datasets of a sufficient size. Efficiency reduces running time and expenses when operating on the cloud, and for those limited to underpowered work laptops, it can mean the difference between being able to execute the analysis or running into frustrating delays or out of memory errors.</p>
 <p>We share some tips and techniques for optimising performance of Python data analysis code.</p>
-<h1>Avoiding explicit loops.</h1>
+</section>
+<section id="avoiding-explicit-loops">
+<h2>Avoiding explicit loops<a class="headerlink" href="#avoiding-explicit-loops" title="Permalink to this headline">#</a></h2>
 <p>Certain computations may require applying the same routines repeatedly. For example, a Monte Carlo simulation that requires generating a large number of paths. A “for loop” might be the most straightforward choice here but it would materially slow down the runtime. In fact, any explicit loops have this issue because Python, being an “interpreted” language, requires time to interpret the code on each iteration of the loop. Using vectorisation would substantially speed to the code. Let’s see an example below.</p>
 <p>Suppose one wants to price a simple European call option using the Black-Scholes formulae (recalling Part 1 of actuarial exams).</p>
 <div class="cell docutils container">
@@ -745,7 +823,9 @@ Wall time: 16.5 ms
 </div>
 </div>
 <p>The performance improved by close to a factor of 100x as we remove the explicit looping.</p>
-<h1>Numba JIT (Just-in-time compilation)</h1>
+</section>
+<section id="numba-jit-just-in-time-compilation">
+<h2>Numba JIT (Just-in-time compilation)<a class="headerlink" href="#numba-jit-just-in-time-compilation" title="Permalink to this headline">#</a></h2>
 <p>Python is not inherently fast – the high-performance computations in data science packages are often done by taking the data outside of Python interfacing with some fast C code. However, detailed numerical calculations written in Python can still be accelerated through compilation, with Numba (<a class="reference external" href="https://numba.pydata.org">https://numba.pydata.org</a>). Numba will take the code and create a more optimised version of it – in one example at <a class="reference external" href="https://numba.readthedocs.io/en/stable/user/5minguide.html">https://numba.readthedocs.io/en/stable/user/5minguide.html</a>, this reduced running time by 20x from 6.6s to 0.33s.</p>
 <p>A particular use case for JIT is to speed up explicit loops, since sometimes these loops cannot be easily avoided (e.g. for a recursion). We see below how JIT reduces the runtime for the above Monte Carlo calculation with “for loops”.</p>
 <div class="cell docutils container">
@@ -820,9 +900,13 @@ Wall time: 13.8 ms
 </div>
 </div>
 <p>JIT is able to additionally improve the runtime (but only slightly) of the original vectorised function.</p>
-<h1>Data transformations with faster packages</h1>
+</section>
+<section id="data-transformations-with-faster-packages">
+<h2>Data transformations with faster packages<a class="headerlink" href="#data-transformations-with-faster-packages" title="Permalink to this headline">#</a></h2>
 <p>The most popular Python package for working with data is pandas. However, when working with sizeable datasets, consider results on the h2o benchmark. <a class="reference external" href="https://h2oai.github.io/db-benchmark/">https://h2oai.github.io/db-benchmark/</a>. The Polars package is 7-10x faster on 5 GB sized datasets and is able to process larger than pandas, due to its efficient, performance-orientated design.</p>
-<h1>Working with insufficient memory</h1>
+</section>
+<section id="working-with-insufficient-memory">
+<h2>Working with insufficient memory<a class="headerlink" href="#working-with-insufficient-memory" title="Permalink to this headline">#</a></h2>
 <p>One challenge is memory when analysing larger datasets. The memory required to process may exceed the machine’s capacity for some demanding joins or modelling steps. Some tips to reduce memory requirements would be:</p>
 <ol class="simple">
 <li><p>Use the psutil package to measure memory usage throughout the steps and identify the problem steps for optimisation.</p></li>
@@ -831,6 +915,7 @@ Wall time: 13.8 ms
 <li><p>For gradient boosting, LightGBM has the “two-round” parameter which reduces peak memory usage, at the cost of longer runtime. It works well.</p></li>
 <li><p>Chunking may also reduce memory usage: it may be possible to split data into e.g. one dataset per year and each is processed individually with results saved back to disk. Tensorflow and Pytorch neural network packages, which can be applied to fit GLMs as well, are designed to fit models on batch data. This means we can avoid having to load the full dataset into memory.</p></li>
 </ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
