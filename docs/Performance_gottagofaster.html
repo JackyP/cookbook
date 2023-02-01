@@ -826,7 +826,7 @@ Wall time: 16.5 ms
 </section>
 <section id="numba-jit-just-in-time-compilation">
 <h2>Numba JIT (Just-in-time compilation)<a class="headerlink" href="#numba-jit-just-in-time-compilation" title="Permalink to this headline">#</a></h2>
-<p>Python is not inherently fast – the high-performance computations in data science packages are often done by taking the data outside of Python interfacing with some fast C code. However, detailed numerical calculations written in Python can still be accelerated through compilation, with Numba (<a class="reference external" href="https://numba.pydata.org">https://numba.pydata.org</a>). Numba will take the code and create a more optimised version of it – in one example at <a class="reference external" href="https://numba.readthedocs.io/en/stable/user/5minguide.html">https://numba.readthedocs.io/en/stable/user/5minguide.html</a>, this reduced running time by 20x from 6.6s to 0.33s.</p>
+<p>Python is not inherently fast – the high-performance computations in data science packages are often done by taking the data outside of Python interfacing with some fast C code. However, detailed numerical calculations written in Python can still be accelerated through compilation, with <strong>Numba</strong> (<a class="reference external" href="https://numba.pydata.org">https://numba.pydata.org</a>). <strong>Numba</strong> will take the code and create a more optimised version of it – in one example at <a class="reference external" href="https://numba.readthedocs.io/en/stable/user/5minguide.html">https://numba.readthedocs.io/en/stable/user/5minguide.html</a>, this reduced running time by 20x from 6.6s to 0.33s.</p>
 <p>A particular use case for JIT is to speed up explicit loops, since sometimes these loops cannot be easily avoided (e.g. for a recursion). We see below how JIT reduces the runtime for the above Monte Carlo calculation with “for loops”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -903,17 +903,17 @@ Wall time: 13.8 ms
 </section>
 <section id="data-transformations-with-faster-packages">
 <h2>Data transformations with faster packages<a class="headerlink" href="#data-transformations-with-faster-packages" title="Permalink to this headline">#</a></h2>
-<p>The most popular Python package for working with data is pandas. However, when working with sizeable datasets, consider results on the h2o benchmark. <a class="reference external" href="https://h2oai.github.io/db-benchmark/">https://h2oai.github.io/db-benchmark/</a>. The Polars package is 7-10x faster on 5 GB sized datasets and is able to process larger than pandas, due to its efficient, performance-orientated design.</p>
+<p>The most popular Python package for working with data is <strong>pandas</strong>. However, when working with sizeable datasets, consider results on the h2o benchmark. <a class="reference external" href="https://h2oai.github.io/db-benchmark/">https://h2oai.github.io/db-benchmark/</a>. The <strong>Polars</strong> package is 7-10x faster on 5 GB sized datasets and is able to process larger datasets than <strong>pandas</strong>, due to its efficient, performance-orientated design.</p>
 </section>
 <section id="working-with-insufficient-memory">
 <h2>Working with insufficient memory<a class="headerlink" href="#working-with-insufficient-memory" title="Permalink to this headline">#</a></h2>
 <p>One challenge is memory when analysing larger datasets. The memory required to process may exceed the machine’s capacity for some demanding joins or modelling steps. Some tips to reduce memory requirements would be:</p>
 <ol class="simple">
-<li><p>Use the psutil package to measure memory usage throughout the steps and identify the problem steps for optimisation.</p></li>
-<li><p>Consider dropping from memory datasets, rows or columns that are not needed for that step. If this data is needed for later steps, save to disk and reload after the memory-consuming step instead. Feather V2 is designed for temporary data with little computational overhead, whilst Parquet is a great format for compressed data storage, especially on machines with slow hard disks.</p></li>
-<li><p>Some packages have functionality specifically to enable larger datasets. Often this is called “out-of-core” but it has many labels – for example, Polars has “hybrid-streaming”.</p></li>
-<li><p>For gradient boosting, LightGBM has the “two-round” parameter which reduces peak memory usage, at the cost of longer runtime. It works well.</p></li>
-<li><p>Chunking may also reduce memory usage: it may be possible to split data into e.g. one dataset per year and each is processed individually with results saved back to disk. Tensorflow and Pytorch neural network packages, which can be applied to fit GLMs as well, are designed to fit models on batch data. This means we can avoid having to load the full dataset into memory.</p></li>
+<li><p>Use the <strong>psutil</strong> package to measure memory usage throughout the steps and identify the problem steps for optimisation.</p></li>
+<li><p>Consider dropping from memory datasets, rows or columns that are not needed for that step. If this data is needed for later steps, save to disk and reload after the memory-consuming step instead. <strong>Feather V2</strong> is designed for temporary data with little computational overhead, whilst <strong>Parquet</strong> is a great format for compressed data storage, especially on machines with slow hard disks.</p></li>
+<li><p>Some packages have functionality specifically to enable larger datasets. Often this is called “out-of-core” but it has many labels – for example, <strong>Polars</strong> has “hybrid-streaming”.</p></li>
+<li><p>For gradient boosting, <strong>LightGBM</strong> has the “two-round” parameter which reduces peak memory usage, at the cost of longer runtime. It works well.</p></li>
+<li><p>Chunking may also reduce memory usage: it may be possible to split data into e.g. one dataset per year and each is processed individually with results saved back to disk. <strong>Tensorflow</strong> and <strong>Pytorch</strong> neural network packages, which can be applied to fit GLMs as well, are designed to fit models on batch data. This means we can avoid having to load the full dataset into memory.</p></li>
 </ol>
 </section>
 </section>
