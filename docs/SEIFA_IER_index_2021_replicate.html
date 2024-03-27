@@ -563,23 +563,18 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages">Packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-data-eda">Explore data (EDA)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-data">Prepare data</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1">Dataset 1</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-against-published-ier-score">Compare against published IER score</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-jupyter-notebook-is-organised-into-the-following-sections">This Jupyter notebook is organised into the following sections:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">1. Load Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">2. Define Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-transform-data">3. Import and Transform Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-dictionary">Variable dictionary</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">4. Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-recap-of-the-dataframe-operations-for-transforming-raw-data-to-principal-components">A recap of the dataframe operations for transforming raw data to principal components</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-the-model">Fit the model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-the-model">Evaluate the model</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reconcile-with-abs-publication">5. Reconcile with ABS publication</a></li>
 </ul>
             </nav>
         </div>
@@ -593,47 +588,59 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="py-socio-economic-index-construction">
 <h1>Py: Socio-Economic Index Construction<a class="headerlink" href="#py-socio-economic-index-construction" title="Permalink to this heading">#</a></h1>
-<p><strong>This notebook was originally created by Andres Villegas Ramirez for the Data Analytics Applications subject, as <em>Case study 1 - The Socio-Economic Indexes for Areas</em>  in the <em>DAA M06 Unsupervised learning</em> module and updated for the UNSW Python Workshop by Jin Cui.</strong></p>
-<p><strong>Data Analytics Applications is a Fellowship Applications (Module 3) subject with the Actuaries Institute that aims to teach students how to apply a range of data analytics skills, such as neural networks, natural language processing, unsupervised learning and optimisation techniques, together with their professional judgement, to solve a variety of complex and challenging business problems. The business problems used as examples in this subject are drawn from a wide range of industries.</strong></p>
-<p><strong>Find out more about the course <a class="reference external" href="https://www.actuaries.asn.au/education-program/fellowship/subjects-and-syllabus/data-analytics-applications-subject">here</a>.</strong></p>
+<p>This notebook was originally created by Andres Villegas Ramirez for the Data Analytics Applications subject, as <em>Case study 1 - The Socio-Economic Indexes for Areas</em>  in the <em>DAA M06 Unsupervised learning</em> module.</p>
+<p>Data Analytics Applications is a Fellowship Applications (Module 3) subject with the Actuaries Institute that aims to teach students how to apply a range of data analytics skills, such as neural networks, natural language processing, unsupervised learning and optimisation techniques, together with their professional judgement, to solve a variety of complex and challenging business problems. The business problems used as examples in this subject are drawn from a wide range of industries.</p>
+<p>Find out more about the course <a class="reference external" href="https://www.actuaries.asn.au/education-program/fellowship/subjects-and-syllabus/data-analytics-applications-subject">here</a>.</p>
 <section id="purpose">
 <h2>Purpose:<a class="headerlink" href="#purpose" title="Permalink to this heading">#</a></h2>
-<p>This case study demonstrates the use of principal component analysis (PCA) in the construction of an index to rank the socio-economic status of different geographical areas within a country. Such an index can be useful to identify areas that require funding or services, or as input for research into the relationship between socio-economic conditions and other outcomes in different areas.</p>
-<p>In Australia, the Australian Bureau of Statistics (ABS) produces such indexes, referred to as the Socio-Economic Indexes for Areas (SEIFA). SEIFA rank areas in Australia based on their relative socio-economic advantage and disadvantage.</p>
-<p>This notebook replicates the methodology adopted by the ABS in Python in constructing one of these indexes - <strong>Index of Economic Resources, or IER</strong>.</p>
+<p>This case study demonstrates the use of principal component analysis (PCA) in the construction of an index to rank the socio-economic status of different geographical areas within a country (in this instance, Australia). Such index can be useful to identify areas that require funding or services, or as input for research into the relationship between socio-economic conditions and other outcomes in different areas.</p>
+<p>In Australia, the Australian Bureau of Statistics (ABS) produces four of such indexes, referred to as the Socio-Economic Indexes for Areas (SEIFA). SEIFA ranks areas in Australia based on their relative socio-economic advantage and disadvantage.</p>
+<p>This notebook replicates the methodology adopted by the ABS in constructing one of these indexes - <strong>Index of Economic Resources, or IER</strong> by Statistical Area 1 (<a class="reference external" href="https://www.abs.gov.au/ausstats/abs&#64;.nsf/Lookup/by%20Subject/1270.0.55.001~July%202016~Main%20Features~Statistical%20Area%20Level%201%20(SA1)~10013#:~:text=Statistical%20Areas%20Level%201%20(SA1,Standard%20(ASGS)%20Main%20Structure.)"><strong>SA1</strong></a>).</p>
 </section>
-<section id="packages">
-<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this heading">#</a></h2>
+<section id="this-jupyter-notebook-is-organised-into-the-following-sections">
+<h2>This Jupyter notebook is organised into the following sections:<a class="headerlink" href="#this-jupyter-notebook-is-organised-into-the-following-sections" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><span class="xref myst">Section 1:</span></strong> Load required packages</p></li>
+<li><p><strong><span class="xref myst">Section 2:</span></strong> Define a function for plotting</p></li>
+<li><p><strong><span class="xref myst">Section 3:</span></strong> Import and transform data</p></li>
+<li><p><strong><span class="xref myst">Section 4:</span></strong> Apply Principal Component Analysis and calibrate SEIFA score</p></li>
+<li><p><strong><span class="xref myst">Section 5:</span></strong> Check against ABS publication</p></li>
+</ul>
+</section>
+<section id="load-packages">
+<h2>1. Load Packages<a class="headerlink" href="#load-packages" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import required Python packages</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1">#Dataframe operations</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
 
+<span class="c1">#PCA</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span>
+<span class="c1">#Plotting</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p><a id='Section_2'></a></p>
 </section>
-<section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
+<section id="define-functions">
+<h2>2. Define Functions<a class="headerlink" href="#define-functions" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to obtain the explained variances from the PCA features.</span>
+
+<span class="c1">## Good practice to define functions upfront.</span>
 
 <span class="k">def</span> <span class="nf">plot_explained_variances</span><span class="p">(</span><span class="n">pca</span><span class="p">):</span>
 
     <span class="n">exp_var_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
 
-    <span class="n">cum_sum_var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">exp_var_pca</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">exp_var_pca</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">exp_var_pca</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">exp_var_pca</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">exp_var_pca</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">align</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span>
             <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Individual explained variance&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Explained variance ratio&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal component&#39;</span><span class="p">)</span>
@@ -645,15 +652,14 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
-<section id="import-data">
-<h3>Import data<a class="headerlink" href="#import-data" title="Permalink to this heading">#</a></h3>
+<section id="import-and-transform-data">
+<h2>3. Import and Transform Data<a class="headerlink" href="#import-and-transform-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import data</span>
-<span class="c1">## File 1: Standardised socio-economic variables published by the ABS</span>
+<span class="c1">## File 1: Standardised socio-economic variables published by the ABS (i.e. input to the PCA model)</span>
 <span class="c1">## File 2: IER scores by Statistical Area 1 published by the ABS</span>
+
 
 <span class="n">infolder</span> <span class="o">=</span> <span class="s1">&#39;https://actuariesinstitute.github.io/cookbook/_static/daa_datasets/&#39;</span>
 
@@ -666,12 +672,11 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="explore-data-eda">
-<h3>Explore data (EDA)<a class="headerlink" href="#explore-data-eda" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Inspect data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect data</span>
+
+<span class="c1">## These are numerical features (e.g. % corresponding to a variable, see dictionary below) which are standardised</span>
 
 <span class="n">data1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -699,18 +704,24 @@ document.write(`
       <th>SA1_2021</th>
       <th>INC_LOW</th>
       <th>INC_HIGH</th>
-      <th>UNEMPLOYED_IER</th>
-      <th>HIGHBED</th>
-      <th>HIGHMORTGAGE</th>
-      <th>LOWRENT</th>
-      <th>OWNING</th>
-      <th>MORTGAGE</th>
-      <th>GROUP</th>
-      <th>LONE</th>
-      <th>OVERCROWD</th>
+      <th>ATSCHOOL</th>
+      <th>ATUNI</th>
+      <th>CERTIFICATE</th>
+      <th>DEGREE</th>
+      <th>DIPLOMA</th>
+      <th>NOYR12ORHIGHER</th>
+      <th>NOEDU</th>
+      <th>...</th>
+      <th>HIGHCAR</th>
       <th>NOCAR</th>
+      <th>DISABILITYU70</th>
+      <th>ENGLISHPOOR</th>
       <th>ONEPARENT</th>
+      <th>SEP_DIVORCED</th>
       <th>UNINCORP</th>
+      <th>CHILDJOBLESS</th>
+      <th>MORTGAGEOVER30</th>
+      <th>RENTOVER30</th>
     </tr>
   </thead>
   <tbody>
@@ -719,98 +730,186 @@ document.write(`
       <td>10102100701</td>
       <td>0.031160</td>
       <td>-0.451226</td>
-      <td>-0.640348</td>
-      <td>0.002302</td>
-      <td>-0.315616</td>
-      <td>-0.195546</td>
-      <td>1.265090</td>
-      <td>0.248182</td>
-      <td>-0.906393</td>
-      <td>0.352968</td>
-      <td>0.197170</td>
+      <td>-0.307998</td>
+      <td>-0.611843</td>
+      <td>2.110423</td>
+      <td>-0.792820</td>
+      <td>1.399224</td>
+      <td>0.039552</td>
+      <td>-0.494326</td>
+      <td>...</td>
+      <td>1.124942</td>
       <td>-0.361674</td>
+      <td>1.160679</td>
+      <td>-0.628432</td>
       <td>-0.087881</td>
+      <td>-0.046096</td>
       <td>0.533110</td>
+      <td>-0.797863</td>
+      <td>0.427678</td>
+      <td>-1.208146</td>
     </tr>
     <tr>
       <th>1</th>
       <td>10102100702</td>
       <td>-0.745478</td>
       <td>0.235597</td>
-      <td>-0.640348</td>
-      <td>0.740474</td>
-      <td>-0.011638</td>
-      <td>-0.300570</td>
-      <td>2.303529</td>
-      <td>-0.853053</td>
-      <td>-0.906393</td>
-      <td>0.315177</td>
-      <td>-0.151010</td>
+      <td>0.309750</td>
+      <td>-0.718416</td>
+      <td>0.795239</td>
+      <td>-0.138695</td>
+      <td>1.122862</td>
+      <td>-0.328068</td>
+      <td>-0.494326</td>
+      <td>...</td>
+      <td>2.165534</td>
       <td>-0.737816</td>
+      <td>-1.371078</td>
+      <td>-0.628432</td>
       <td>-1.513208</td>
+      <td>-0.216841</td>
       <td>1.846095</td>
+      <td>-0.797863</td>
+      <td>0.322564</td>
+      <td>-1.208146</td>
     </tr>
     <tr>
       <th>2</th>
       <td>10102100703</td>
       <td>0.207462</td>
       <td>-0.333816</td>
-      <td>-1.026506</td>
-      <td>-0.412767</td>
-      <td>-0.914661</td>
-      <td>0.039633</td>
-      <td>0.596459</td>
-      <td>-0.596547</td>
-      <td>-0.491148</td>
-      <td>0.676963</td>
-      <td>-0.101682</td>
+      <td>0.648522</td>
+      <td>-0.373289</td>
+      <td>0.143017</td>
+      <td>0.089753</td>
+      <td>-0.024178</td>
+      <td>-0.148292</td>
+      <td>-0.494326</td>
+      <td>...</td>
+      <td>-0.474119</td>
       <td>-0.425240</td>
+      <td>-1.064640</td>
+      <td>-0.628432</td>
       <td>0.078716</td>
+      <td>0.963607</td>
       <td>0.486319</td>
+      <td>-0.335393</td>
+      <td>-0.486090</td>
+      <td>-0.029516</td>
     </tr>
     <tr>
       <th>3</th>
       <td>10102100704</td>
       <td>0.383411</td>
       <td>-0.417133</td>
-      <td>-0.635951</td>
-      <td>-0.958854</td>
-      <td>-0.394348</td>
-      <td>0.175210</td>
-      <td>1.052949</td>
-      <td>-0.732048</td>
-      <td>-0.553435</td>
-      <td>1.376609</td>
-      <td>-0.402858</td>
+      <td>-1.082034</td>
+      <td>-0.887458</td>
+      <td>-0.308372</td>
+      <td>0.417513</td>
+      <td>-0.160872</td>
+      <td>0.083635</td>
+      <td>0.108973</td>
+      <td>...</td>
+      <td>-0.407742</td>
       <td>-0.528653</td>
+      <td>0.038035</td>
+      <td>-0.628432</td>
       <td>0.949299</td>
+      <td>1.482164</td>
       <td>0.808398</td>
+      <td>0.554274</td>
+      <td>-0.156349</td>
+      <td>-0.423796</td>
     </tr>
     <tr>
       <th>4</th>
       <td>10102100705</td>
       <td>0.334499</td>
       <td>0.256282</td>
-      <td>-0.022986</td>
-      <td>-0.403616</td>
-      <td>-0.585547</td>
-      <td>-0.369140</td>
-      <td>0.660152</td>
-      <td>-0.591981</td>
-      <td>-0.906393</td>
-      <td>0.951129</td>
-      <td>-0.710058</td>
+      <td>-1.018268</td>
+      <td>-0.396676</td>
+      <td>0.235498</td>
+      <td>-0.072269</td>
+      <td>-0.227208</td>
+      <td>0.356362</td>
+      <td>-0.494326</td>
+      <td>...</td>
+      <td>-0.135464</td>
       <td>-0.477578</td>
+      <td>0.056221</td>
+      <td>-0.628432</td>
       <td>-1.048310</td>
+      <td>1.253986</td>
       <td>0.795448</td>
+      <td>-0.116016</td>
+      <td>-0.297469</td>
+      <td>-0.292223</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 45 columns</p>
 </div></div></div>
 </div>
+<section id="variable-dictionary">
+<h3>Variable dictionary<a class="headerlink" href="#variable-dictionary" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable name</p></th>
+<th class="head"><p>Variable description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>INC_LOW</p></td>
+<td><p>Per cent of people living in households with stated annual household equivalised income between <span class="math notranslate nohighlight">\(1 and \)</span>25,999 (approx. 1st and 2nd deciles)</p></td>
+</tr>
+<tr class="row-odd"><td><p>LOWRENT</p></td>
+<td><p>Per cent of occupied private dwellings paying rent less than <span class="math notranslate nohighlight">\(250 per week (excluding \)</span>0 per week)</p></td>
+</tr>
+<tr class="row-even"><td><p>NOCAR</p></td>
+<td><p>Per cent of occupied private dwellings with no cars</p></td>
+</tr>
+<tr class="row-odd"><td><p>LONE</p></td>
+<td><p>Per cent of occupied private dwellings who are lone person occupied private dwellings</p></td>
+</tr>
+<tr class="row-even"><td><p>ONEPARENT</p></td>
+<td><p>Per cent of one parent families with dependent offspring only</p></td>
+</tr>
+<tr class="row-odd"><td><p>OVERCROWD</p></td>
+<td><p>Per cent of occupied private dwellings requiring one or more extra bedrooms (based on Canadian National Occupancy Standard)</p></td>
+</tr>
+<tr class="row-even"><td><p>UNEMPLOYED_IER</p></td>
+<td><p>Per cent of people aged 15 years and over who are unemployed</p></td>
+</tr>
+<tr class="row-odd"><td><p>GROUP</p></td>
+<td><p>Per cent of occupied private dwellings who are group occupied private dwellings</p></td>
+</tr>
+<tr class="row-even"><td><p>OWNING</p></td>
+<td><p>Per cent of occupied private dwellings owning dwelling without a mortgage</p></td>
+</tr>
+<tr class="row-odd"><td><p>UNINCORP</p></td>
+<td><p>Per cent of dwellings with at least one person who is an owner of an unincorporated enterprise</p></td>
+</tr>
+<tr class="row-even"><td><p>INC_HIGH</p></td>
+<td><p>Per cent of people with stated annual household equivalised income greater than $91,000</p></td>
+</tr>
+<tr class="row-odd"><td><p>HIGHMORTGAGE</p></td>
+<td><p>Per cent of occupied private dwellings paying mortgage greater than $2,800 per month</p></td>
+</tr>
+<tr class="row-even"><td><p>MORTGAGE</p></td>
+<td><p>Per cent of occupied private dwellings owning dwelling (with a mortgage)</p></td>
+</tr>
+<tr class="row-odd"><td><p>HIGHBED</p></td>
+<td><p>Per cent of occupied private dwellings with four or more bedrooms</p></td>
+</tr>
+</tbody>
+</table>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect data</span>
+
+<span class="c1">## IER scored published based on 2021 Census data collection</span>
+
+<span class="n">data2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -867,65 +966,6 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="prepare-data">
-<h3>Prepare data<a class="headerlink" href="#prepare-data" title="Permalink to this heading">#</a></h3>
-<section id="dataset-1">
-<h4>Dataset 1<a class="headerlink" href="#dataset-1" title="Permalink to this heading">#</a></h4>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Variable name</p></th>
-<th class="head"><p>Variable description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>INC_LOW</p></td>
-<td><p>Per cent of people living in households with stated annual household equivalised income between <span class="math notranslate nohighlight">\(1 and \)</span>25,999 (approx. 1st and 2nd deciles)</p></td>
-</tr>
-<tr class="row-odd"><td><p>LOWRENT</p></td>
-<td><p>Per cent of occupied private dwellings paying rent less than <span class="math notranslate nohighlight">\(250 per week (excluding \)</span>0 per week)</p></td>
-</tr>
-<tr class="row-even"><td><p>NOCAR</p></td>
-<td><p>Per cent of occupied private dwellings with no cars</p></td>
-</tr>
-<tr class="row-odd"><td><p>LONE</p></td>
-<td><p>Per cent of occupied private dwellings who are lone person occupied private dwellings</p></td>
-</tr>
-<tr class="row-even"><td><p>ONEPARENT</p></td>
-<td><p>Per cent of one parent families with dependent offspring only</p></td>
-</tr>
-<tr class="row-odd"><td><p>OVERCROWD</p></td>
-<td><p>Per cent of occupied private dwellings requiring one or more extra bedrooms (based on Canadian National Occupancy Standard)</p></td>
-</tr>
-<tr class="row-even"><td><p>UNEMPLOYED_IER</p></td>
-<td><p>Per cent of people aged 15 years and over who are unemployed</p></td>
-</tr>
-<tr class="row-odd"><td><p>GROUP</p></td>
-<td><p>Per cent of occupied private dwellings who are group occupied private dwellings</p></td>
-</tr>
-<tr class="row-even"><td><p>OWNING</p></td>
-<td><p>Per cent of occupied private dwellings owning dwelling without a mortgage</p></td>
-</tr>
-<tr class="row-odd"><td><p>UNINCORP</p></td>
-<td><p>Per cent of dwellings with at least one person who is an owner of an unincorporated enterprise</p></td>
-</tr>
-<tr class="row-even"><td><p>INC_HIGH</p></td>
-<td><p>Per cent of people with stated annual household equivalised income greater than $91,000</p></td>
-</tr>
-<tr class="row-odd"><td><p>HIGHMORTGAGE</p></td>
-<td><p>Per cent of occupied private dwellings paying mortgage greater than $2,800 per month</p></td>
-</tr>
-<tr class="row-even"><td><p>MORTGAGE</p></td>
-<td><p>Per cent of occupied private dwellings owning dwelling (with a mortgage)</p></td>
-</tr>
-<tr class="row-odd"><td><p>HIGHBED</p></td>
-<td><p>Per cent of occupied private dwellings with four or more bedrooms</p></td>
-</tr>
-<tr class="row-even"><td><p>“””</p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select variables ABS uses to calibrate the IER (per their methodology)</span>
@@ -991,7 +1031,7 @@ memory usage: 6.8 MB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove missing values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove rows with missing values</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">data1_IER</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 <span class="n">data1_IER_dropna</span> <span class="o">=</span> <span class="n">data1_IER</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -1021,12 +1061,12 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform PCA</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Standardise data for PCA</span>
 
-<span class="c1">## Initiate the PCA.</span>
-<span class="n">pca_data</span> <span class="o">=</span> <span class="n">data1_IER_dropna</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
+<span class="c1">## Select data from column 2 onwards (inclusive). First column is SA1 ID.</span>
+<span class="n">pca_data</span> <span class="o">=</span> <span class="n">data1_IER_dropna</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
 
-<span class="c1">## Prep data for PCA modelling later</span>
+<span class="c1">## Standardise these columns to mean 0 and variance 1</span>
 <span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">sc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">pca_data</span><span class="p">)</span>
 <span class="n">pca_data</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pca_data</span><span class="p">)</span>
@@ -1084,8 +1124,182 @@ dtype: int64
 </div>
 </div>
 </section>
-<section id="compare-against-published-ier-score">
-<h4>Compare against published IER score<a class="headerlink" href="#compare-against-published-ier-score" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="modelling">
+<h2>4. Modelling<a class="headerlink" href="#modelling" title="Permalink to this heading">#</a></h2>
+<p>This section performs the PCA to recreate the ABS’s IER Index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initiate the PCA.</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span>
+
+<span class="c1"># Fit the PCA model to determine the transformed features.</span>
+<span class="c1">## It took 2 lines to fit the PCA model.</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">pca_data</span><span class="p">)</span>
+
+<span class="c1"># Plot variance explained by principal components</span>
+<span class="n">plot_explained_variances</span><span class="p">(</span><span class="n">pca</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e6025e84a8357cb4ffe1b0a87021118b9371a0481477a306eac1c0efd49af5da.png" src="../_images/e6025e84a8357cb4ffe1b0a87021118b9371a0481477a306eac1c0efd49af5da.png" />
+</div>
+</div>
+<p>Principal component 1 (PC1) explains over 30% of the variance in the data. PC1 is used as the basis of calculating the IER.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 3.21902216e-02, -1.95351071e-01, -3.62869762e-01,  3.59364682e-01,
+       -8.80285299e-02,  1.99924572e-01, -6.52078395e-01, -9.12914962e-01,
+        1.26794033e+00,  5.39782081e-01, -4.52416487e-01, -3.17209382e-01,
+        2.45495526e-01,  4.39423025e-04])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reverse sign (per ABS methodology)</span>
+
+<span class="n">pca_data_transformed</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">pca_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract first principal component in a dataframe</span>
+<span class="n">pca1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pca_data_transformed</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;IER_2021&#39;</span><span class="p">])</span>
+
+<span class="c1"># Attach SA1 ID to</span>
+<span class="n">IER_S1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data1_IER_dropna</span><span class="p">[</span><span class="s1">&#39;SA1_2021&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">),</span> <span class="n">pca1</span><span class="p">]</span>
+                    <span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">IER_S1</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      SA1_2021  IER_2021
+0  10102100701  0.517295
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculation from first principal</span>
+<span class="c1">## Sign implies how each variable contributes to a score</span>
+<span class="c1">## Reverse sign to make it more comprehensive</span>
+
+<span class="n">component_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Variable&#39;</span><span class="p">:</span> <span class="n">data1_IER</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+    <span class="s1">&#39;PC1 Loading&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;First SA1&#39;</span><span class="p">:</span> <span class="n">pca_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">component_df</span><span class="p">)</span>
+
+
+<span class="n">raw_score_first_SA1</span> <span class="o">=</span> <span class="p">(</span><span class="n">component_df</span><span class="p">[</span><span class="s1">&#39;PC1 Loading&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">component_df</span><span class="p">[</span><span class="s1">&#39;First SA1&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_score_first_SA1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          Variable  PC1 Loading  First SA1
+0          INC_LOW    -0.327920   0.032190
+1          LOWRENT    -0.320014  -0.195351
+2            NOCAR    -0.316516  -0.362870
+3             LONE    -0.307799   0.359365
+4        ONEPARENT    -0.243785  -0.088029
+5        OVERCROWD    -0.231555   0.199925
+6   UNEMPLOYED_IER    -0.217694  -0.652078
+7            GROUP    -0.175738  -0.912915
+8           OWNING     0.152087   1.267940
+9         UNINCORP     0.211586   0.539782
+10        INC_HIGH     0.233597  -0.452416
+11    HIGHMORTGAGE     0.285636  -0.317209
+12        MORTGAGE     0.295868   0.245496
+13         HIGHBED     0.334995   0.000439
+
+
+
+
+0.5172947202278048
+</pre></div>
+</div>
+</div>
+</div>
+<section id="a-recap-of-the-dataframe-operations-for-transforming-raw-data-to-principal-components">
+<h3>A recap of the dataframe operations for transforming raw data to principal components<a class="headerlink" href="#a-recap-of-the-dataframe-operations-for-transforming-raw-data-to-principal-components" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataframe name</p></th>
+<th class="head"><p>Operations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>data1</p></td>
+<td><p>Raw data we’ll be using to replicate the SEIFA IER score, numercial features (%)</p></td>
+</tr>
+<tr class="row-odd"><td><p>data1_IER</p></td>
+<td><p>Select features for determining IER from data1</p></td>
+</tr>
+<tr class="row-even"><td><p>data1_IER_dropna</p></td>
+<td><p>Remove missing values in data1_IER</p></td>
+</tr>
+<tr class="row-odd"><td><p>pca_data</p></td>
+<td><p>Standardise features in data1_IER_dropna to mean 0 and s.d. 1, used to perform PCA</p></td>
+</tr>
+<tr class="row-even"><td><p>pca</p></td>
+<td><p>Output of PCA, Principal Components</p></td>
+</tr>
+<tr class="row-odd"><td><p>pca_data_transformed</p></td>
+<td><p>Reverse sign in pca</p></td>
+</tr>
+<tr class="row-even"><td><p>pca1</p></td>
+<td><p>Extract first principal component from pca_data_transformed</p></td>
+</tr>
+<tr class="row-odd"><td><p>IER_S1</p></td>
+<td><p>Attach SA1 identifier to pca1, compared to dataframe ABS_IER_S1 which is the published data</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Standardise calibrated IER scores to mean of 1,000 and standard deviation of 100 (per ABS methodology)</span>
+
+<span class="n">IER_S1</span><span class="p">[</span><span class="s1">&#39;IER_recreated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">IER_S1</span><span class="p">[</span><span class="s1">&#39;IER_2021&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">IER_S1</span><span class="p">[</span><span class="s1">&#39;IER_2021&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="mi">1000</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">IER_S1</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          SA1_2021  IER_2021  IER_recreated
+59298  90104100401  0.022187    1000.995399
+59299  90104100402 -0.055935     997.490510
+59300  90104100403 -0.785740     964.748521
+59301  90104100404 -1.702813     923.604956
+59302  90104100407 -0.116936     994.753789
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="reconcile-with-abs-publication">
+<h2>5. Reconcile with ABS publication<a class="headerlink" href="#reconcile-with-abs-publication" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract first two columns in the desired data type</span>
@@ -1095,7 +1309,7 @@ dtype: int64
 <span class="n">ABS_IER_S1</span><span class="p">[</span><span class="s1">&#39;IER_2021&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">ABS_IER_S1</span><span class="p">[</span><span class="s1">&#39;IER_2021&#39;</span><span class="p">],</span>
                                         <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
 <span class="n">ABS_IER_S1</span><span class="p">[</span><span class="s1">&#39;SA1_2021&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">ABS_IER_S1</span><span class="p">[</span><span class="s1">&#39;SA1_2021&#39;</span><span class="p">],</span>
-                                        <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">,</span> <span class="n">downcast</span><span class="o">=</span><span class="s1">&#39;integer&#39;</span><span class="p">)</span>
+                                        <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">,</span> <span class="n">downcast</span> <span class="o">=</span> <span class="s1">&#39;integer&#39;</span><span class="p">)</span>
 
 
 <span class="nb">print</span><span class="p">(</span><span class="n">ABS_IER_S1</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
@@ -1136,7 +1350,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Remove missing value</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Remove rows with missing value</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">ABS_IER_S1</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 <span class="n">ABS_IER_S1_dropna</span> <span class="o">=</span> <span class="n">ABS_IER_S1</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -1158,113 +1372,9 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">join</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ABS_IER_S1_dropna</span><span class="p">,</span> <span class="n">data1_IER_dropna</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SA1_2021&#39;</span><span class="p">)</span>
-<span class="c1">#join.to_csv(&#39;check_join.csv&#39;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-</section>
-<section id="modelling">
-<h2>Modelling<a class="headerlink" href="#modelling" title="Permalink to this heading">#</a></h2>
-<p>This section performs the PCA to recreate the ABS’s IER Index.</p>
-<section id="fit-the-model">
-<h3>Fit the model<a class="headerlink" href="#fit-the-model" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initiate the PCA.</span>
-<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Merge the recreated with the published data for reconciliation 1 - histograms</span>
 
-<span class="c1"># Fit the PCA model to determine the transformed features.</span>
-<span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">pca_data</span><span class="p">)</span>
-
-<span class="c1"># Plot variance explained by principal components</span>
-<span class="n">plot_explained_variances</span><span class="p">(</span><span class="n">pca</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/e6025e84a8357cb4ffe1b0a87021118b9371a0481477a306eac1c0efd49af5da.png" src="../_images/e6025e84a8357cb4ffe1b0a87021118b9371a0481477a306eac1c0efd49af5da.png" />
-</div>
-</div>
-<p>Principal component 1 (PC1) explains over 30% of the variance in the data. PC1 is used as the basis of calculating the IER.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect principal component for an SA1 (first row)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.32791953  0.32001365  0.31651578  0.3077993   0.24378481  0.23155534
-  0.21769425  0.1757376  -0.1520873  -0.21158613 -0.23359675 -0.28563562
- -0.29586762 -0.33499547]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reverse sign (per ABS methodology)</span>
-
-<span class="n">pca_data_transformed</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">pca_data</span><span class="p">)</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="n">pca_data_transformed</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.51729472  1.97543921 -0.30169348 ... -0.7857405  -1.70281309
- -0.11693581]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establish a dataframe of first principal component by SA1 identifier / code</span>
-
-<span class="n">pca1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pca_data_transformed</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;IER_2021&#39;</span><span class="p">])</span>
-<span class="c1">#pca1.to_csv(&#39;check_pca1.csv&#39;)</span>
-
-<span class="n">IER_S1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data1_IER_dropna</span><span class="p">[</span><span class="s1">&#39;SA1_2021&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">pca1</span><span class="p">]</span>
-                    <span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">IER_S1</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          SA1_2021  IER_2021
-59298  90104100401  0.022187
-59299  90104100402 -0.055935
-59300  90104100403 -0.785740
-59301  90104100404 -1.702813
-59302  90104100407 -0.116936
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Standardise calibrated IER scores to mean of 1,000 and standard deviation of 100 (per ABS methodology)</span>
-
-<span class="n">IER_S1</span><span class="p">[</span><span class="s1">&#39;IER_recreated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">IER_S1</span><span class="p">[</span><span class="s1">&#39;IER_2021&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">IER_S1</span><span class="p">[</span><span class="s1">&#39;IER_2021&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="mi">1000</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">IER_S1</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          SA1_2021  IER_2021  IER_recreated
-59298  90104100401  0.022187    1000.995399
-59299  90104100402 -0.055935     997.490510
-59300  90104100403 -0.785740     964.748521
-59301  90104100404 -1.702813     923.604956
-59302  90104100407 -0.116936     994.753789
+<span class="n">join</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ABS_IER_S1_dropna</span><span class="p">,</span> <span class="n">data1_IER_dropna</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SA1_2021&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1286,9 +1396,6 @@ dtype: int64
 <img alt="../_images/87d76f86212740a37aa7d4bf995b827403fe4aba26f23579f38f6991c78449d9.png" src="../_images/87d76f86212740a37aa7d4bf995b827403fe4aba26f23579f38f6991c78449d9.png" />
 </div>
 </div>
-</section>
-<section id="evaluate-the-model">
-<h3>Evaluate the model<a class="headerlink" href="#evaluate-the-model" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot histogram of publisehd IER scores</span>
@@ -1320,13 +1427,11 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Merge data frame (for plotting later)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Merge the recreated with the published data for reconciliation 2 - scatter plot</span>
 
 <span class="n">IER_join</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ABS_IER_S1_dropna</span><span class="p">,</span> <span class="n">IER_S1_reduce</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SA1_2021&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">IER_join</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
-
-<span class="c1">#IER_join.to_csv(&#39;check.csv&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -1337,23 +1442,6 @@ dtype: int64
 59300  90104100403   964.139169     964.748521
 59301  90104100404   923.050144     923.604956
 59302  90104100407   994.377312     994.753789
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check there&#39;s no missing value</span>
-
-<span class="n">IER_join</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SA1_2021         0
-IER_2021         0
-IER_recreated    0
-dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1376,22 +1464,6 @@ dtype: int64
 </div>
 </div>
 <p>The above scatter plot shows that the two sets of indexes are very closely aligned.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect correlation</span>
-
-<span class="n">correlation</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">IER_join</span><span class="p">[</span><span class="s1">&#39;IER_recreated&#39;</span><span class="p">],</span> <span class="n">IER_join</span><span class="p">[</span><span class="s1">&#39;IER_2021&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The correlation between the ABS and recreated index is: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">correlation</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The correlation between the ABS and recreated index is: 0.9999962803262905
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 </section>
 
@@ -1460,23 +1532,18 @@ dtype: int64
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages">Packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-data-eda">Explore data (EDA)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-data">Prepare data</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1">Dataset 1</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-against-published-ier-score">Compare against published IER score</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-jupyter-notebook-is-organised-into-the-following-sections">This Jupyter notebook is organised into the following sections:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">1. Load Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">2. Define Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-transform-data">3. Import and Transform Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-dictionary">Variable dictionary</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">4. Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-recap-of-the-dataframe-operations-for-transforming-raw-data-to-principal-components">A recap of the dataframe operations for transforming raw data to principal components</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-the-model">Fit the model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-the-model">Evaluate the model</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reconcile-with-abs-publication">5. Reconcile with ABS publication</a></li>
 </ul>
   </nav></div>
 
